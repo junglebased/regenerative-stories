@@ -30,9 +30,13 @@
     .main{margin-left:var(--rail);}
 
     /* Hero */
-    #hero{min-height:100vh;min-height:100dvh;padding:52px 48px 60px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;background:radial-gradient(ellipse 120% 80% at 60% 40%,rgba(60,40,20,.45) 0%,transparent 70%),var(--bg);}
-    #hero::before{content:'';position:absolute;inset:0;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;pointer-events:none;z-index:0;mix-blend-mode:overlay;}
-    #hero>*{position:relative;z-index:1;}
+    #hero{min-height:100vh;min-height:100dvh;padding:52px 48px 60px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;background:var(--bg);}
+    .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center 25%;z-index:0;}
+    @keyframes hbgIn{from{opacity:.55}to{opacity:1}}
+    .hero-bg.fade-in{animation:hbgIn .5s ease forwards;}
+    #hero::before{content:'';position:absolute;inset:0;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;pointer-events:none;z-index:4;mix-blend-mode:overlay;}
+    #hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(26,25,20,.94) 0%,rgba(26,25,20,.72) 45%,rgba(26,25,20,.22) 100%),linear-gradient(to top,rgba(26,25,20,.97) 0%,rgba(26,25,20,.55) 38%,transparent 78%);z-index:1;pointer-events:none;}
+    #hero>*{position:relative;z-index:2;}
     .h-eye{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:28px;}
     .h-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(56px,10.5vw,108px);line-height:.86;letter-spacing:-.03em;text-transform:uppercase;display:block;width:100%;}
     .h-solid{color:var(--text);}
@@ -48,6 +52,18 @@
     .stat-l{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
     .scroll-cue{position:absolute;bottom:28px;right:48px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:10px;}
     .scroll-cue::before{content:'';width:1px;height:36px;background:var(--muted);}
+    /* Hero character list */
+    .hc-list{position:absolute;top:52px;right:48px;z-index:3;min-width:200px;max-width:240px;}
+    .hc-lbl{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;}
+    .hc-item{display:flex;gap:12px;align-items:baseline;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.07);cursor:default;}
+    .hc-item:first-of-type{border-top:1px solid rgba(255,255,255,.07);}
+    .hc-eco{font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;flex-shrink:0;width:66px;opacity:.75;}
+    .hc-name{font-family:'Fraunces',serif;font-weight:900;font-size:13px;color:rgba(232,223,208,.65);line-height:1.2;transition:color .2s;}
+    .hc-item:hover .hc-name{color:var(--text);}
+    .hc-item:hover .hc-eco{opacity:1;}
+    .hc-preview{position:absolute;right:calc(100% + 16px);top:40px;width:170px;aspect-ratio:2/3;border-radius:5px;overflow:hidden;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;transform:translateX(-6px);z-index:6;box-shadow:0 16px 48px rgba(0,0,0,.7);}
+    .hc-preview.show{opacity:1;transform:none;}
+    .hc-preview img{width:100%;height:100%;object-fit:cover;object-position:top center;}
 
     /* Scrollytelling */
     #scroll-scene{height:300vh;position:relative;}
@@ -137,7 +153,7 @@
     .footer-copy{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.08em;}
 
     /* Mobile */
-    @media(max-width:900px){#strat{display:none;}.main{margin-left:0;}.film-card{grid-template-columns:1fr;gap:24px;}.impact-grid{grid-template-columns:repeat(2,1fr);gap:40px;}.contact-grid{grid-template-columns:1fr;gap:48px;}.next-hd{flex-direction:column;align-items:flex-start;}.next-note{text-align:left;}}
+    @media(max-width:900px){.hc-list{display:none;}#strat{display:none;}.main{margin-left:0;}.film-card{grid-template-columns:1fr;gap:24px;}.impact-grid{grid-template-columns:repeat(2,1fr);gap:40px;}.contact-grid{grid-template-columns:1fr;gap:48px;}.next-hd{flex-direction:column;align-items:flex-start;}.next-note{text-align:left;}}
     @media(max-width:600px){
       html,body{overflow-x:clip;max-width:100%;}
       #hero,#films,#impact,#next,#contact{padding-left:20px;padding-right:20px;}
@@ -202,6 +218,17 @@
 <div class="main">
 
   <section id="hero">
+    <div class="hero-bg" id="hero-bg" style="background-image:url('images/zafer_goldman.jpg')"></div>
+    <nav class="hc-list" id="hc-list" aria-label="Six characters">
+      <p class="hc-lbl">Six characters</p>
+      <div class="hc-item" data-img="images/tugba_bantmag.jpg"><span class="hc-eco">Land</span><span class="hc-name">Tuğba Günal &amp; Birhan</span></div>
+      <div class="hc-item" data-img="images/zafer_goldman.jpg"><span class="hc-eco">Water</span><span class="hc-name">Zafer Kızılkaya</span></div>
+      <div class="hc-item" data-img="images/balabanaga_large.jpg"><span class="hc-eco">Food</span><span class="hc-name">Balabanağa Çiftliği</span></div>
+      <div class="hc-item" data-img="images/mus_arici_1.webp"><span class="hc-eco">Community</span><span class="hc-name">Muş 100 Kadın Arıcı</span></div>
+      <div class="hc-item" data-img="images/cagan_field.jpg"><span class="hc-eco">Systems</span><span class="hc-name">Çağan Şekercioğlu</span></div>
+      <div class="hc-item" data-img="images/kelaynak.jpg"><span class="hc-eco">Hope</span><span class="hc-name">Birecik Kelaynak</span></div>
+      <div class="hc-preview" id="hc-preview" aria-hidden="true"><img id="hc-preview-img" src="" alt=""></div>
+    </nav>
     <p class="h-eye">Documentary Series · Turkey · 2021—</p>
     <span class="h-title h-solid">REGENERATIVE</span>
     <span class="h-title h-outline">STORIES</span>
@@ -443,6 +470,37 @@ document.querySelectorAll('.si').forEach(function(item){
   });
 });
 
+})();
+
+/* ── Hero character hover ─────────────────────────────── */
+(function(){
+  var heroBg=document.getElementById('hero-bg');
+  var preview=document.getElementById('hc-preview');
+  var previewImg=document.getElementById('hc-preview-img');
+  var defaultImg='images/zafer_goldman.jpg';
+  var leaveTimer;
+  document.querySelectorAll('.hc-item').forEach(function(item){
+    item.addEventListener('mouseenter',function(){
+      clearTimeout(leaveTimer);
+      var img=item.dataset.img;
+      if(!img)return;
+      previewImg.src=img;
+      preview.classList.add('show');
+      heroBg.style.backgroundImage='url('+img+')';
+      heroBg.classList.remove('fade-in');
+      void heroBg.offsetWidth;
+      heroBg.classList.add('fade-in');
+    });
+    item.addEventListener('mouseleave',function(){
+      leaveTimer=setTimeout(function(){
+        preview.classList.remove('show');
+        heroBg.style.backgroundImage='url('+defaultImg+')';
+        heroBg.classList.remove('fade-in');
+        void heroBg.offsetWidth;
+        heroBg.classList.add('fade-in');
+      },120);
+    });
+  });
 })();
 
 /* ── Scroll reveal ────────────────────────────────────── */
