@@ -30,7 +30,9 @@
     .main{margin-left:var(--rail);}
 
     /* Hero */
-    #hero{min-height:100vh;min-height:100dvh;padding:52px 48px 60px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;}
+    #hero{min-height:100vh;min-height:100dvh;padding:52px 48px 60px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;background:radial-gradient(ellipse 120% 80% at 60% 40%,rgba(60,40,20,.45) 0%,transparent 70%),var(--bg);}
+    #hero::before{content:'';position:absolute;inset:0;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;pointer-events:none;z-index:0;mix-blend-mode:overlay;}
+    #hero>*{position:relative;z-index:1;}
     .h-eye{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:28px;}
     .h-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(56px,10.5vw,108px);line-height:.86;letter-spacing:-.03em;text-transform:uppercase;display:block;width:100%;}
     .h-solid{color:var(--text);}
@@ -69,8 +71,13 @@
     .sec-eye{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.45;margin-bottom:44px;}
     .sec-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(34px,4.5vw,60px);line-height:1;letter-spacing:-.02em;}
     .film-card{display:grid;grid-template-columns:5fr 3fr;gap:48px;padding:36px 0;border-top:1px solid var(--border-dk);}
-    .film-thumb{aspect-ratio:16/9;overflow:hidden;background:#2A2420;position:relative;}
+    .film-thumb{aspect-ratio:16/9;overflow:hidden;background:#2A2420;position:relative;cursor:pointer;}
     .film-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+    .film-thumb::after{content:'';position:absolute;inset:0;background:rgba(10,9,7,0);transition:background .3s ease;}
+    .film-card:hover .film-thumb::after{background:rgba(10,9,7,.35);}
+    .film-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.85);opacity:0;transition:opacity .3s ease,transform .3s ease;z-index:2;width:56px;height:56px;border-radius:50%;border:2px solid rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;pointer-events:none;}
+    .film-play::after{content:'';border-style:solid;border-width:9px 0 9px 18px;border-color:transparent transparent transparent rgba(255,255,255,.95);margin-left:4px;}
+    .film-card:hover .film-play{opacity:1;transform:translate(-50%,-50%) scale(1);}
     .film-card:hover .film-thumb img{transform:scale(1.03);}
     .film-thumb-ph{width:100%;height:100%;display:flex;align-items:flex-end;padding:16px;}
     .film-meta{display:flex;flex-direction:column;justify-content:space-between;}
@@ -103,7 +110,10 @@
     .char-grid{display:flex;overflow-x:auto;gap:2px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px;}.char-grid::-webkit-scrollbar{display:none;}.char-card{flex:0 0 min(72vw,380px);scroll-snap-align:start;}
     .char-card{position:relative;overflow:hidden;}
     .char-portrait{aspect-ratio:4/5;position:relative;overflow:hidden;}
-    .char-bg{position:absolute;inset:0;width:100%;height:100%;}
+    .char-bg{position:absolute;inset:0;width:100%;height:100%;transition:transform .5s ease;}
+    .char-card:hover .char-bg{transform:scale(1.04);}
+    .char-overlay{backdrop-filter:blur(0px);transition:backdrop-filter .3s;}
+    .char-card:hover .char-overlay{backdrop-filter:blur(2px);}
     .char-portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;}
     .char-overlay{position:absolute;bottom:0;left:0;right:0;padding:28px 20px 20px;background:linear-gradient(to top,rgba(26,25,20,.95) 0%,rgba(26,25,20,.5) 60%,transparent 100%);}
     .char-ch{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;}
@@ -160,6 +170,13 @@
     #lb-box iframe{width:100%;height:100%;border:none;display:block;}
     #lb-close{position:absolute;top:-44px;right:0;background:none;border:none;color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;opacity:.6;transition:opacity .2s;}
     #lb-close:hover{opacity:1;}
+
+    /* Scroll reveal */
+    .reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease;}
+    .reveal.visible{opacity:1;transform:none;}
+    .reveal-delay-1{transition-delay:.1s;}
+    .reveal-delay-2{transition-delay:.2s;}
+    .reveal-delay-3{transition-delay:.3s;}
   </style>
 </head>
 <body>
@@ -229,11 +246,11 @@
     </div>
   </section>
 
-  <section id="films">
+  <section id="films" class="reveal">
     <p class="sec-eye">Our Films — 2021 to present</p>
-    <article class="film-card">
+    <article class="film-card reveal">
       <a href="#" data-yt="GwbonuGbL9k">
-        <div class="film-thumb"><img src="https://img.youtube.com/vi/GwbonuGbL9k/maxresdefault.jpg" alt="Awakening of the Soil" loading="lazy"></div>
+        <div class="film-thumb"><div class="film-play"></div><img src="https://img.youtube.com/vi/GwbonuGbL9k/maxresdefault.jpg" alt="Awakening of the Soil" loading="lazy"></div>
       </a>
       <div class="film-meta">
         <div>
@@ -248,9 +265,9 @@
         </div>
       </div>
     </article>
-    <article class="film-card">
+    <article class="film-card reveal">
       <a href="#" data-yt="fP2MbUsGDoY">
-        <div class="film-thumb"><img src="https://img.youtube.com/vi/fP2MbUsGDoY/maxresdefault.jpg" alt="Tilya" loading="lazy"></div>
+        <div class="film-thumb"><div class="film-play"></div><img src="https://img.youtube.com/vi/fP2MbUsGDoY/maxresdefault.jpg" alt="Tilya" loading="lazy"></div>
       </a>
       <div class="film-meta">
         <div>
@@ -265,9 +282,9 @@
         </div>
       </div>
     </article>
-    <article class="film-card">
+    <article class="film-card reveal">
       <a href="#" data-yt="0cRb0rBAsDI">
-        <div class="film-thumb"><img src="https://img.youtube.com/vi/0cRb0rBAsDI/maxresdefault.jpg" alt="Burhan Eltan" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="film-thumb"><div class="film-play"></div><img src="https://img.youtube.com/vi/0cRb0rBAsDI/maxresdefault.jpg" alt="Burhan Eltan" loading="lazy" onerror="this.style.display='none'"></div>
       </a>
       <div class="film-meta">
         <div>
@@ -282,9 +299,9 @@
         </div>
       </div>
     </article>
-    <article class="film-card">
+    <article class="film-card reveal">
       <div>
-        <div class="film-thumb"><div class="film-thumb-ph" style="background:linear-gradient(140deg,#2A2218,#3D2E18);"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;">In Editing</span></div></div>
+        <div class="film-thumb"><div class="film-play"></div><div class="film-thumb-ph" style="background:linear-gradient(140deg,#2A2218,#3D2E18);"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;">In Editing</span></div></div>
       </div>
       <div class="film-meta">
         <div>
@@ -301,7 +318,7 @@
     </article>
   </section>
 
-  <section id="impact">
+  <section id="impact" class="reveal">
     <div class="impact-grid">
       <div class="impact-cell"><span class="i-num">500</span><span class="i-lbl">Practitioners<br>mapped</span></div>
       <div class="impact-cell"><span class="i-num">120</span><span class="i-lbl">Deeply researched<br>characters</span></div>
@@ -310,7 +327,7 @@
     </div>
   </section>
 
-  <section id="next">
+  <section id="next" class="reveal">
     <div class="next-hd">
       <div>
         <p class="sec-eye">Season One — In Production</p>
@@ -328,7 +345,7 @@
     </div>
   </section>
 
-  <section id="contact">
+  <section id="contact" class="reveal">
     <p class="sec-eye">Partnership & Contact</p>
     <h2 class="sec-title">Work with us.</h2>
     <div class="contact-grid">
