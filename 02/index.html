@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regenerative Stories</title>
+  <meta name="description" content="Character-driven documentaries from Turkey's regenerating land. Stories from a healing world.">
+  <meta property="og:title" content="Regenerative Stories">
+  <meta property="og:description" content="Stories from a healing world.">
+  <meta property="og:url" content="https://regenerativestories.earth">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,900&family=Spectral:wght@300;400&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#1A1914;--bg-sand:#EDE8DF;--text:#E8DFD0;--text-dk:#231E18;--accent:#C4662A;--sage:#7A8C70;--muted:#4E5E47;--border:rgba(255,255,255,0.07);--border-dk:rgba(35,30,24,0.15);--rail:44px;}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:'Spectral',serif;font-weight:300;overflow-x:hidden;}
+    a{color:inherit;text-decoration:none;}
+    img{display:block;}
+
+    /* Rail */
+    #strat{position:fixed;left:0;top:0;width:var(--rail);height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:28px;z-index:900;pointer-events:none;}
+    .si{display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;pointer-events:all;}
+    .si-dot{width:5px;height:5px;border-radius:50%;border:1px solid var(--muted);transition:all .3s;}
+    .si-lbl{writing-mode:vertical-rl;font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;transition:color .3s;}
+    .si.active .si-dot{background:var(--accent);border-color:var(--accent);}
+    .si.active .si-lbl{color:var(--accent);}
+
+    .main{margin-left:var(--rail);}
+
+    /* Hero */
+    #hero{min-height:100vh;min-height:100dvh;padding:52px 48px 60px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;}
+    .h-eye{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:28px;}
+    .h-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(56px,10.5vw,108px);line-height:.86;letter-spacing:-.03em;text-transform:uppercase;display:block;width:100%;}
+    .h-solid{color:var(--text);}
+    .h-outline{color:transparent;-webkit-text-stroke:2.5px var(--accent);text-align:right;}
+    .h-rule{height:1px;background:var(--accent);margin:32px 0 22px;}
+    .h-tag{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--sage);letter-spacing:.03em;margin-bottom:12px;}
+    .h-arc{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:52px;}
+    .h-stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);}
+    .stat{padding:20px 16px;border-right:1px solid var(--border);}
+    .stat:last-child{border-right:none;}
+    .stat-n{font-family:'Fraunces',serif;font-weight:900;font-size:30px;color:var(--text);display:block;line-height:1;margin-bottom:6px;}
+    .stat-n sup{font-size:.55em;color:var(--accent);vertical-align:super;}
+    .stat-l{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
+    .scroll-cue{position:absolute;bottom:28px;right:48px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:10px;}
+    .scroll-cue::before{content:'';width:1px;height:36px;background:var(--muted);}
+
+    /* Scrollytelling */
+    #scroll-scene{height:300vh;position:relative;}
+    #scroll-sticky{position:sticky;top:0;height:100vh;height:100dvh;overflow:hidden;}
+    #anim-canvas{display:none;}
+    #anim-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+    .scroll-vignette{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,25,20,.55) 0%,rgba(26,25,20,0) 25%,rgba(26,25,20,0) 65%,rgba(26,25,20,.72) 100%);pointer-events:none;z-index:1;}
+    .scroll-vignette::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 22vw 18vh at 100% 100%,rgba(26,25,20,1) 0%,rgba(26,25,20,1) 35%,rgba(26,25,20,.7) 65%,rgba(26,25,20,0) 100%);pointer-events:none;}
+    #scroll-prog{position:absolute;top:0;left:0;height:2px;background:var(--accent);width:0;z-index:10;}
+    .beat{position:absolute;padding:40px 48px;opacity:0;transition:opacity .5s ease;pointer-events:none;z-index:5;}
+    .beat-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;}
+    .beat-hl{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(40px,6.5vw,76px);line-height:.95;letter-spacing:-.02em;color:var(--text);text-shadow:0 2px 24px rgba(0,0,0,.65);}
+    .beat-sub{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--sage);margin-top:14px;letter-spacing:.04em;line-height:1.5;}
+    #b1{bottom:22%;left:0;}
+    #b2{top:18%;right:0;text-align:right;}
+    #b3{bottom:18%;left:0;}
+    #b4{top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;width:80%;padding:0;}
+
+    /* Films */
+    #films{background:var(--bg-sand);color:var(--text-dk);padding:80px 48px;}
+    .sec-eye{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.45;margin-bottom:44px;}
+    .sec-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(34px,4.5vw,60px);line-height:1;letter-spacing:-.02em;}
+    .film-card{display:grid;grid-template-columns:5fr 3fr;gap:48px;padding:36px 0;border-top:1px solid var(--border-dk);}
+    .film-thumb{aspect-ratio:16/9;overflow:hidden;background:#2A2420;position:relative;}
+    .film-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+    .film-card:hover .film-thumb img{transform:scale(1.03);}
+    .film-thumb-ph{width:100%;height:100%;display:flex;align-items:flex-end;padding:16px;}
+    .film-meta{display:flex;flex-direction:column;justify-content:space-between;}
+    .badge{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border:1px solid;display:inline-block;margin-bottom:18px;width:fit-content;}
+    .b-rel{color:var(--muted);border-color:var(--muted);}
+    .b-lock{color:var(--accent);border-color:var(--accent);}
+    .b-edit{color:var(--sage);border-color:var(--sage);}
+    .film-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(22px,2.8vw,36px);line-height:1.05;letter-spacing:-.01em;margin-bottom:8px;color:var(--text-dk);}
+    .film-sub{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.05em;margin-bottom:18px;}
+    .film-body{font-size:15px;line-height:1.68;color:var(--text-dk);opacity:.78;max-width:44ch;}
+    .film-notes{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.07em;text-transform:uppercase;margin-top:20px;margin-bottom:10px;}
+    .film-cta{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:8px;transition:gap .2s;}
+    .film-cta:hover{gap:14px;}
+    .film-cta::after{content:'→';}
+    .film-cta-muted{opacity:.35;cursor:default;}
+    .film-cta-muted::after{display:none;}
+
+    /* Impact */
+    #impact{padding:64px 48px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+    .impact-grid{display:grid;grid-template-columns:repeat(4,1fr);}
+    .impact-cell{padding-right:32px;}
+    .i-num{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(38px,5vw,68px);color:var(--text);display:block;line-height:1;margin-bottom:8px;}
+    .i-num em{font-style:normal;font-size:.55em;color:var(--accent);}
+    .i-lbl{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;line-height:1.6;}
+
+    /* Coming Next */
+    #next{padding:80px 48px;border-top:1px solid var(--border);}
+    .next-hd{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:52px;gap:32px;}
+    .next-note{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.05em;max-width:30ch;text-align:right;line-height:1.7;}
+    .char-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+    .char-card{position:relative;overflow:hidden;}
+    .char-portrait{aspect-ratio:4/5;position:relative;overflow:hidden;}
+    .char-bg{position:absolute;inset:0;width:100%;height:100%;}
+    .char-portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;}
+    .char-overlay{position:absolute;bottom:0;left:0;right:0;padding:28px 20px 20px;background:linear-gradient(to top,rgba(26,25,20,.95) 0%,rgba(26,25,20,.5) 60%,transparent 100%);}
+    .char-ch{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;}
+    .char-name{font-family:'Fraunces',serif;font-weight:900;font-size:20px;line-height:1.1;color:var(--text);margin-bottom:5px;}
+    .char-loc{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--sage);letter-spacing:.07em;}
+
+    /* Contact */
+    #contact{padding:80px 48px 100px;border-top:1px solid var(--border);}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:52px;}
+    .partner-areas h3{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px;}
+    .area-list{list-style:none;display:flex;flex-direction:column;gap:12px;}
+    .area-list li{font-size:15px;line-height:1.5;color:var(--text);opacity:.7;padding-left:14px;border-left:1px solid var(--accent);}
+    .contact-col{display:flex;flex-direction:column;gap:28px;}
+    .contact-email{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(16px,2.2vw,26px);color:var(--accent);transition:opacity .2s;}
+    .contact-email:hover{opacity:.7;}
+    .contact-links{display:flex;gap:24px;flex-wrap:wrap;}
+    .contact-link{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--sage);letter-spacing:.08em;text-transform:uppercase;transition:color .2s;}
+    .contact-link:hover{color:var(--text);}
+    .contact-meta{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.05em;line-height:1.9;}
+    .footer-bar{display:flex;justify-content:space-between;align-items:center;margin-top:80px;padding-top:24px;border-top:1px solid var(--border);}
+    .footer-copy{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.08em;}
+
+    /* Mobile */
+    @media(max-width:900px){#strat{display:none;}.main{margin-left:0;}.film-card{grid-template-columns:1fr;gap:24px;}.impact-grid{grid-template-columns:repeat(2,1fr);gap:40px;}.char-grid{grid-template-columns:repeat(2,1fr);}.contact-grid{grid-template-columns:1fr;gap:48px;}.next-hd{flex-direction:column;align-items:flex-start;}.next-note{text-align:left;}}
+    @media(max-width:600px){
+      html{overflow-x:clip;}body{overflow-x:hidden;max-width:100%;}
+      #hero,#films,#impact,#next,#contact{padding-left:20px;padding-right:20px;}
+      #hero{padding-top:40px;padding-bottom:40px;}
+      .h-title{font-size:clamp(28px,8.5vw,56px);letter-spacing:-.02em;}
+      .h-outline{-webkit-text-stroke:1.5px var(--accent);}
+      .h-rule{margin:20px 0 14px;}
+      .h-arc{margin-bottom:28px;font-size:9px;}
+      .h-stats{grid-template-columns:repeat(2,1fr);}
+      .stat{padding:14px 12px;}
+      .stat-n{font-size:22px;}
+      .char-grid{grid-template-columns:1fr;}
+      .beat{padding:28px 20px;}
+      #b4{width:90%;padding:0;}
+      .beat-hl{font-size:clamp(28px,7vw,48px);}
+      #scroll-sticky{height:100dvh;}
+      #anim-canvas{width:100%!important;height:100%!important;}
+      .scroll-cue{right:20px;}
+    }
+    @media(max-width:390px){
+      .h-title{font-size:7.5vw;}
+    }
+  </style>
+</head>
+<body>
+
+<nav id="strat" aria-label="Page sections">
+  <div class="si active" data-t="hero"><div class="si-dot"></div><span class="si-lbl">Intro</span></div>
+  <div class="si" data-t="scroll-scene"><div class="si-dot"></div><span class="si-lbl">Story</span></div>
+  <div class="si" data-t="films"><div class="si-dot"></div><span class="si-lbl">Films</span></div>
+  <div class="si" data-t="impact"><div class="si-dot"></div><span class="si-lbl">Impact</span></div>
+  <div class="si" data-t="next"><div class="si-dot"></div><span class="si-lbl">Season 1</span></div>
+  <div class="si" data-t="contact"><div class="si-dot"></div><span class="si-lbl">Contact</span></div>
+</nav>
+
+<div class="main">
+
+  <section id="hero">
+    <p class="h-eye">Documentary Series · Turkey · 2021—</p>
+    <span class="h-title h-solid">REGENERATIVE</span>
+    <span class="h-title h-outline">STORIES</span>
+    <div class="h-rule"></div>
+    <p class="h-tag">Stories from a healing world.</p>
+    <p class="h-arc">Land · Water · Food · Community · Systems · Hope</p>
+    <div class="h-stats">
+      <div class="stat"><span class="stat-n">4</span><span class="stat-l">Films completed</span></div>
+      <div class="stat"><span class="stat-n">120K<sup>+</sup></span><span class="stat-l">Total views</span></div>
+      <div class="stat"><span class="stat-n">500</span><span class="stat-l">Practitioners mapped</span></div>
+      <div class="stat"><span class="stat-n">4<sup>+</sup></span><span class="stat-l">Years field research</span></div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true">Scroll</div>
+  </section>
+
+  <section id="scroll-scene">
+    <div id="scroll-sticky">
+      <div id="scroll-prog"></div>
+      <canvas id="anim-canvas" aria-hidden="true"></canvas>
+      <video id="anim-video" muted playsinline autoplay webkit-playsinline preload="auto" aria-hidden="true" src="__shot___type_sin.mp4"></video>
+      <div class="scroll-vignette" aria-hidden="true"></div>
+      <div class="beat" id="b1">
+        <p class="beat-tag">01 — Land</p>
+        <h2 class="beat-hl">The soil<br>remembers.</h2>
+        <p class="beat-sub">58.1 — average age of a Turkish farmer.</p>
+      </div>
+      <div class="beat" id="b2">
+        <p class="beat-tag">02 — Scale</p>
+        <h2 class="beat-hl">500<br>practitioners.</h2>
+        <p class="beat-sub">Mapped across 7 regions since 2021.</p>
+      </div>
+      <div class="beat" id="b3">
+        <p class="beat-tag">03 — Impact</p>
+        <h2 class="beat-hl">120,000<br>viewers.</h2>
+        <p class="beat-sub">Four years of field research.</p>
+      </div>
+      <div class="beat" id="b4">
+        <p class="beat-tag">04 — Next</p>
+        <h2 class="beat-hl">Season One.<br>In production.</h2>
+        <p class="beat-sub">Six ecosystems. Six characters. One country.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="films">
+    <p class="sec-eye">Our Films — 2021 to present</p>
+    <article class="film-card">
+      <a href="https://www.youtube.com/watch?v=GwbonuGbL9k" target="_blank" rel="noopener">
+        <div class="film-thumb"><img src="https://img.youtube.com/vi/GwbonuGbL9k/maxresdefault.jpg" alt="Awakening of the Soil" loading="lazy"></div>
+      </a>
+      <div class="film-meta">
+        <div>
+          <span class="badge b-rel">Feature · 42 min · Released 2021</span>
+          <h2 class="film-title">Awakening of<br>the Soil</h2>
+          <p class="film-sub">Edirne · Konya · Silivri · Eskişehir</p>
+          <p class="film-body">A skeptical Thracian grain farmer visits five zero-tillage practitioners across Turkey and discovers that his tractor is the main obstacle to his soil's recovery. Every field stop adds a layer: corn growing without irrigation, earthworms in a border a machine hasn't crossed in three years, soil dark enough to crumble between two fingers.</p>
+        </div>
+        <div>
+          <p class="film-notes">COP 2023 · China Int'l Documentary Festival · Guardian Foundation</p>
+          <a href="https://www.youtube.com/watch?v=GwbonuGbL9k" target="_blank" rel="noopener" class="film-cta">Watch on YouTube</a>
+        </div>
+      </div>
+    </article>
+    <article class="film-card">
+      <a href="https://www.youtube.com/watch?v=fP2MbUsGDoY" target="_blank" rel="noopener">
+        <div class="film-thumb"><img src="https://img.youtube.com/vi/fP2MbUsGDoY/maxresdefault.jpg" alt="Tilya" loading="lazy"></div>
+      </a>
+      <div class="film-meta">
+        <div>
+          <span class="badge b-rel">Episode 01 · 16 min · Released 2024</span>
+          <h2 class="film-title">Tilya</h2>
+          <p class="film-sub">Tilya Ekolojik Kooperatif · Istanbul</p>
+          <p class="film-body">Three people sign a working contract with the land and with each other on the edge of Istanbul — and Turkey's first ecological social cooperative begins. Solidarity as infrastructure. Food justice at urban scale. A cooperative built not from manifesto but from a working organism still alive.</p>
+        </div>
+        <div>
+          <p class="film-notes">Postane Kültür ve Doğa · 13,000+ views</p>
+          <a href="https://www.youtube.com/watch?v=fP2MbUsGDoY" target="_blank" rel="noopener" class="film-cta">Watch on YouTube</a>
+        </div>
+      </div>
+    </article>
+    <article class="film-card">
+      <a href="https://youtu.be/0cRb0rBAsDI" target="_blank" rel="noopener">
+        <div class="film-thumb"><img src="https://img.youtube.com/vi/0cRb0rBAsDI/maxresdefault.jpg" alt="Burhan Eltan" loading="lazy" onerror="this.style.display='none'"></div>
+      </a>
+      <div class="film-meta">
+        <div>
+          <span class="badge b-lock">Episode 02 · ~11 min · Award Winner</span>
+          <h2 class="film-title">Burhan</h2>
+          <p class="film-sub">Burhan Eltan · Kaz Dağları (Ida Mountains)</p>
+          <p class="film-body">A former Istanbul urbanite designs 30-square-meter regenerative micro-gardens in the Ida Mountains — proving exhausted soil can feed a family without a gram of synthetic input. The engine is BioTam Compost, applied to the soil food web like a vaccine. A structure that other people land inside and don't leave.</p>
+        </div>
+        <div>
+          <p class="film-notes">Bornova Short Film Days · Dijital Detaylar Award 2026</p>
+          <a href="https://youtu.be/0cRb0rBAsDI" target="_blank" rel="noopener" class="film-cta">Watch on YouTube</a>
+        </div>
+      </div>
+    </article>
+    <article class="film-card">
+      <div>
+        <div class="film-thumb"><div class="film-thumb-ph" style="background:linear-gradient(140deg,#2A2218,#3D2E18);"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;">In Editing</span></div></div>
+      </div>
+      <div class="film-meta">
+        <div>
+          <span class="badge b-edit">Episode 03 · In Editing · Aug 2026</span>
+          <h2 class="film-title" style="color:var(--text-dk)">Magical Seeds</h2>
+          <p class="film-sub">Sihirli Tohumlar · Turkey</p>
+          <p class="film-body">Seed saving as climate adaptation — the people preserving genetic heritage that sixty years of industrial agriculture erased, one variety at a time. Hands, roof spaces, and the politics of what is permitted to grow next year.</p>
+        </div>
+        <div>
+          <p class="film-notes">Coming August 2026</p>
+          <span class="film-cta film-cta-muted">Coming Soon</span>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section id="impact">
+    <div class="impact-grid">
+      <div class="impact-cell"><span class="i-num">500</span><span class="i-lbl">Practitioners<br>mapped</span></div>
+      <div class="impact-cell"><span class="i-num">120</span><span class="i-lbl">Deeply researched<br>characters</span></div>
+      <div class="impact-cell"><span class="i-num">7</span><span class="i-lbl">Geographic<br>regions</span></div>
+      <div class="impact-cell"><span class="i-num">58<em>.1</em></span><span class="i-lbl">Avg. age of<br>Turkey's farmers</span></div>
+    </div>
+  </section>
+
+  <section id="next">
+    <div class="next-hd">
+      <div>
+        <p class="sec-eye">Season One — In Production</p>
+        <h2 class="sec-title">Coming Next.</h2>
+      </div>
+      <p class="next-note">Currently applying to the NatGeo &times; Climate Pledge Global Storytellers Fund.</p>
+    </div>
+    <div class="char-grid">
+      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:linear-gradient(155deg,#1A2A1A,#3A4A2A)"></div><div class="char-overlay"><p class="char-ch">Land · Antalya</p><h3 class="char-name">Tuğba Günal &amp;<br>Birhan Erkutlu</h3><p class="char-loc">Alakır Valley, Antalya</p></div></div></div>
+      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:linear-gradient(155deg,#0A1A2A,#1A3445)"></div><div class="char-overlay"><p class="char-ch">Water · Muğla</p><h3 class="char-name">Zafer<br>Kızılkaya</h3><p class="char-loc">Gökova Bay, Muğla</p></div></div></div>
+      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:linear-gradient(155deg,#2A1A0A,#4A3418)"></div><div class="char-overlay"><p class="char-ch">Food · Kastamonu</p><h3 class="char-name">Balabanağa<br>Çiftliği</h3><p class="char-loc">Daday, Kastamonu</p></div></div></div>
+      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:linear-gradient(155deg,#1A0A28,#2A1A38)"></div><div class="char-overlay"><p class="char-ch">Community · Muş</p><h3 class="char-name">Muş 100 Kadın<br>Arıcı</h3><p class="char-loc">Muş Plain, Eastern Anatolia</p></div></div></div>
+      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:linear-gradient(155deg,#0A1A1A,#183535)"></div><div class="char-overlay"><p class="char-ch">Systems · Kars</p><h3 class="char-name">Çağan<br>Şekercioğlu</h3><p class="char-loc">Sarıkamış, Kars</p></div></div></div>
+      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:linear-gradient(155deg,#2A180A,#3A2A08)"></div><div class="char-overlay"><p class="char-ch">Hope · Şanlıurfa</p><h3 class="char-name">Birecik<br>Kelaynak</h3><p class="char-loc">Birecik, Şanlıurfa</p></div></div></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <p class="sec-eye">Partnership & Contact</p>
+    <h2 class="sec-title">Work with us.</h2>
+    <div class="contact-grid">
+      <div class="partner-areas">
+        <h3>Open collaboration areas</h3>
+        <ul class="area-list">
+          <li>Grant co-application &amp; institutional funding</li>
+          <li>Festival distribution &amp; theatrical screening</li>
+          <li>Educational licensing &amp; curriculum integration</li>
+          <li>Brand partnerships aligned with ecological values</li>
+          <li>Field research &amp; practitioner network access</li>
+        </ul>
+      </div>
+      <div class="contact-col">
+        <div>
+          <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;">Get in touch</p>
+          <a href="mailto:partners@regenerativestories.earth" class="contact-email">partners@regenerativestories.earth</a>
+        </div>
+        <div class="contact-links">
+          <a href="https://www.youtube.com/@regenerative_stories" target="_blank" rel="noopener" class="contact-link">YouTube</a>
+          <a href="https://www.berkaytunali.com" target="_blank" rel="noopener" class="contact-link">Director</a>
+          <a href="https://junglebased.com" target="_blank" rel="noopener" class="contact-link">Junglebased Studios</a>
+        </div>
+        <p class="contact-meta">Produced by Junglebased Studios.<br>Based in Turkey.</p>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <span class="footer-copy">&copy; 2026 Regenerative Stories &middot; Junglebased Studios</span>
+      <span class="footer-copy">regenerativestories.earth</span>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+'use strict';
+
+/* ── Video scrub setup ────────────────────────────────── */
+var vid=document.getElementById('anim-video');
+var seeking=false;
+var targetTime=0;
+
+vid.addEventListener('seeked',function(){
+  seeking=false;
+  if(Math.abs(vid.currentTime-targetTime)>0.04){
+    seeking=true;
+    vid.currentTime=targetTime;
+  }
+});
+
+vid.muted=true;
+vid.play().then(function(){
+  vid.pause();
+  vid.currentTime=0;
+}).catch(function(){});
+
+/* ── Scroll ───────────────────────────────────────────── */
+var scene=document.getElementById('scroll-scene');
+var prog=document.getElementById('scroll-prog');
+var beats=[
+  {el:document.getElementById('b1'),s:0,   e:0.28},
+  {el:document.getElementById('b2'),s:0.25,e:0.52},
+  {el:document.getElementById('b3'),s:0.50,e:0.76},
+  {el:document.getElementById('b4'),s:0.74,e:1.00}
+];
+var sections=['hero','scroll-scene','films','impact','next','contact'];
+var railItems=document.querySelectorAll('.si');
+
+function onScroll(){
+  if(scene){
+    var r=scene.getBoundingClientRect();
+    var p=Math.min(Math.max(-r.top/(r.height-window.innerHeight),0),1);
+    if(prog)prog.style.width=(p*100)+'%';
+    if(vid.duration){
+      targetTime=p*vid.duration;
+      if(!seeking){seeking=true;vid.currentTime=targetTime;}
+    }
+    beats.forEach(function(b){b.el.style.opacity=(p>=b.s&&p<b.e)?'1':'0';});
+  }
+  var active=0;
+  sections.forEach(function(id,i){
+    var el=document.getElementById(id);
+    if(el&&el.getBoundingClientRect().top<=window.innerHeight*0.5)active=i;
+  });
+  railItems.forEach(function(item,i){item.classList.toggle('active',i===active);});
+}
+
+window.addEventListener('scroll',onScroll,{passive:true});
+
+document.querySelectorAll('.si').forEach(function(item){
+  item.addEventListener('click',function(){
+    var t=document.getElementById(item.dataset.t);
+    if(t)t.scrollIntoView({behavior:'smooth'});
+  });
+});
+
+})();
+</script>
+</body>
+</html>
