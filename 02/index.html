@@ -336,8 +336,8 @@
       <p class="next-note">Currently applying to the NatGeo &times; Climate Pledge Global Storytellers Fund.</p>
     </div>
     <div class="char-grid">
-      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/tugba_1.jpg') center top/cover no-repeat,linear-gradient(155deg,#1A2A1A,#3A4A2A)"></div><div class="char-overlay"><p class="char-ch">Land · Antalya</p><h3 class="char-name">Tuğba Günal &amp;<br>Birhan Erkutlu</h3><p class="char-loc">Alakır Valley, Antalya</p></div></div></div>
-      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/zafer_header.jpg') center top/cover no-repeat,linear-gradient(155deg,#0A1A2A,#1A3445)"></div><div class="char-overlay"><p class="char-ch">Water · Muğla</p><h3 class="char-name">Zafer<br>Kızılkaya</h3><p class="char-loc">Gökova Bay, Muğla</p></div></div></div>
+      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/tugba_bantmag.jpg') center top/cover no-repeat,linear-gradient(155deg,#1A2A1A,#3A4A2A)"></div><div class="char-overlay"><p class="char-ch">Land · Antalya</p><h3 class="char-name">Tuğba Günal &amp;<br>Birhan Erkutlu</h3><p class="char-loc">Alakır Valley, Antalya</p></div></div></div>
+      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/zafer_goldman.jpg') center top/cover no-repeat,linear-gradient(155deg,#0A1A2A,#1A3445)"></div><div class="char-overlay"><p class="char-ch">Water · Muğla</p><h3 class="char-name">Zafer<br>Kızılkaya</h3><p class="char-loc">Gökova Bay, Muğla</p></div></div></div>
       <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/balabanaga_large.jpg') center/cover no-repeat,linear-gradient(155deg,#2A1A0A,#4A3418)"></div><div class="char-overlay"><p class="char-ch">Food · Kastamonu</p><h3 class="char-name">Balabanağa<br>Çiftliği</h3><p class="char-loc">Daday, Kastamonu</p></div></div></div>
       <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/mus_arici_1.webp') center/cover no-repeat,linear-gradient(155deg,#1A0A28,#2A1A38)"></div><div class="char-overlay"><p class="char-ch">Community · Muş</p><h3 class="char-name">Muş 100 Kadın<br>Arıcı</h3><p class="char-loc">Muş Plain, Eastern Anatolia</p></div></div></div>
       <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/cagan_field.jpg') center top/cover no-repeat,linear-gradient(155deg,#0A1A1A,#183535)"></div><div class="char-overlay"><p class="char-ch">Systems · Kars</p><h3 class="char-name">Çağan<br>Şekercioğlu</h3><p class="char-loc">Sarıkamış, Kars</p></div></div></div>
@@ -443,6 +443,14 @@ document.querySelectorAll('.si').forEach(function(item){
   });
 });
 
+})();
+
+/* ── Scroll reveal ────────────────────────────────────── */
+(function(){
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
 })();
 
 /* ── Lightbox ─────────────────────────────────────────── */
