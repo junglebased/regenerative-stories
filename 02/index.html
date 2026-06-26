@@ -119,12 +119,27 @@
     @media(max-width:600px){.film-play-btn{width:68px;height:68px;top:35%;right:50%;}}
 
     /* Impact */
-    #impact{padding:64px 48px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-    .impact-grid{display:grid;grid-template-columns:repeat(4,1fr);}
-    .impact-cell{padding-right:32px;}
+    #impact{padding:96px 48px 80px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+    .impact-eye{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;}
+    .impact-hl{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(30px,4.2vw,56px);line-height:1.05;letter-spacing:-.02em;color:var(--text);max-width:18ch;margin-bottom:32px;}
+    .impact-lead{font-size:19px;line-height:1.72;color:rgba(232,223,208,.72);max-width:58ch;margin-bottom:56px;}
+    .impact-stat-strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-left:1px solid var(--border);margin-bottom:0;}
+    .impact-cell{padding:28px 24px 24px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);}
     .i-num{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(38px,5vw,68px);color:var(--text);display:block;line-height:1;margin-bottom:8px;}
-    .i-num em{font-style:normal;font-size:.55em;color:var(--accent);}
+    .i-num sup{font-size:.45em;color:var(--accent);vertical-align:super;}
     .i-lbl{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;line-height:1.6;}
+    .impact-reach{display:flex;flex-wrap:wrap;gap:0;border-left:1px solid var(--border);margin-bottom:48px;}
+    .reach-item{padding:16px 24px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:10px;}
+    .r-num{font-family:'Fraunces',serif;font-weight:900;font-size:22px;color:var(--text);}
+    .r-num sup{font-size:.55em;color:var(--accent);}
+    .r-lbl{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;}
+    .impact-tags{display:flex;flex-direction:column;gap:14px;margin-bottom:52px;}
+    .tag-row{display:flex;gap:12px;flex-wrap:wrap;align-items:baseline;}
+    .tag-key{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);min-width:120px;}
+    .tag-val{font-family:'Spectral',serif;font-size:17px;color:rgba(232,223,208,.65);line-height:1.5;}
+    .impact-bridge{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(18px,2.2vw,26px);color:rgba(232,223,208,.45);text-align:center;letter-spacing:-.01em;padding-top:48px;border-top:1px solid var(--border);}
+    @media(max-width:900px){.impact-stat-strip{grid-template-columns:repeat(2,1fr);}.impact-reach{flex-direction:column;}.reach-item{border-right:none;}}
+    @media(max-width:600px){#impact{padding:64px 20px;}.impact-stat-strip{grid-template-columns:repeat(2,1fr);}.tag-key{min-width:90px;}.tag-val{font-size:15px;}}
 
     /* Coming Next */
     #next{padding:80px 48px;border-top:1px solid var(--border);}
@@ -373,9 +388,9 @@
           <p class="film-idx">04 — Episode 03 · In Editing · Aug 2026</p>
           <span class="badge b-edit">Coming Soon</span>
           <h2 class="film-title">Magical<br>Seeds</h2>
-          <p class="film-sub">Sihirli Tohumlar · Turkey</p>
-          <p class="film-body">Seed saving as climate adaptation — the people preserving genetic heritage that sixty years of industrial agriculture erased, one variety at a time. Hands, roof spaces, and the politics of what is permitted to grow next year.</p>
-          <p class="film-notes">Coming August 2026</p>
+          <p class="film-sub">Aylin · Süleyman · Alp · Sinan — Küçük Yoncalı, Tekirdağ</p>
+          <p class="film-body">Four people walk out of the city onto one plot of leveled Thracian soil — and start with the mistake the film is built around: they bring in a machine and flatten the ground. "We didn't heal the land," Süleyman says, "we damaged it." The repair is the rest — mulch kept over bare earth, compost instead of the hoe, a salve pulled from wild herbs that settles Sinan's eczema, and one season that hands them five hundred tomato seedlings they give away for free. They name themselves <em>toprak bükücüler</em> — soil benders.</p>
+          <p class="film-notes">Coming August 2026 · RS Episode 03</p>
           <span class="film-cta film-cta-muted">In Editing</span>
         </div>
         <span class="film-num">04</span>
@@ -385,12 +400,40 @@
   </section>
 
   <section id="impact" class="reveal">
-    <div class="impact-grid">
-      <div class="impact-cell"><span class="i-num">500</span><span class="i-lbl">Practitioners<br>mapped</span></div>
-      <div class="impact-cell"><span class="i-num">120</span><span class="i-lbl">Deeply researched<br>characters</span></div>
-      <div class="impact-cell"><span class="i-num">7</span><span class="i-lbl">Geographic<br>regions</span></div>
-      <div class="impact-cell"><span class="i-num">58<em>.1</em></span><span class="i-lbl">Avg. age of<br>Turkey's farmers</span></div>
+    <p class="impact-eye">Proof on the Ground</p>
+    <h2 class="impact-hl">Four years. Seven regions. One living archive.</h2>
+    <p class="impact-lead">We didn't start with a pitch. We started with a tractor in a field, a fisher cooperative, a beekeeper's first hive. Four years and seven regions later, the footage is a map of who is repairing this land — and how.</p>
+
+    <div class="impact-stat-strip">
+      <div class="impact-cell"><span class="i-num" data-target="500">500</span><span class="i-lbl">Practitioners<br>mapped</span></div>
+      <div class="impact-cell"><span class="i-num" data-target="120">120</span><span class="i-lbl">Characters researched<br>in depth</span></div>
+      <div class="impact-cell"><span class="i-num" data-target="4">4<sup>+</sup></span><span class="i-lbl">Years in<br>the field</span></div>
+      <div class="impact-cell"><span class="i-num" data-target="7">7</span><span class="i-lbl">Regions of<br>Türkiye</span></div>
     </div>
+
+    <div class="impact-reach">
+      <div class="reach-item"><span class="r-num">4</span><span class="r-lbl">Films released</span></div>
+      <div class="reach-item"><span class="r-num">106K<sup>+</sup></span><span class="r-lbl">Views over 52 months</span></div>
+      <div class="reach-item"><span class="r-num">~500</span><span class="r-lbl">Climate decision-makers at COP 2023</span></div>
+      <div class="reach-item"><span class="r-num">3,740</span><span class="r-lbl">Channel subscribers</span></div>
+    </div>
+
+    <div class="impact-tags">
+      <div class="tag-row">
+        <span class="tag-key">Recognition</span>
+        <span class="tag-val">Best Film, Chinese International Documentary Festival · Award Winner, Dijital Detaylar 2026</span>
+      </div>
+      <div class="tag-row">
+        <span class="tag-key">Backed by</span>
+        <span class="tag-val">Impact Hub Istanbul · U.S. Mission to Türkiye · Postane</span>
+      </div>
+      <div class="tag-row">
+        <span class="tag-key">Fellowships</span>
+        <span class="tag-val">Guardian Foundation News Lab · Kundura Doc Lab (Sundance-affiliated)</span>
+      </div>
+    </div>
+
+    <p class="impact-bridge">The archive is the proof. The next six stories are where it goes.</p>
   </section>
 
   <section id="next" class="reveal">
@@ -485,6 +528,40 @@
   }
   window.addEventListener('scroll',runCount,{passive:true});
   runCount();
+})();
+
+(function(){
+  var impactFired=false;
+  var reduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function countUp(el,target,suffix){
+    if(reduced){el.innerHTML=target+suffix;return;}
+    var duration=900,startTime=null;
+    function step(ts){
+      if(!startTime)startTime=ts;
+      var p=Math.min((ts-startTime)/duration,1);
+      var eased=1-Math.pow(1-p,3);
+      el.innerHTML=Math.round(target*eased)+suffix;
+      if(p<1)requestAnimationFrame(step);
+      else el.innerHTML=target+suffix;
+    }
+    requestAnimationFrame(step);
+  }
+  function runImpact(){
+    if(impactFired)return;
+    var strip=document.querySelector('.impact-stat-strip');
+    if(!strip)return;
+    if(strip.getBoundingClientRect().top<window.innerHeight*0.88){
+      impactFired=true;
+      document.querySelectorAll('.impact-stat-strip .i-num[data-target]').forEach(function(el){
+        var t=parseInt(el.dataset.target,10);
+        var sup=el.querySelector('sup');
+        var suffix=sup?'<sup>'+sup.innerHTML+'</sup>':'';
+        countUp(el,t,suffix);
+      });
+    }
+  }
+  window.addEventListener('scroll',runImpact,{passive:true});
+  runImpact();
 })();
 
 (function(){
