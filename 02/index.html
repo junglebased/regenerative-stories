@@ -224,6 +224,8 @@
     /* Touch devices: fixed bg = janky/broken on iOS Safari (all orientations) */
     @media(hover:none),(pointer:coarse){.film-bg{background-attachment:scroll!important;}}
     @media(max-width:900px){#scroll-scene{height:240vh;}}
+    /* Tablet (iPad portrait / large phone landscape): shrink hero title so REGENERATIVE never clips */
+    @media(min-width:601px) and (max-width:900px){.h-title{font-size:clamp(44px,8vw,72px);}}
 
     /* Lightbox */
     #lb{display:none;position:fixed;inset:0;z-index:2000;align-items:center;justify-content:center;}
