@@ -112,6 +112,11 @@
     .film-cta-muted{opacity:.35;cursor:default;}
     .film-cta-muted::after{display:none;}
     .film-num{position:absolute;right:48px;bottom:36px;font-family:'Fraunces',serif;font-weight:900;font-size:clamp(88px,13vw,180px);color:rgba(255,255,255,.045);line-height:1;z-index:2;letter-spacing:-.04em;pointer-events:none;}
+    .film-play-btn{position:absolute;top:50%;right:28%;transform:translate(50%,-50%);width:88px;height:88px;border-radius:50%;border:2px solid rgba(232,223,208,.55);display:flex;align-items:center;justify-content:center;z-index:3;cursor:pointer;background:rgba(10,9,7,.18);backdrop-filter:blur(4px);transition:border-color .25s,background .25s,transform .25s;}
+    .film-play-btn::after{content:'';border-style:solid;border-width:12px 0 12px 22px;border-color:transparent transparent transparent rgba(232,223,208,.9);margin-left:5px;}
+    .film-play-btn:hover{border-color:rgba(196,102,42,.9);background:rgba(196,102,42,.18);transform:translate(50%,-50%) scale(1.07);}
+    @media(max-width:900px){.film-play-btn{right:50%;transform:translate(50%,-50%);top:38%;}}
+    @media(max-width:600px){.film-play-btn{width:68px;height:68px;top:35%;right:50%;}}
 
     /* Impact */
     #impact{padding:64px 48px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
@@ -308,8 +313,9 @@
 
     <div class="film-panel">
       <div class="film-stack">
-        <div class="film-bg" style="background-image:url('https://img.youtube.com/vi/GwbonuGbL9k/maxresdefault.jpg')"></div>
+        <div class="film-bg" style="background-image:url('stills/awakeningofthesoil.jpg')"></div>
         <div class="film-grad"></div>
+        <button class="film-play-btn" data-yt="GwbonuGbL9k" aria-label="Watch Awakening of the Soil"></button>
         <div class="film-content">
           <p class="film-idx">01 — Feature · 42 min · 2021</p>
           <span class="badge b-rel">Released · COP 2023</span>
@@ -325,8 +331,9 @@
 
     <div class="film-panel">
       <div class="film-stack">
-        <div class="film-bg" style="background-image:url('https://img.youtube.com/vi/fP2MbUsGDoY/maxresdefault.jpg')"></div>
+        <div class="film-bg" style="background-image:url('stills/tilya.jpg')"></div>
         <div class="film-grad"></div>
+        <button class="film-play-btn" data-yt="fP2MbUsGDoY" aria-label="Watch Tilya"></button>
         <div class="film-content">
           <p class="film-idx">02 — Episode 01 · 16 min · 2024</p>
           <span class="badge b-rel">Released · 13,000+ views</span>
@@ -342,8 +349,9 @@
 
     <div class="film-panel">
       <div class="film-stack">
-        <div class="film-bg" style="background-image:url('https://img.youtube.com/vi/0cRb0rBAsDI/maxresdefault.jpg')"></div>
+        <div class="film-bg" style="background-image:url('stills/burhan.jpg')"></div>
         <div class="film-grad"></div>
+        <button class="film-play-btn" data-yt="0cRb0rBAsDI" aria-label="Watch Burhan"></button>
         <div class="film-content">
           <p class="film-idx">03 — Episode 02 · 11 min · 2025</p>
           <span class="badge b-lock">Award Winner</span>
@@ -359,7 +367,7 @@
 
     <div class="film-panel">
       <div class="film-stack">
-        <div class="film-bg" style="background:linear-gradient(145deg,#1a2a10 0%,#2a1a06 50%,#0e1408 100%)"></div>
+        <div class="film-bg" style="background-image:url('stills/magicalseeds.jpg')"></div>
         <div class="film-grad"></div>
         <div class="film-content">
           <p class="film-idx">04 — Episode 03 · In Editing · Aug 2026</p>
