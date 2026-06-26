@@ -42,7 +42,7 @@
     .h-solid{color:var(--text);}
     .h-outline{color:transparent;-webkit-text-stroke:2.5px var(--accent);text-align:right;}
     .h-rule{height:1px;background:var(--accent);margin:32px 0 22px;}
-    .h-tag{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--sage);letter-spacing:.03em;margin-bottom:12px;}
+    .h-tag{font-family:'IBM Plex Mono',monospace;font-size:18px;color:var(--sage);letter-spacing:.03em;margin-bottom:12px;}
     .h-arc{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:52px;}
     .h-stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--border);}
     .stat{padding:20px 16px;border-right:1px solid var(--border);}
@@ -76,7 +76,7 @@
     .beat{position:absolute;padding:40px 48px;opacity:0;transition:opacity .5s ease;pointer-events:none;z-index:5;}
     .beat-tag{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;}
     .beat-hl{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(40px,6.5vw,76px);line-height:.95;letter-spacing:-.02em;color:var(--text);text-shadow:0 2px 24px rgba(0,0,0,.65);}
-    .beat-sub{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--sage);margin-top:14px;letter-spacing:.04em;line-height:1.5;}
+    .beat-sub{font-family:'IBM Plex Mono',monospace;font-size:17px;color:var(--sage);margin-top:14px;letter-spacing:.04em;line-height:1.5;}
     #b1{bottom:22%;left:0;}
     #b2{top:18%;right:0;text-align:right;}
     #b3{bottom:18%;left:0;}
@@ -84,7 +84,7 @@
 
     /* Films */
     #films{background:var(--bg-sand);color:var(--text-dk);padding:80px 48px;}
-    .sec-eye{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.45;margin-bottom:44px;}
+    .sec-eye{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;opacity:.45;margin-bottom:44px;}
     .sec-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(34px,4.5vw,60px);line-height:1;letter-spacing:-.02em;}
     .film-card{display:grid;grid-template-columns:5fr 3fr;gap:48px;padding:36px 0;border-top:1px solid var(--border-dk);}
     .film-thumb{aspect-ratio:16/9;overflow:hidden;background:#2A2420;position:relative;cursor:pointer;}
@@ -101,10 +101,10 @@
     .b-rel{color:var(--muted);border-color:var(--muted);}
     .b-lock{color:var(--accent);border-color:var(--accent);}
     .b-edit{color:var(--sage);border-color:var(--sage);}
-    .film-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(22px,2.8vw,36px);line-height:1.05;letter-spacing:-.01em;margin-bottom:8px;color:var(--text-dk);}
-    .film-sub{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:.05em;margin-bottom:18px;}
-    .film-body{font-size:17px;line-height:1.68;color:var(--text-dk);opacity:.78;max-width:44ch;}
-    .film-notes{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.07em;text-transform:uppercase;margin-top:20px;margin-bottom:10px;}
+    .film-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.01em;margin-bottom:8px;color:var(--text-dk);}
+    .film-sub{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--muted);letter-spacing:.05em;margin-bottom:18px;}
+    .film-body{font-size:21px;line-height:1.72;color:var(--text-dk);opacity:.78;max-width:44ch;}
+    .film-notes{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:.07em;text-transform:uppercase;margin-top:20px;margin-bottom:10px;}
     .film-cta{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:8px;transition:gap .2s;}
     .film-cta:hover{gap:14px;}
     .film-cta::after{content:'→';}
@@ -132,9 +132,9 @@
     .char-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;background:linear-gradient(to top,rgba(26,25,20,.97) 0%,rgba(26,25,20,.22) 52%,transparent 100%);transition:background .35s ease;}
     .char-card:hover .char-overlay,.char-card.open .char-overlay{background:rgba(26,25,20,.88);}
     .char-ch{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;}
-    .char-name{font-family:'Fraunces',serif;font-weight:900;font-size:20px;line-height:1.1;color:var(--text);margin-bottom:5px;}
+    .char-name{font-family:'Fraunces',serif;font-weight:900;font-size:23px;line-height:1.1;color:var(--text);margin-bottom:5px;}
     .char-loc{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--sage);letter-spacing:.07em;margin-bottom:12px;}
-    .char-story{font-family:'Spectral',serif;font-weight:300;font-size:13px;line-height:1.65;color:rgba(232,223,208,.8);opacity:0;max-height:0;overflow:hidden;transition:opacity .3s .05s ease,max-height .45s ease;}
+    .char-story{font-family:'Spectral',serif;font-weight:300;font-size:15px;line-height:1.7;color:rgba(232,223,208,.8);opacity:0;max-height:0;overflow:hidden;transition:opacity .3s .05s ease,max-height .45s ease;}
     .char-card:hover .char-story,.char-card.open .char-story{opacity:1;max-height:260px;}
 
     /* Contact */
@@ -142,7 +142,7 @@
     .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:52px;}
     .partner-areas h3{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px;}
     .area-list{list-style:none;display:flex;flex-direction:column;gap:12px;}
-    .area-list li{font-size:15px;line-height:1.5;color:var(--text);opacity:.7;padding-left:14px;border-left:1px solid var(--accent);}
+    .area-list li{font-size:18px;line-height:1.5;color:var(--text);opacity:.7;padding-left:14px;border-left:1px solid var(--accent);}
     .contact-col{display:flex;flex-direction:column;gap:28px;}
     .contact-email{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(16px,2.2vw,26px);color:var(--accent);transition:opacity .2s;}
     .contact-email:hover{opacity:.7;}
@@ -194,6 +194,26 @@
     .reveal-delay-1{transition-delay:.1s;}
     .reveal-delay-2{transition-delay:.2s;}
     .reveal-delay-3{transition-delay:.3s;}
+
+    /* Top nav */
+    #top-nav{position:fixed;top:0;left:var(--rail);right:0;display:flex;justify-content:space-between;align-items:center;padding:0 48px;height:52px;background:transparent;border-bottom:1px solid transparent;transition:background .35s ease,border-color .35s ease;z-index:800;}
+    #top-nav.scrolled{background:rgba(26,25,20,.92);border-color:var(--border);backdrop-filter:blur(8px);}
+    .tn-logo{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;transition:color .2s;}
+    .tn-logo:hover{color:var(--text);}
+    .tn-links{display:flex;gap:32px;}
+    .tn-links a{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;transition:color .2s;}
+    .tn-links a:hover{color:var(--text);}
+
+    /* Hero CTAs */
+    .h-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:32px;}
+    .cta-primary{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:12px 24px;background:var(--accent);color:var(--text);transition:opacity .2s;}
+    .cta-primary:hover{opacity:.82;}
+    .cta-secondary{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:12px 24px;border:1px solid var(--border);color:var(--muted);transition:color .2s,border-color .2s;}
+    .cta-secondary:hover{color:var(--text);border-color:rgba(255,255,255,.2);}
+    @media(max-width:600px){
+      #top-nav{left:0;padding:0 20px;}.tn-links{display:none;}
+      .h-ctas{margin-bottom:20px;}.cta-primary,.cta-secondary{padding:10px 18px;font-size:11px;}
+    }
   </style>
 </head>
 <body>
@@ -218,21 +238,34 @@
 
 <div class="main">
 
+  <header id="top-nav">
+    <a class="tn-logo" href="#">Regenerative Stories</a>
+    <nav class="tn-links">
+      <a href="#films">Films</a>
+      <a href="#next">Season Ahead</a>
+      <a href="#contact">Partner With Us</a>
+    </nav>
+  </header>
+
   <section id="hero">
     <div class="hero-bg" id="hero-bg" style="background-image:url('images/zafer_goldman.jpg')"></div>
     <p class="h-eye">Documentary Series · Turkey · 2021—</p>
     <span class="h-title h-solid">REGENERATIVE</span>
     <span class="h-title h-outline">STORIES</span>
     <div class="h-rule"></div>
-    <p class="h-tag">Stories from a healing world.</p>
+    <p class="h-tag">Regeneration is already happening in Türkiye.<br>Most of the world has never seen it named.</p>
     <p class="h-arc">Land · Water · Food · Community · Systems · Hope</p>
-    <div class="h-stats">
-      <div class="stat"><span class="stat-n">4</span><span class="stat-l">Films completed</span></div>
-      <div class="stat"><span class="stat-n">120K<sup>+</sup></span><span class="stat-l">Total views</span></div>
-      <div class="stat"><span class="stat-n">500</span><span class="stat-l">Practitioners mapped</span></div>
-      <div class="stat"><span class="stat-n">4<sup>+</sup></span><span class="stat-l">Years field research</span></div>
+    <div class="h-ctas">
+      <a href="#films" class="cta-primary">Watch the Films</a>
+      <a href="#contact" class="cta-secondary">Partner With Us</a>
     </div>
-    <div class="scroll-cue" aria-hidden="true">Scroll</div>
+    <div class="h-stats">
+      <div class="stat"><span class="stat-n" data-target="4" data-suffix="">4</span><span class="stat-l">Films completed</span></div>
+      <div class="stat"><span class="stat-n" data-target="120" data-suffix="K<sup>+</sup>">120K<sup>+</sup></span><span class="stat-l">Total views</span></div>
+      <div class="stat"><span class="stat-n" data-target="500" data-suffix="">500</span><span class="stat-l">Practitioners mapped</span></div>
+      <div class="stat"><span class="stat-n" data-target="4" data-suffix="<sup>+</sup>">4<sup>+</sup></span><span class="stat-l">Years field research</span></div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true">Meet the six</div>
   </section>
 
   <section id="scroll-scene">
@@ -399,6 +432,46 @@
 </div>
 
 <script>
+/* ── Top nav scroll state ─────────────────────────── */
+(function(){
+  var nav=document.getElementById('top-nav');
+  function tnScroll(){nav.classList.toggle('scrolled',window.scrollY>60);}
+  window.addEventListener('scroll',tnScroll,{passive:true});
+  tnScroll();
+})();
+
+/* ── Stats count-up ───────────────────────────────── */
+(function(){
+  var stats=document.querySelectorAll('.stat-n[data-target]');
+  var fired=false;
+  function runCount(){
+    if(fired)return;
+    var heroStats=document.querySelector('.h-stats');
+    if(!heroStats)return;
+    var r=heroStats.getBoundingClientRect();
+    if(r.top<window.innerHeight*0.85){
+      fired=true;
+      stats.forEach(function(el){
+        var target=parseInt(el.dataset.target,10);
+        var suffix=el.dataset.suffix||'';
+        var duration=900,startTime=null;
+        function step(ts){
+          if(!startTime)startTime=ts;
+          var p=Math.min((ts-startTime)/duration,1);
+          var eased=1-Math.pow(1-p,3);
+          var current=Math.round(target*eased);
+          el.innerHTML=current+suffix;
+          if(p<1)requestAnimationFrame(step);
+          else el.innerHTML=target+suffix;
+        }
+        requestAnimationFrame(step);
+      });
+    }
+  }
+  window.addEventListener('scroll',runCount,{passive:true});
+  runCount();
+})();
+
 (function(){
 'use strict';
 
