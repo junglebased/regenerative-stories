@@ -160,18 +160,25 @@
     .char-card:hover .char-story,.char-card.open .char-story{opacity:1;max-height:320px;}
 
     /* Partnership */
-    #partnership{padding:80px 48px 100px;border-top:1px solid var(--border);}
-    .partner-list{margin-top:56px;}
-    .partner-item{display:grid;grid-template-columns:52px 1fr;gap:0 36px;padding:36px 0;border-top:1px solid var(--border);transition:background .2s;}
+    #partnership{padding:96px 48px 110px;border-top:1px solid var(--border);}
+    .partner-list{margin-top:64px;}
+    .partner-item{position:relative;display:grid;grid-template-columns:96px 1fr;gap:0 44px;padding:44px 36px 44px 0;border-top:1px solid var(--border);overflow:hidden;transition:padding-left .35s cubic-bezier(.22,1,.36,1);}
     .partner-item:last-child{border-bottom:1px solid var(--border);}
-    .pi-num{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);letter-spacing:.14em;padding-top:10px;opacity:.8;}
-    .pi-body{}
-    .pi-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(32px,4.8vw,66px);line-height:.95;letter-spacing:-.025em;color:var(--text);margin-bottom:14px;transition:color .2s;}
+    .partner-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,rgba(196,102,42,.10),transparent);transition:width .4s cubic-bezier(.22,1,.36,1);z-index:0;pointer-events:none;}
+    .partner-item:hover::before{width:100%;}
+    .partner-item:hover{padding-left:24px;}
+    .pi-icon{position:relative;z-index:1;width:72px;height:72px;display:flex;align-items:center;justify-content:center;}
+    .pi-icon svg{width:100%;height:100%;stroke:var(--accent);stroke-width:1.4;fill:none;opacity:.85;transition:opacity .3s,transform .5s cubic-bezier(.22,1,.36,1);}
+    .partner-item:hover .pi-icon svg{opacity:1;transform:scale(1.08) rotate(-2deg);}
+    .pi-body{position:relative;z-index:1;}
+    .pi-num{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--accent);letter-spacing:.18em;opacity:.7;display:block;margin-bottom:10px;}
+    .pi-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(34px,5.2vw,72px);line-height:.92;letter-spacing:-.03em;color:var(--text);margin-bottom:16px;transition:color .25s;}
     .partner-item:hover .pi-title{color:var(--accent);}
-    .pi-desc{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--muted);letter-spacing:.04em;line-height:1.75;max-width:54ch;}
-    .partner-email-row{margin-top:64px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .pi-desc{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--muted);letter-spacing:.04em;line-height:1.8;max-width:56ch;}
+    .partner-num-ghost{position:absolute;right:24px;top:50%;transform:translateY(-50%);font-family:'Fraunces',serif;font-weight:900;font-size:clamp(60px,9vw,140px);color:rgba(255,255,255,.035);line-height:1;z-index:0;pointer-events:none;letter-spacing:-.04em;}
+    .partner-email-row{margin-top:72px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
     .partner-email-label{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;}
-    .partner-email{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(16px,2.2vw,26px);color:var(--accent);transition:opacity .2s;}
+    .partner-email{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(20px,3vw,38px);color:var(--accent);transition:opacity .2s;letter-spacing:-.01em;}
     .partner-email:hover{opacity:.7;}
 
     /* Contact */
@@ -188,7 +195,7 @@
     .footer-copy{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.08em;}
 
     /* Mobile */
-    @media(max-width:900px){.hc-list{display:none;}#strat{display:none;}.main{margin-left:0;}.film-bg{background-attachment:scroll;}.film-content{max-width:90%;padding:40px 28px;}.film-num{display:none;}.impact-stat-strip{grid-template-columns:repeat(2,1fr);}.contact-inner{grid-template-columns:1fr;gap:40px;}.next-hd{flex-direction:column;align-items:flex-start;}.next-note{text-align:left;}.pi-title{font-size:clamp(28px,5.5vw,48px);}.partner-item{grid-template-columns:40px 1fr;gap:0 20px;}}
+    @media(max-width:900px){.hc-list{display:none;}#strat{display:none;}.main{margin-left:0;}.film-bg{background-attachment:scroll;}.film-content{max-width:90%;padding:40px 28px;}.film-num{display:none;}.impact-stat-strip{grid-template-columns:repeat(2,1fr);}.contact-inner{grid-template-columns:1fr;gap:40px;}.next-hd{flex-direction:column;align-items:flex-start;}.next-note{text-align:left;}.pi-title{font-size:clamp(28px,5.5vw,48px);}.partner-item{grid-template-columns:56px 1fr;gap:0 24px;}.pi-icon{width:48px;height:48px;}.partner-num-ghost{display:none;}}
     @media(max-width:600px){
       html,body{overflow-x:clip;max-width:100%;}
       #hero,#impact,#next,#partnership,#contact{padding-left:20px;padding-right:20px;}
@@ -458,10 +465,10 @@
     </div>
     <div class="char-grid">
       <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/tugba_bantmag.jpg') center top/cover no-repeat,linear-gradient(155deg,#1A2A1A,#3A4A2A)"></div><div class="char-overlay"><p class="char-ch">01 · Land · Antalya</p><h3 class="char-name">Tuğba Günal &amp;<br>Birhan Erkutlu</h3><p class="char-loc">Alakır Valley, Antalya</p><p class="char-story">Two architects left Istanbul and spent 22 years defending a single Mediterranean stream from 14 hydroelectric dams. Their house is built of earth. Their front line is a water pipe. A surveillance camera watches from across the property line — and they keep going anyway. This isn't an escape story. It's what it costs to stay.</p></div></div></div>
-      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/zafer_header.jpg') center top/cover no-repeat,linear-gradient(155deg,#0A1A2A,#1A3445)"></div><div class="char-overlay"><p class="char-ch">02 · Water · Muğla</p><h3 class="char-name">Zafer<br>Kızılkaya</h3><p class="char-loc">Gökova Bay, Muğla</p><p class="char-story">He dove for National Geographic, then left it to save one bay. To protect Gökova he talked 22 fishing cooperatives and 60 restaurants into eating the invading lionfish — five tons of it, off the reef and onto the plate. In 2023 the Goldman Prize went to a Turkish conservationist for the first time. He's still in the water.</p></div></div></div>
+      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/zafer_header.jpg') center center/cover no-repeat,linear-gradient(155deg,#0A1A2A,#1A3445)"></div><div class="char-overlay"><p class="char-ch">02 · Water · Muğla</p><h3 class="char-name">Zafer<br>Kızılkaya</h3><p class="char-loc">Gökova Bay, Muğla</p><p class="char-story">He dove for National Geographic, then left it to save one bay. To protect Gökova he talked 22 fishing cooperatives and 60 restaurants into eating the invading lionfish — five tons of it, off the reef and onto the plate. In 2023 the Goldman Prize went to a Turkish conservationist for the first time. He's still in the water.</p></div></div></div>
       <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/balabanaga_large.jpg') center/cover no-repeat,linear-gradient(155deg,#2A1A0A,#4A3418)"></div><div class="char-overlay"><p class="char-ch">03 · Food · Kastamonu</p><h3 class="char-name">Balabanağa<br>Çiftliği</h3><p class="char-loc">Daday, Kastamonu</p><p class="char-story">A farm older than most countries. For roughly 450 years one family has kept ancient siyez wheat in rotation, grinding it by hand at first light. They refuse to let it become a museum. Fix the roof, feed the soil, set the table for the volunteer who returns every spring — that's the work, and the clock is running.</p></div></div></div>
       <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/mus_arici_1.webp') center/cover no-repeat,linear-gradient(155deg,#1A0A28,#2A1A38)"></div><div class="char-overlay"><p class="char-ch">04 · Community · Muş</p><h3 class="char-name">Muş 100 Kadın<br>Arıcı</h3><p class="char-loc">Muş Plain, Eastern Anatolia</p><p class="char-story">100 hives, 100 women, one plain. In some of Anatolia's richest wildflower country, not a single woman had ever been recognised as a beekeeper in her own name — until this spring. Watch the first frame rise from a hive and you watch a power balance shift inside the house. Honey as the golden form of women's labour.</p></div></div></div>
-      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/cagan_field.jpg') center top/cover no-repeat,linear-gradient(155deg,#0A1A1A,#183535)"></div><div class="char-overlay"><p class="char-ch">05 · Systems · Kars</p><h3 class="char-name">Çağan<br>Şekercioğlu</h3><p class="char-loc">Sarıkamış, Kars</p><p class="char-story">He runs Türkiye's only working wildlife corridor on a salary split between two countries. When the state won't buy the land an animal needs to cross, he buys it himself. A wolf collared in 2019 still pings its location to a phone in Salt Lake City at 3 a.m. Snow, tracks, a satellite signal — science with a fight on its hands.</p></div></div></div>
+      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/cagan.jpg') center top/cover no-repeat,linear-gradient(155deg,#0A1A1A,#183535)"></div><div class="char-overlay"><p class="char-ch">05 · Systems · Kars</p><h3 class="char-name">Çağan<br>Şekercioğlu</h3><p class="char-loc">Sarıkamış, Kars</p><p class="char-story">He runs Türkiye's only working wildlife corridor on a salary split between two countries. When the state won't buy the land an animal needs to cross, he buys it himself. A wolf collared in 2019 still pings its location to a phone in Salt Lake City at 3 a.m. Snow, tracks, a satellite signal — science with a fight on its hands.</p></div></div></div>
       <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/kelaynak.jpg') center/cover no-repeat,linear-gradient(155deg,#2A180A,#3A2A08)"></div><div class="char-overlay"><p class="char-ch">06 · Hope · Şanlıurfa</p><h3 class="char-name">Birecik<br>Kelaynak</h3><p class="char-loc">Birecik, Şanlıurfa</p><p class="char-story">Every February the doors open and a bird gone from the wild everywhere else on earth lifts off the Euphrates cliffs. Every June the doors close again. 277 birds in 2026. The keepers won't call it freedom and won't call it captivity — it's the only reason the bald ibis still exists at all. The camera here isn't beauty. It's a record, and a kind of mourning.</p></div></div></div>
     </div>
   </section>
@@ -471,39 +478,49 @@
     <h2 class="sec-title">Open for collaboration.</h2>
     <div class="partner-list">
       <div class="partner-item">
-        <span class="pi-num">01</span>
+        <div class="pi-icon"><svg viewBox="0 0 48 48"><circle cx="18" cy="24" r="11"/><circle cx="30" cy="24" r="11"/></svg></div>
         <div class="pi-body">
+          <span class="pi-num">01 — Production</span>
           <h3 class="pi-title">Co-Produce</h3>
           <p class="pi-desc">Join Season One as a co-producer. Grant co-applications, institutional co-funding, and creative development partnerships for six new episodes in production.</p>
         </div>
+        <span class="partner-num-ghost">01</span>
       </div>
       <div class="partner-item">
-        <span class="pi-num">02</span>
+        <div class="pi-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="6"/><path d="M24 18V6M24 42V30M18 24H6M42 24H30M19.8 19.8 11.3 11.3M36.7 36.7 28.2 28.2M28.2 19.8 36.7 11.3M11.3 36.7 19.8 28.2"/></svg></div>
         <div class="pi-body">
+          <span class="pi-num">02 — Reach</span>
           <h3 class="pi-title">Distribute</h3>
           <p class="pi-desc">Festival licensing, theatrical and event screenings, educational curriculum integration. Four completed films available now — Season One from 2026.</p>
         </div>
+        <span class="partner-num-ghost">02</span>
       </div>
       <div class="partner-item">
-        <span class="pi-num">03</span>
+        <div class="pi-icon"><svg viewBox="0 0 48 48"><rect x="6" y="14" width="36" height="26" rx="2"/><path d="M6 21h36M14 14l-3 7M22 14l-3 7M30 14l-3 7M38 14l-3 7"/></svg></div>
         <div class="pi-body">
-          <h3 class="pi-title">Commission a Story</h3>
+          <span class="pi-num">03 — Craft</span>
+          <h3 class="pi-title">Commission<br>a Story</h3>
           <p class="pi-desc">Custom documentary production for impact campaigns, institutional communications, or foundation storytelling. We bring the field access, the characters, and the craft.</p>
         </div>
+        <span class="partner-num-ghost">03</span>
       </div>
       <div class="partner-item">
-        <span class="pi-num">04</span>
+        <div class="pi-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="10" r="5"/><circle cx="10" cy="34" r="5"/><circle cx="38" cy="34" r="5"/><path d="M21 14 12 30M27 14l9 16M14 34h20"/></svg></div>
         <div class="pi-body">
-          <h3 class="pi-title">Access the Network</h3>
+          <span class="pi-num">04 — Research</span>
+          <h3 class="pi-title">Access the<br>Network</h3>
           <p class="pi-desc">500+ mapped practitioners across seven regions of Türkiye. Four years of field research, relationships, and data. Open to researchers, NGOs, and policy teams.</p>
         </div>
+        <span class="partner-num-ghost">04</span>
       </div>
       <div class="partner-item">
-        <span class="pi-num">05</span>
+        <div class="pi-icon"><svg viewBox="0 0 48 48"><circle cx="19" cy="24" r="12"/><circle cx="29" cy="24" r="12"/></svg></div>
         <div class="pi-body">
-          <h3 class="pi-title">Brand Alignment</h3>
+          <span class="pi-num">05 — Values</span>
+          <h3 class="pi-title">Brand<br>Alignment</h3>
           <p class="pi-desc">Ecological brand partnerships with genuine values fit. Not sponsorship placements — co-authorship of stories that matter to your audience and ours.</p>
         </div>
+        <span class="partner-num-ghost">05</span>
       </div>
     </div>
     <div class="partner-email-row">
@@ -517,14 +534,11 @@
     <h2 class="sec-title">Get in touch.</h2>
     <div class="contact-inner">
       <div class="contact-col">
-        <div>
-          <p style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;">Email</p>
-          <a href="mailto:partners@regenerativestories.earth" class="contact-email">partners@regenerativestories.earth</a>
-        </div>
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px;">Follow the work</p>
         <div class="contact-links">
           <a href="https://www.youtube.com/@regenerative_stories" target="_blank" rel="noopener" class="contact-link">YouTube</a>
-          <a href="https://www.berkaytunali.com" target="_blank" rel="noopener" class="contact-link">Director</a>
           <a href="https://www.instagram.com/junglebased/" target="_blank" rel="noopener" class="contact-link">Instagram</a>
+          <a href="https://www.berkaytunali.com" target="_blank" rel="noopener" class="contact-link">Director</a>
         </div>
       </div>
       <div class="contact-col">
