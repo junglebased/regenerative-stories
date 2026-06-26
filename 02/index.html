@@ -145,26 +145,38 @@
     #next{padding:80px 48px;border-top:1px solid var(--border);}
     .next-hd{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:52px;gap:32px;}
     .next-note{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--muted);letter-spacing:.05em;max-width:30ch;text-align:right;line-height:1.7;}
-    .char-grid{display:flex;overflow-x:auto;gap:2px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px;}.char-grid::-webkit-scrollbar{display:none;}.char-card{flex:0 0 min(72vw,380px);scroll-snap-align:start;}
-    .char-card{position:relative;overflow:hidden;}
-    .char-portrait{aspect-ratio:4/5;position:relative;overflow:hidden;}
-    .char-bg{position:absolute;inset:0;width:100%;height:100%;transition:transform .5s ease;}
-    .char-card:hover .char-bg{transform:scale(1.04);}
+    .char-grid{display:flex;overflow-x:auto;gap:3px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px;}.char-grid::-webkit-scrollbar{display:none;}
+    .char-card{flex:0 0 min(82vw,520px);scroll-snap-align:start;position:relative;overflow:hidden;}
+    .char-portrait{aspect-ratio:3/4;position:relative;overflow:hidden;}
+    .char-bg{position:absolute;inset:0;width:100%;height:100%;transition:transform .6s ease;}
+    .char-card:hover .char-bg{transform:scale(1.05);}
     .char-portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;}
-    .char-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;background:linear-gradient(to top,rgba(26,25,20,.97) 0%,rgba(26,25,20,.22) 52%,transparent 100%);transition:background .35s ease;}
-    .char-card:hover .char-overlay,.char-card.open .char-overlay{background:rgba(26,25,20,.88);}
-    .char-ch{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;}
-    .char-name{font-family:'Fraunces',serif;font-weight:900;font-size:23px;line-height:1.1;color:var(--text);margin-bottom:5px;}
-    .char-loc{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--sage);letter-spacing:.07em;margin-bottom:12px;}
-    .char-story{font-family:'Spectral',serif;font-weight:300;font-size:15px;line-height:1.7;color:rgba(232,223,208,.8);opacity:0;max-height:0;overflow:hidden;transition:opacity .3s .05s ease,max-height .45s ease;}
-    .char-card:hover .char-story,.char-card.open .char-story{opacity:1;max-height:260px;}
+    .char-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:28px;background:linear-gradient(to top,rgba(26,25,20,.98) 0%,rgba(26,25,20,.30) 48%,transparent 100%);transition:background .35s ease;}
+    .char-card:hover .char-overlay,.char-card.open .char-overlay{background:rgba(26,25,20,.90);}
+    .char-ch{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;}
+    .char-name{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(24px,3vw,34px);line-height:1.05;color:var(--text);margin-bottom:6px;}
+    .char-loc{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--sage);letter-spacing:.07em;margin-bottom:14px;}
+    .char-story{font-family:'Spectral',serif;font-weight:300;font-size:16px;line-height:1.72;color:rgba(232,223,208,.82);opacity:0;max-height:0;overflow:hidden;transition:opacity .3s .05s ease,max-height .5s ease;}
+    .char-card:hover .char-story,.char-card.open .char-story{opacity:1;max-height:320px;}
+
+    /* Partnership */
+    #partnership{padding:80px 48px 100px;border-top:1px solid var(--border);}
+    .partner-list{margin-top:56px;}
+    .partner-item{display:grid;grid-template-columns:52px 1fr;gap:0 36px;padding:36px 0;border-top:1px solid var(--border);transition:background .2s;}
+    .partner-item:last-child{border-bottom:1px solid var(--border);}
+    .pi-num{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);letter-spacing:.14em;padding-top:10px;opacity:.8;}
+    .pi-body{}
+    .pi-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(32px,4.8vw,66px);line-height:.95;letter-spacing:-.025em;color:var(--text);margin-bottom:14px;transition:color .2s;}
+    .partner-item:hover .pi-title{color:var(--accent);}
+    .pi-desc{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--muted);letter-spacing:.04em;line-height:1.75;max-width:54ch;}
+    .partner-email-row{margin-top:64px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .partner-email-label{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;}
+    .partner-email{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(16px,2.2vw,26px);color:var(--accent);transition:opacity .2s;}
+    .partner-email:hover{opacity:.7;}
 
     /* Contact */
-    #contact{padding:80px 48px 100px;border-top:1px solid var(--border);}
-    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:52px;}
-    .partner-areas h3{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px;}
-    .area-list{list-style:none;display:flex;flex-direction:column;gap:12px;}
-    .area-list li{font-size:18px;line-height:1.5;color:var(--text);opacity:.7;padding-left:14px;border-left:1px solid var(--accent);}
+    #contact{padding:64px 48px 100px;border-top:1px solid var(--border);}
+    .contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:40px;}
     .contact-col{display:flex;flex-direction:column;gap:28px;}
     .contact-email{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(16px,2.2vw,26px);color:var(--accent);transition:opacity .2s;}
     .contact-email:hover{opacity:.7;}
@@ -172,14 +184,14 @@
     .contact-link{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--sage);letter-spacing:.08em;text-transform:uppercase;transition:color .2s;}
     .contact-link:hover{color:var(--text);}
     .contact-meta{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--muted);letter-spacing:.05em;line-height:1.9;}
-    .footer-bar{display:flex;justify-content:space-between;align-items:center;margin-top:80px;padding-top:24px;border-top:1px solid var(--border);}
+    .footer-bar{display:flex;justify-content:space-between;align-items:center;margin-top:64px;padding-top:24px;border-top:1px solid var(--border);}
     .footer-copy{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.08em;}
 
     /* Mobile */
-    @media(max-width:900px){.hc-list{display:none;}#strat{display:none;}.main{margin-left:0;}.film-bg{background-attachment:scroll;}.film-content{max-width:90%;padding:40px 28px;}.film-num{display:none;}.impact-grid{grid-template-columns:repeat(2,1fr);gap:40px;}.contact-grid{grid-template-columns:1fr;gap:48px;}.next-hd{flex-direction:column;align-items:flex-start;}.next-note{text-align:left;}}
+    @media(max-width:900px){.hc-list{display:none;}#strat{display:none;}.main{margin-left:0;}.film-bg{background-attachment:scroll;}.film-content{max-width:90%;padding:40px 28px;}.film-num{display:none;}.impact-stat-strip{grid-template-columns:repeat(2,1fr);}.contact-inner{grid-template-columns:1fr;gap:40px;}.next-hd{flex-direction:column;align-items:flex-start;}.next-note{text-align:left;}.pi-title{font-size:clamp(28px,5.5vw,48px);}.partner-item{grid-template-columns:40px 1fr;gap:0 20px;}}
     @media(max-width:600px){
       html,body{overflow-x:clip;max-width:100%;}
-      #hero,#impact,#next,#contact{padding-left:20px;padding-right:20px;}
+      #hero,#impact,#next,#partnership,#contact{padding-left:20px;padding-right:20px;}
       .film-content{padding:32px 20px;max-width:100%;}
       .film-body{font-size:16px;}
       #hero{padding-top:40px;padding-bottom:40px;}
@@ -267,7 +279,7 @@
     <nav class="tn-links">
       <a href="#films">Films</a>
       <a href="#next">Season Ahead</a>
-      <a href="#contact">Partner With Us</a>
+      <a href="#partnership">Partner With Us</a>
     </nav>
   </header>
 
@@ -454,35 +466,73 @@
     </div>
   </section>
 
-  <section id="contact" class="reveal">
-    <p class="sec-eye">Partnership & Contact</p>
-    <h2 class="sec-title">Work with us.</h2>
-    <div class="contact-grid">
-      <div class="partner-areas">
-        <h3>Open collaboration areas</h3>
-        <ul class="area-list">
-          <li>Grant co-application &amp; institutional funding</li>
-          <li>Festival distribution &amp; theatrical screening</li>
-          <li>Educational licensing &amp; curriculum integration</li>
-          <li>Brand partnerships aligned with ecological values</li>
-          <li>Field research &amp; practitioner network access</li>
-        </ul>
+  <section id="partnership" class="reveal">
+    <p class="sec-eye">Partner With Us</p>
+    <h2 class="sec-title">Open for collaboration.</h2>
+    <div class="partner-list">
+      <div class="partner-item">
+        <span class="pi-num">01</span>
+        <div class="pi-body">
+          <h3 class="pi-title">Co-Produce</h3>
+          <p class="pi-desc">Join Season One as a co-producer. Grant co-applications, institutional co-funding, and creative development partnerships for six new episodes in production.</p>
+        </div>
       </div>
+      <div class="partner-item">
+        <span class="pi-num">02</span>
+        <div class="pi-body">
+          <h3 class="pi-title">Distribute</h3>
+          <p class="pi-desc">Festival licensing, theatrical and event screenings, educational curriculum integration. Four completed films available now — Season One from 2026.</p>
+        </div>
+      </div>
+      <div class="partner-item">
+        <span class="pi-num">03</span>
+        <div class="pi-body">
+          <h3 class="pi-title">Commission a Story</h3>
+          <p class="pi-desc">Custom documentary production for impact campaigns, institutional communications, or foundation storytelling. We bring the field access, the characters, and the craft.</p>
+        </div>
+      </div>
+      <div class="partner-item">
+        <span class="pi-num">04</span>
+        <div class="pi-body">
+          <h3 class="pi-title">Access the Network</h3>
+          <p class="pi-desc">500+ mapped practitioners across seven regions of Türkiye. Four years of field research, relationships, and data. Open to researchers, NGOs, and policy teams.</p>
+        </div>
+      </div>
+      <div class="partner-item">
+        <span class="pi-num">05</span>
+        <div class="pi-body">
+          <h3 class="pi-title">Brand Alignment</h3>
+          <p class="pi-desc">Ecological brand partnerships with genuine values fit. Not sponsorship placements — co-authorship of stories that matter to your audience and ours.</p>
+        </div>
+      </div>
+    </div>
+    <div class="partner-email-row">
+      <span class="partner-email-label">Start here →</span>
+      <a href="mailto:partners@regenerativestories.earth" class="partner-email">partners@regenerativestories.earth</a>
+    </div>
+  </section>
+
+  <section id="contact" class="reveal">
+    <p class="sec-eye">Contact</p>
+    <h2 class="sec-title">Get in touch.</h2>
+    <div class="contact-inner">
       <div class="contact-col">
         <div>
-          <p style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;">Get in touch</p>
+          <p style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;">Email</p>
           <a href="mailto:partners@regenerativestories.earth" class="contact-email">partners@regenerativestories.earth</a>
         </div>
         <div class="contact-links">
           <a href="https://www.youtube.com/@regenerative_stories" target="_blank" rel="noopener" class="contact-link">YouTube</a>
           <a href="https://www.berkaytunali.com" target="_blank" rel="noopener" class="contact-link">Director</a>
-          <a href="https://junglebased.com" target="_blank" rel="noopener" class="contact-link">Junglebased Studios</a>
+          <a href="https://www.instagram.com/junglebased/" target="_blank" rel="noopener" class="contact-link">Instagram</a>
         </div>
-        <p class="contact-meta">Produced by Junglebased Studios.<br>Based in Turkey.</p>
+      </div>
+      <div class="contact-col">
+        <p class="contact-meta">Produced by Junglebased Production.<br>Based in Turkey.<br>regenerativestories.earth</p>
       </div>
     </div>
     <div class="footer-bar">
-      <span class="footer-copy">&copy; 2026 Regenerative Stories &middot; Junglebased Studios</span>
+      <span class="footer-copy">&copy; 2026 Regenerative Stories &middot; Junglebased Production</span>
       <span class="footer-copy">regenerativestories.earth</span>
     </div>
   </section>
