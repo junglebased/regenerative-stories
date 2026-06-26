@@ -32,6 +32,7 @@
     /* Hero */
     #hero{min-height:100vh;min-height:100dvh;padding:52px 48px 60px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;background:var(--bg);}
     .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center 25%;z-index:0;}
+    .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;}
     @keyframes hbgIn{from{opacity:.55}to{opacity:1}}
     .hero-bg.fade-in{animation:hbgIn .5s ease forwards;}
     #hero::before{content:'';position:absolute;inset:0;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;pointer-events:none;z-index:4;mix-blend-mode:overlay;}
@@ -83,33 +84,34 @@
     #b4{top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;width:80%;padding:0;}
 
     /* Films */
-    #films{background:var(--bg-sand);color:var(--text-dk);padding:80px 48px;}
+    #films{background:var(--bg);padding:0;color:var(--text);}
     .sec-eye{font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:.12em;text-transform:uppercase;opacity:.45;margin-bottom:44px;}
     .sec-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(34px,4.5vw,60px);line-height:1;letter-spacing:-.02em;}
-    .film-card{display:grid;grid-template-columns:5fr 3fr;gap:48px;padding:36px 0;border-top:1px solid var(--border-dk);}
-    .film-thumb{aspect-ratio:16/9;overflow:hidden;background:#2A2420;position:relative;cursor:pointer;}
-    .film-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
-    .film-thumb::after{content:'';position:absolute;inset:0;background:rgba(10,9,7,0);transition:background .3s ease;}
-    .film-card:hover .film-thumb::after{background:rgba(10,9,7,.35);}
-    .film-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.85);opacity:0;transition:opacity .3s ease,transform .3s ease;z-index:2;width:56px;height:56px;border-radius:50%;border:2px solid rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;pointer-events:none;}
-    .film-play::after{content:'';border-style:solid;border-width:9px 0 9px 18px;border-color:transparent transparent transparent rgba(255,255,255,.95);margin-left:4px;}
-    .film-card:hover .film-play{opacity:1;transform:translate(-50%,-50%) scale(1);}
-    .film-card:hover .film-thumb img{transform:scale(1.03);}
-    .film-thumb-ph{width:100%;height:100%;display:flex;align-items:flex-end;padding:16px;}
-    .film-meta{display:flex;flex-direction:column;justify-content:space-between;}
+    /* Film parallax stacks */
+    .film-panel{height:100vh;height:100dvh;position:relative;}
+    .film-stack{position:sticky;top:0;height:100vh;height:100dvh;overflow:hidden;}
+    .film-panel:nth-child(1) .film-stack{z-index:1;}
+    .film-panel:nth-child(2) .film-stack{z-index:2;}
+    .film-panel:nth-child(3) .film-stack{z-index:3;}
+    .film-panel:nth-child(4) .film-stack{z-index:4;}
+    .film-bg{position:absolute;inset:-15% 0;background-size:cover;background-position:center;background-attachment:fixed;z-index:0;}
+    .film-grad{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,9,7,.96) 0%,rgba(10,9,7,.80) 40%,rgba(10,9,7,.35) 68%,rgba(10,9,7,.06) 100%),linear-gradient(to top,rgba(10,9,7,.75) 0%,transparent 38%);z-index:1;}
+    .film-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:60px 64px;max-width:58%;}
+    .film-idx{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px;}
     .badge{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border:1px solid;display:inline-block;margin-bottom:18px;width:fit-content;}
     .b-rel{color:var(--muted);border-color:var(--muted);}
     .b-lock{color:var(--accent);border-color:var(--accent);}
     .b-edit{color:var(--sage);border-color:var(--sage);}
-    .film-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(26px,3.2vw,42px);line-height:1.05;letter-spacing:-.01em;margin-bottom:8px;color:var(--text-dk);}
-    .film-sub{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--muted);letter-spacing:.05em;margin-bottom:18px;}
-    .film-body{font-size:21px;line-height:1.72;color:var(--text-dk);opacity:.78;max-width:44ch;}
-    .film-notes{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--muted);letter-spacing:.07em;text-transform:uppercase;margin-top:20px;margin-bottom:10px;}
-    .film-cta{font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:8px;transition:gap .2s;}
+    .film-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(36px,5.5vw,74px);line-height:.95;letter-spacing:-.02em;margin-bottom:14px;color:var(--text);}
+    .film-sub{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--muted);letter-spacing:.05em;margin-bottom:20px;}
+    .film-body{font-size:19px;line-height:1.70;color:rgba(232,223,208,.78);max-width:46ch;margin-bottom:28px;}
+    .film-notes{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.07em;text-transform:uppercase;margin-bottom:14px;}
+    .film-cta{font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:8px;transition:gap .2s;border:none;background:none;cursor:pointer;padding:0;}
     .film-cta:hover{gap:14px;}
     .film-cta::after{content:'→';}
     .film-cta-muted{opacity:.35;cursor:default;}
     .film-cta-muted::after{display:none;}
+    .film-num{position:absolute;right:48px;bottom:36px;font-family:'Fraunces',serif;font-weight:900;font-size:clamp(88px,13vw,180px);color:rgba(255,255,255,.045);line-height:1;z-index:2;letter-spacing:-.04em;pointer-events:none;}
 
     /* Impact */
     #impact{padding:64px 48px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
@@ -154,10 +156,12 @@
     .footer-copy{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.08em;}
 
     /* Mobile */
-    @media(max-width:900px){.hc-list{display:none;}#strat{display:none;}.main{margin-left:0;}.film-card{grid-template-columns:1fr;gap:24px;}.impact-grid{grid-template-columns:repeat(2,1fr);gap:40px;}.contact-grid{grid-template-columns:1fr;gap:48px;}.next-hd{flex-direction:column;align-items:flex-start;}.next-note{text-align:left;}}
+    @media(max-width:900px){.hc-list{display:none;}#strat{display:none;}.main{margin-left:0;}.film-bg{background-attachment:scroll;}.film-content{max-width:90%;padding:40px 28px;}.film-num{display:none;}.impact-grid{grid-template-columns:repeat(2,1fr);gap:40px;}.contact-grid{grid-template-columns:1fr;gap:48px;}.next-hd{flex-direction:column;align-items:flex-start;}.next-note{text-align:left;}}
     @media(max-width:600px){
       html,body{overflow-x:clip;max-width:100%;}
-      #hero,#films,#impact,#next,#contact{padding-left:20px;padding-right:20px;}
+      #hero,#impact,#next,#contact{padding-left:20px;padding-right:20px;}
+      .film-content{padding:32px 20px;max-width:100%;}
+      .film-body{font-size:16px;}
       #hero{padding-top:40px;padding-bottom:40px;}
       .h-title{font-size:clamp(28px,8.5vw,56px);letter-spacing:-.02em;}
       .h-outline{-webkit-text-stroke:1.5px var(--accent);}
@@ -248,7 +252,10 @@
   </header>
 
   <section id="hero">
-    <div class="hero-bg" id="hero-bg" style="background-image:url('images/zafer_header.jpg')"></div>
+    <video class="hero-video" autoplay muted loop playsinline poster="images/zafer_header.jpg">
+      <source src="hero_loop.mp4" type="video/mp4">
+    </video>
+    <div class="hero-bg" id="hero-bg" style="display:none"></div>
     <p class="h-eye">Documentary Series · Turkey · 2021—</p>
     <span class="h-title h-solid">REGENERATIVE</span>
     <span class="h-title h-outline">STORIES</span>
@@ -297,76 +304,76 @@
     </div>
   </section>
 
-  <section id="films" class="reveal">
-    <p class="sec-eye">Our Films — 2021 to present</p>
-    <article class="film-card reveal">
-      <a href="#" data-yt="GwbonuGbL9k">
-        <div class="film-thumb"><div class="film-play"></div><img src="https://img.youtube.com/vi/GwbonuGbL9k/maxresdefault.jpg" alt="Awakening of the Soil" loading="lazy"></div>
-      </a>
-      <div class="film-meta">
-        <div>
-          <span class="badge b-rel">Feature · 42 min · Released 2021</span>
+  <section id="films">
+
+    <div class="film-panel">
+      <div class="film-stack">
+        <div class="film-bg" style="background-image:url('https://img.youtube.com/vi/GwbonuGbL9k/maxresdefault.jpg')"></div>
+        <div class="film-grad"></div>
+        <div class="film-content">
+          <p class="film-idx">01 — Feature · 42 min · 2021</p>
+          <span class="badge b-rel">Released · COP 2023</span>
           <h2 class="film-title">Awakening of<br>the Soil</h2>
           <p class="film-sub">Edirne · Konya · Silivri · Eskişehir</p>
           <p class="film-body">A skeptical Thracian grain farmer visits five zero-tillage practitioners across Turkey and discovers that his tractor is the main obstacle to his soil's recovery. Every field stop adds a layer: corn growing without irrigation, earthworms in a border a machine hasn't crossed in three years, soil dark enough to crumble between two fingers.</p>
-        </div>
-        <div>
-          <p class="film-notes">COP 2023 · China Int'l Documentary Festival · Guardian Foundation</p>
+          <p class="film-notes">China Int'l Documentary Festival · Guardian Foundation</p>
           <button class="film-cta" data-yt="GwbonuGbL9k">Watch Film</button>
         </div>
+        <span class="film-num">01</span>
       </div>
-    </article>
-    <article class="film-card reveal">
-      <a href="#" data-yt="fP2MbUsGDoY">
-        <div class="film-thumb"><div class="film-play"></div><img src="https://img.youtube.com/vi/fP2MbUsGDoY/maxresdefault.jpg" alt="Tilya" loading="lazy"></div>
-      </a>
-      <div class="film-meta">
-        <div>
-          <span class="badge b-rel">Episode 01 · 16 min · Released 2024</span>
+    </div>
+
+    <div class="film-panel">
+      <div class="film-stack">
+        <div class="film-bg" style="background-image:url('https://img.youtube.com/vi/fP2MbUsGDoY/maxresdefault.jpg')"></div>
+        <div class="film-grad"></div>
+        <div class="film-content">
+          <p class="film-idx">02 — Episode 01 · 16 min · 2024</p>
+          <span class="badge b-rel">Released · 13,000+ views</span>
           <h2 class="film-title">Tilya</h2>
           <p class="film-sub">Tilya Ekolojik Kooperatif · Istanbul</p>
           <p class="film-body">Three people sign a working contract with the land and with each other on the edge of Istanbul — and Turkey's first ecological social cooperative begins. Solidarity as infrastructure. Food justice at urban scale. A cooperative built not from manifesto but from a working organism still alive.</p>
-        </div>
-        <div>
-          <p class="film-notes">Postane Kültür ve Doğa · 13,000+ views</p>
+          <p class="film-notes">Postane Kültür ve Doğa</p>
           <button class="film-cta" data-yt="fP2MbUsGDoY">Watch Film</button>
         </div>
+        <span class="film-num">02</span>
       </div>
-    </article>
-    <article class="film-card reveal">
-      <a href="#" data-yt="0cRb0rBAsDI">
-        <div class="film-thumb"><div class="film-play"></div><img src="https://img.youtube.com/vi/0cRb0rBAsDI/maxresdefault.jpg" alt="Burhan Eltan" loading="lazy" onerror="this.style.display='none'"></div>
-      </a>
-      <div class="film-meta">
-        <div>
-          <span class="badge b-lock">Episode 02 · ~11 min · Award Winner</span>
+    </div>
+
+    <div class="film-panel">
+      <div class="film-stack">
+        <div class="film-bg" style="background-image:url('https://img.youtube.com/vi/0cRb0rBAsDI/maxresdefault.jpg')"></div>
+        <div class="film-grad"></div>
+        <div class="film-content">
+          <p class="film-idx">03 — Episode 02 · 11 min · 2025</p>
+          <span class="badge b-lock">Award Winner</span>
           <h2 class="film-title">Burhan</h2>
-          <p class="film-sub">Burhan Eltan · Kaz Dağları (Ida Mountains)</p>
+          <p class="film-sub">Burhan Eltan · Kaz Dağları</p>
           <p class="film-body">A former Istanbul urbanite designs 30-square-meter regenerative micro-gardens in the Ida Mountains — proving exhausted soil can feed a family without a gram of synthetic input. The engine is BioTam Compost, applied to the soil food web like a vaccine. A structure that other people land inside and don't leave.</p>
-        </div>
-        <div>
           <p class="film-notes">Bornova Short Film Days · Dijital Detaylar Award 2026</p>
           <button class="film-cta" data-yt="0cRb0rBAsDI">Watch Film</button>
         </div>
+        <span class="film-num">03</span>
       </div>
-    </article>
-    <article class="film-card reveal">
-      <div>
-        <div class="film-thumb"><div class="film-play"></div><div class="film-thumb-ph" style="background:linear-gradient(140deg,#2A2218,#3D2E18);"><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;">In Editing</span></div></div>
-      </div>
-      <div class="film-meta">
-        <div>
-          <span class="badge b-edit">Episode 03 · In Editing · Aug 2026</span>
-          <h2 class="film-title" style="color:var(--text-dk)">Magical Seeds</h2>
+    </div>
+
+    <div class="film-panel">
+      <div class="film-stack">
+        <div class="film-bg" style="background:linear-gradient(145deg,#1a2a10 0%,#2a1a06 50%,#0e1408 100%)"></div>
+        <div class="film-grad"></div>
+        <div class="film-content">
+          <p class="film-idx">04 — Episode 03 · In Editing · Aug 2026</p>
+          <span class="badge b-edit">Coming Soon</span>
+          <h2 class="film-title">Magical<br>Seeds</h2>
           <p class="film-sub">Sihirli Tohumlar · Turkey</p>
           <p class="film-body">Seed saving as climate adaptation — the people preserving genetic heritage that sixty years of industrial agriculture erased, one variety at a time. Hands, roof spaces, and the politics of what is permitted to grow next year.</p>
-        </div>
-        <div>
           <p class="film-notes">Coming August 2026</p>
-          <span class="film-cta film-cta-muted">Coming Soon</span>
+          <span class="film-cta film-cta-muted">In Editing</span>
         </div>
+        <span class="film-num">04</span>
       </div>
-    </article>
+    </div>
+
   </section>
 
   <section id="impact" class="reveal">
