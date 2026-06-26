@@ -221,6 +221,9 @@
     @media(max-width:390px){
       .h-title{font-size:7.5vw;}
     }
+    /* Touch devices: fixed bg = janky/broken on iOS Safari (all orientations) */
+    @media(hover:none),(pointer:coarse){.film-bg{background-attachment:scroll!important;}}
+    @media(max-width:900px){#scroll-scene{height:240vh;}}
 
     /* Lightbox */
     #lb{display:none;position:fixed;inset:0;z-index:2000;align-items:center;justify-content:center;}
@@ -292,10 +295,9 @@
   </header>
 
   <section id="hero">
-    <video class="hero-video" autoplay muted loop playsinline poster="images/zafer_header.jpg">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="images/hero_poster.jpg">
       <source src="hero_loop.mp4" type="video/mp4">
     </video>
-    <div class="hero-bg" id="hero-bg" style="display:none"></div>
     <p class="h-eye">Documentary Series · Turkey · 2021—</p>
     <span class="h-title h-solid">REGENERATIVE</span>
     <span class="h-title h-outline">STORIES</span>
@@ -304,7 +306,7 @@
     <p class="h-arc">Land · Water · Food · Community · Systems · Hope</p>
     <div class="h-ctas">
       <a href="#films" class="cta-primary">Watch the Films</a>
-      <a href="#contact" class="cta-secondary">Partner With Us</a>
+      <a href="#partnership" class="cta-secondary">Partner With Us</a>
     </div>
     <div class="h-stats">
       <div class="stat"><span class="stat-n" data-target="4" data-suffix="">4</span><span class="stat-l">Films completed</span></div>
@@ -632,26 +634,33 @@
 (function(){
 'use strict';
 
-/* ── Video scrub setup ────────────────────────────────── */
+/* ── Video setup ──────────────────────────────────────────
+   Desktop (fine pointer): scroll-scrub video frames.
+   Mobile/touch: scrubbing currentTime on scroll is throttled
+   by iOS/Android → frames jump. Instead play the clip on a
+   normal loop. Beats still fade by scroll progress.          */
 var vid=document.getElementById('anim-video');
-var seeking=false;
-var targetTime=0;
-
-vid.addEventListener('seeked',function(){
-  seeking=false;
-  if(Math.abs(vid.currentTime-targetTime)>0.04){
-    seeking=true;
-    vid.currentTime=targetTime;
-  }
-});
+var reduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+var canScrub=window.matchMedia('(min-width:901px) and (pointer:fine)').matches&&!reduced;
+var seeking=false,targetTime=0;
 
 vid.muted=true;
-vid.play().then(function(){
-  vid.pause();
-  vid.currentTime=0;
-}).catch(function(){});
+if(canScrub){
+  vid.removeAttribute('loop');
+  vid.addEventListener('seeked',function(){
+    seeking=false;
+    if(Math.abs(vid.currentTime-targetTime)>0.05){
+      seeking=true;vid.currentTime=targetTime;
+    }
+  });
+  vid.play().then(function(){vid.pause();vid.currentTime=0;}).catch(function(){});
+}else{
+  vid.loop=true;
+  if(reduced){vid.removeAttribute('autoplay');vid.pause();}
+  else{vid.play().catch(function(){});}
+}
 
-/* ── Scroll ───────────────────────────────────────────── */
+/* ── Scroll (rAF-throttled) ───────────────────────────── */
 var scene=document.getElementById('scroll-scene');
 var prog=document.getElementById('scroll-prog');
 var beats=[
@@ -662,13 +671,15 @@ var beats=[
 ];
 var sections=['hero','scroll-scene','films','impact','next','contact'];
 var railItems=document.querySelectorAll('.si');
+var ticking=false;
 
-function onScroll(){
+function update(){
+  ticking=false;
   if(scene){
     var r=scene.getBoundingClientRect();
     var p=Math.min(Math.max(-r.top/(r.height-window.innerHeight),0),1);
     if(prog)prog.style.width=(p*100)+'%';
-    if(vid.duration){
+    if(canScrub&&vid.duration){
       targetTime=p*vid.duration;
       if(!seeking){seeking=true;vid.currentTime=targetTime;}
     }
@@ -681,8 +692,11 @@ function onScroll(){
   });
   railItems.forEach(function(item,i){item.classList.toggle('active',i===active);});
 }
+function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(update);}}
 
 window.addEventListener('scroll',onScroll,{passive:true});
+window.addEventListener('resize',onScroll,{passive:true});
+update();
 
 document.querySelectorAll('.si').forEach(function(item){
   item.addEventListener('click',function(){
