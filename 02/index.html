@@ -112,16 +112,21 @@
     .film-cta-muted{opacity:.35;cursor:default;}
     .film-cta-muted::after{display:none;}
     .film-num{position:absolute;right:48px;bottom:36px;font-family:'Fraunces',serif;font-weight:900;font-size:clamp(88px,13vw,180px);color:rgba(255,255,255,.045);line-height:1;z-index:2;letter-spacing:-.04em;pointer-events:none;}
-    .film-play-btn{position:absolute;top:50%;right:28%;transform:translate(50%,-50%);width:88px;height:88px;border-radius:50%;border:2px solid rgba(232,223,208,.55);display:flex;align-items:center;justify-content:center;z-index:3;cursor:pointer;background:rgba(10,9,7,.18);backdrop-filter:blur(4px);transition:border-color .25s,background .25s,transform .25s;}
+    .film-play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:88px;height:88px;border-radius:50%;border:2px solid rgba(232,223,208,.55);display:flex;align-items:center;justify-content:center;z-index:3;cursor:pointer;background:rgba(10,9,7,.18);backdrop-filter:blur(4px);transition:border-color .25s,background .25s,transform .25s;}
     .film-play-btn::after{content:'';border-style:solid;border-width:12px 0 12px 22px;border-color:transparent transparent transparent rgba(232,223,208,.9);margin-left:5px;}
-    .film-play-btn:hover{border-color:rgba(196,102,42,.9);background:rgba(196,102,42,.18);transform:translate(50%,-50%) scale(1.07);}
-    @media(max-width:900px){.film-play-btn{right:50%;transform:translate(50%,-50%);top:38%;}}
-    @media(max-width:600px){.film-play-btn{width:68px;height:68px;top:32%;right:50%;transition:opacity .3s;}}
+    .film-play-btn:hover{border-color:rgba(196,102,42,.9);background:rgba(196,102,42,.18);transform:translate(-50%,-50%) scale(1.07);}
+    @media(max-width:900px){.film-play-btn{top:42%;}}
+    @media(max-width:600px){.film-play-btn{width:68px;height:68px;top:40%;transition:opacity .3s;}}
     .film-expand{display:none;}
-    /* Touch (phone + tablet): cinematic scale-in instead of fixed parallax — smooth, no scroll-seek jank */
+    /* Touch (phone + tablet): JS transform parallax (GPU-composited) + portrait-focused framing */
     @media(hover:none),(pointer:coarse){
-      .film-bg{transform:scale(1.12);transition:transform 1.2s cubic-bezier(.22,1,.36,1);will-change:transform;}
-      .film-panel.in-view .film-bg{transform:scale(1);}
+      .film-bg{will-change:transform;}
+    }
+    @media(max-width:900px){
+      .film-panel:nth-child(1) .film-bg{background-position:72% center;}
+      .film-panel:nth-child(2) .film-bg{background-position:70% center;}
+      .film-panel:nth-child(3) .film-bg{background-position:57% 38%;}
+      .film-panel:nth-child(4) .film-bg{background-position:40% center;}
     }
     /* Mobile: collapse dense film copy behind a tap toggle; hide play btn while reading */
     @media(max-width:600px){
@@ -134,6 +139,15 @@
       .film-panel.open .film-notes{display:block;}
       .film-panel.open .film-play-btn{opacity:0;pointer-events:none;}
     }
+
+    /* Films intro bridge */
+    #films-intro{padding:120px 48px 96px;border-top:1px solid var(--border);}
+    .fi-eye{font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:22px;}
+    .fi-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(40px,7vw,92px);line-height:.95;letter-spacing:-.03em;color:var(--text);margin-bottom:28px;}
+    .fi-lead{font-size:19px;line-height:1.7;color:rgba(232,223,208,.7);max-width:52ch;}
+    .fi-meta{display:flex;gap:28px;flex-wrap:wrap;margin-top:40px;}
+    .fi-meta span{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
+    @media(max-width:600px){#films-intro{padding:72px 20px 56px;}.fi-lead{font-size:16px;}.fi-meta{gap:16px 24px;}}
 
     /* Impact */
     #impact{padding:96px 48px 80px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
@@ -317,7 +331,7 @@
     <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="images/hero_poster.jpg">
       <source src="hero_loop.mp4" type="video/mp4">
     </video>
-    <p class="h-eye">Documentary Series · Turkey · 2021—</p>
+    <p class="h-eye">Documentary Series · Türkiye · Since 2021</p>
     <span class="h-title h-solid">REGENERATIVE</span>
     <span class="h-title h-outline">STORIES</span>
     <div class="h-rule"></div>
@@ -343,25 +357,36 @@
       <video id="anim-video" muted playsinline autoplay webkit-playsinline preload="auto" aria-hidden="true" src="__shot___type_sin.mp4"></video>
       <div class="scroll-vignette" aria-hidden="true"></div>
       <div class="beat" id="b1">
-        <p class="beat-tag">01 — Land</p>
+        <p class="beat-tag">01 · Land</p>
         <h2 class="beat-hl">The soil<br>remembers.</h2>
-        <p class="beat-sub">58.1 — average age of a Turkish farmer.</p>
+        <p class="beat-sub">58.1 years. The average age of a Turkish farmer.</p>
       </div>
       <div class="beat" id="b2">
-        <p class="beat-tag">02 — Scale</p>
+        <p class="beat-tag">02 · Scale</p>
         <h2 class="beat-hl">500<br>practitioners.</h2>
-        <p class="beat-sub">Mapped across 7 regions since 2021.</p>
+        <p class="beat-sub">Mapped over 7 regions since 2021.</p>
       </div>
       <div class="beat" id="b3">
-        <p class="beat-tag">03 — Impact</p>
+        <p class="beat-tag">03 · Impact</p>
         <h2 class="beat-hl">120,000<br>viewers.</h2>
         <p class="beat-sub">Four years of field research.</p>
       </div>
       <div class="beat" id="b4">
-        <p class="beat-tag">04 — Next</p>
+        <p class="beat-tag">04 · Next</p>
         <h2 class="beat-hl">Season One.<br>In production.</h2>
         <p class="beat-sub">Six ecosystems. Six characters. One country.</p>
       </div>
+    </div>
+  </section>
+
+  <section id="films-intro" class="reveal">
+    <p class="fi-eye">The Films</p>
+    <h2 class="fi-title">Four films.<br>One healing land.</h2>
+    <p class="fi-lead">Each one starts with a person who chose to stay and repair instead of leave. Watch them in order, or jump to the story that pulls you.</p>
+    <div class="fi-meta">
+      <span>4 films</span>
+      <span>2021 to 2025</span>
+      <span>7 regions of Türkiye</span>
     </div>
   </section>
 
@@ -373,12 +398,12 @@
         <div class="film-grad"></div>
         <button class="film-play-btn" data-yt="GwbonuGbL9k" aria-label="Watch Awakening of the Soil"></button>
         <div class="film-content">
-          <p class="film-idx">01 — Feature · 42 min · 2021</p>
+          <p class="film-idx">01 · Feature · 42 min · 2021</p>
           <span class="badge b-rel">Released · COP 2023</span>
           <h2 class="film-title">Awakening of<br>the Soil</h2>
           <p class="film-sub">Edirne · Konya · Silivri · Eskişehir</p>
           <button class="film-expand" aria-expanded="false"><span>Read the story</span></button>
-          <p class="film-body">A skeptical Thracian grain farmer visits five zero-tillage practitioners across Turkey and discovers that his tractor is the main obstacle to his soil's recovery. Every field stop adds a layer: corn growing without irrigation, earthworms in a border a machine hasn't crossed in three years, soil dark enough to crumble between two fingers.</p>
+          <p class="film-body">A skeptical Thracian grain farmer visits five zero-tillage practitioners around Turkey and discovers that his tractor is the main obstacle to his soil's recovery. Every field stop adds a layer: corn growing without irrigation, earthworms in a border a machine hasn't crossed in three years, soil dark enough to crumble between two fingers.</p>
           <p class="film-notes">China Int'l Documentary Festival · Guardian Foundation</p>
           <button class="film-cta" data-yt="GwbonuGbL9k">Watch Film</button>
         </div>
@@ -392,12 +417,12 @@
         <div class="film-grad"></div>
         <button class="film-play-btn" data-yt="fP2MbUsGDoY" aria-label="Watch Tilya"></button>
         <div class="film-content">
-          <p class="film-idx">02 — Episode 01 · 16 min · 2024</p>
+          <p class="film-idx">02 · Episode 01 · 16 min · 2024</p>
           <span class="badge b-rel">Released · 13,000+ views</span>
           <h2 class="film-title">Tilya</h2>
           <p class="film-sub">Tilya Ekolojik Kooperatif · Istanbul</p>
           <button class="film-expand" aria-expanded="false"><span>Read the story</span></button>
-          <p class="film-body">Three people sign a working contract with the land and with each other on the edge of Istanbul — and Turkey's first ecological social cooperative begins. Solidarity as infrastructure. Food justice at urban scale. A cooperative built not from manifesto but from a working organism still alive.</p>
+          <p class="film-body">Three people sign a working contract with the land and with each other on the edge of Istanbul. Turkey's first ecological social cooperative begins. Solidarity as infrastructure. Food justice at urban scale. A cooperative built not from manifesto but from a working organism still alive.</p>
           <p class="film-notes">Postane Kültür ve Doğa</p>
           <button class="film-cta" data-yt="fP2MbUsGDoY">Watch Film</button>
         </div>
@@ -411,12 +436,12 @@
         <div class="film-grad"></div>
         <button class="film-play-btn" data-yt="0cRb0rBAsDI" aria-label="Watch Burhan"></button>
         <div class="film-content">
-          <p class="film-idx">03 — Episode 02 · 11 min · 2025</p>
+          <p class="film-idx">03 · Episode 02 · 11 min · 2025</p>
           <span class="badge b-lock">Award Winner</span>
           <h2 class="film-title">Burhan</h2>
           <p class="film-sub">Burhan Eltan · Kaz Dağları</p>
           <button class="film-expand" aria-expanded="false"><span>Read the story</span></button>
-          <p class="film-body">A former Istanbul urbanite designs 30-square-meter regenerative micro-gardens in the Ida Mountains — proving exhausted soil can feed a family without a gram of synthetic input. The engine is BioTam Compost, applied to the soil food web like a vaccine. A structure that other people land inside and don't leave.</p>
+          <p class="film-body">A former Istanbul urbanite designs 30-square-meter regenerative micro-gardens in the Ida Mountains, proving exhausted soil can feed a family without a gram of synthetic input. The engine is BioTam Compost, applied to the soil food web like a vaccine. A structure that other people land inside and don't leave.</p>
           <p class="film-notes">Bornova Short Film Days · Dijital Detaylar Award 2026</p>
           <button class="film-cta" data-yt="0cRb0rBAsDI">Watch Film</button>
         </div>
@@ -429,14 +454,14 @@
         <div class="film-bg" style="background-image:url('stills/magicalseeds.jpg')"></div>
         <div class="film-grad"></div>
         <div class="film-content">
-          <p class="film-idx">04 — Episode 03 · In Editing · Aug 2026</p>
+          <p class="film-idx">04 · Episode 03 · In Post Production · Aug 2026</p>
           <span class="badge b-edit">Coming Soon</span>
           <h2 class="film-title">Magical<br>Seeds</h2>
-          <p class="film-sub">Aylin · Süleyman · Alp · Sinan — Küçük Yoncalı, Tekirdağ</p>
+          <p class="film-sub">Aylin · Süleyman · Alp · Sinan · Küçük Yoncalı, Tekirdağ</p>
           <button class="film-expand" aria-expanded="false"><span>Read the story</span></button>
-          <p class="film-body">Four people walk out of the city onto one plot of leveled Thracian soil — and start with the mistake the film is built around: they bring in a machine and flatten the ground. "We didn't heal the land," Süleyman says, "we damaged it." The repair is the rest — mulch kept over bare earth, compost instead of the hoe, a salve pulled from wild herbs that settles Sinan's eczema, and one season that hands them five hundred tomato seedlings they give away for free. They name themselves <em>toprak bükücüler</em> — soil benders.</p>
+          <p class="film-body">Four people walk out of the city onto one plot of leveled Thracian soil, and start with the mistake the film is built around: they bring in a machine and flatten the ground. "We didn't heal the land," Süleyman says, "we damaged it." The repair is the rest: mulch kept over bare earth, compost instead of the hoe, a salve pulled from wild herbs that settles Sinan's eczema, and one season that hands them five hundred tomato seedlings they give away for free. They name themselves <em>toprak bükücüler</em>, soil benders.</p>
           <p class="film-notes">Coming August 2026 · RS Episode 03</p>
-          <span class="film-cta film-cta-muted">In Editing</span>
+          <span class="film-cta film-cta-muted">In Post Production</span>
         </div>
         <span class="film-num">04</span>
       </div>
@@ -447,7 +472,7 @@
   <section id="impact" class="reveal">
     <p class="impact-eye">Proof on the Ground</p>
     <h2 class="impact-hl">Four years. Seven regions. One living archive.</h2>
-    <p class="impact-lead">We didn't start with a pitch. We started with a tractor in a field, a fisher cooperative, a beekeeper's first hive. Four years and seven regions later, the footage is a map of who is repairing this land — and how.</p>
+    <p class="impact-lead">We didn't start with a pitch. We started with a tractor in a field, a fisher cooperative, a beekeeper's first hive. Four years and seven regions later, the footage is a map of who is repairing this land, and how.</p>
 
     <div class="impact-stat-strip">
       <div class="impact-cell"><span class="i-num" data-target="500">500</span><span class="i-lbl">Practitioners<br>mapped</span></div>
@@ -484,18 +509,18 @@
   <section id="next" class="reveal">
     <div class="next-hd">
       <div>
-        <p class="sec-eye">Season One — In Production</p>
+        <p class="sec-eye">Season One · In Production</p>
         <h2 class="sec-title">Coming Next.</h2>
       </div>
       <p class="next-note">Currently applying to the NatGeo &times; Climate Pledge Global Storytellers Fund.</p>
     </div>
     <div class="char-grid">
-      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/tugba_bantmag.jpg') center top/cover no-repeat,linear-gradient(155deg,#1A2A1A,#3A4A2A)"></div><div class="char-overlay"><p class="char-ch">01 · Land · Antalya</p><h3 class="char-name">Tuğba Günal &amp;<br>Birhan Erkutlu</h3><p class="char-loc">Alakır Valley, Antalya</p><p class="char-story">Two architects left Istanbul and spent 22 years defending a single Mediterranean stream from 14 hydroelectric dams. Their house is built of earth. Their front line is a water pipe. A surveillance camera watches from across the property line — and they keep going anyway. This isn't an escape story. It's what it costs to stay.</p></div></div></div>
-      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/zafer_header.jpg') 68% center/cover no-repeat,linear-gradient(155deg,#0A1A2A,#1A3445)"></div><div class="char-overlay"><p class="char-ch">02 · Water · Muğla</p><h3 class="char-name">Zafer<br>Kızılkaya</h3><p class="char-loc">Gökova Bay, Muğla</p><p class="char-story">He dove for National Geographic, then left it to save one bay. To protect Gökova he talked 22 fishing cooperatives and 60 restaurants into eating the invading lionfish — five tons of it, off the reef and onto the plate. In 2023 the Goldman Prize went to a Turkish conservationist for the first time. He's still in the water.</p></div></div></div>
-      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/balabanaga_large.jpg') center/cover no-repeat,linear-gradient(155deg,#2A1A0A,#4A3418)"></div><div class="char-overlay"><p class="char-ch">03 · Food · Kastamonu</p><h3 class="char-name">Balabanağa<br>Çiftliği</h3><p class="char-loc">Daday, Kastamonu</p><p class="char-story">A farm older than most countries. For roughly 450 years one family has kept ancient siyez wheat in rotation, grinding it by hand at first light. They refuse to let it become a museum. Fix the roof, feed the soil, set the table for the volunteer who returns every spring — that's the work, and the clock is running.</p></div></div></div>
-      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/mus_arici_1.webp') center/cover no-repeat,linear-gradient(155deg,#1A0A28,#2A1A38)"></div><div class="char-overlay"><p class="char-ch">04 · Community · Muş</p><h3 class="char-name">Muş 100 Kadın<br>Arıcı</h3><p class="char-loc">Muş Plain, Eastern Anatolia</p><p class="char-story">100 hives, 100 women, one plain. In some of Anatolia's richest wildflower country, not a single woman had ever been recognised as a beekeeper in her own name — until this spring. Watch the first frame rise from a hive and you watch a power balance shift inside the house. Honey as the golden form of women's labour.</p></div></div></div>
-      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/cagan.jpg') center top/cover no-repeat,linear-gradient(155deg,#0A1A1A,#183535)"></div><div class="char-overlay"><p class="char-ch">05 · Systems · Kars</p><h3 class="char-name">Çağan<br>Şekercioğlu</h3><p class="char-loc">Sarıkamış, Kars</p><p class="char-story">He runs Türkiye's only working wildlife corridor on a salary split between two countries. When the state won't buy the land an animal needs to cross, he buys it himself. A wolf collared in 2019 still pings its location to a phone in Salt Lake City at 3 a.m. Snow, tracks, a satellite signal — science with a fight on its hands.</p></div></div></div>
-      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/kelaynak.jpg') center/cover no-repeat,linear-gradient(155deg,#2A180A,#3A2A08)"></div><div class="char-overlay"><p class="char-ch">06 · Hope · Şanlıurfa</p><h3 class="char-name">Birecik<br>Kelaynak</h3><p class="char-loc">Birecik, Şanlıurfa</p><p class="char-story">Every February the doors open and a bird gone from the wild everywhere else on earth lifts off the Euphrates cliffs. Every June the doors close again. 277 birds in 2026. The keepers won't call it freedom and won't call it captivity — it's the only reason the bald ibis still exists at all. The camera here isn't beauty. It's a record, and a kind of mourning.</p></div></div></div>
+      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/tugba_bantmag.jpg') center top/cover no-repeat,linear-gradient(155deg,#1A2A1A,#3A4A2A)"></div><div class="char-overlay"><p class="char-ch">01 · Land · Antalya</p><h3 class="char-name">Tuğba Günal &amp;<br>Birhan Erkutlu</h3><p class="char-loc">Alakır Valley, Antalya</p><p class="char-story">Two architects left Istanbul and spent 22 years defending a single Mediterranean stream from 14 hydroelectric dams. Their house is built of earth. Their front line is a water pipe. A surveillance camera watches from across the property line, and they keep going anyway. This isn't an escape story. It's what it costs to stay.</p></div></div></div>
+      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/zafer_header.jpg') 68% center/cover no-repeat,linear-gradient(155deg,#0A1A2A,#1A3445)"></div><div class="char-overlay"><p class="char-ch">02 · Water · Muğla</p><h3 class="char-name">Zafer<br>Kızılkaya</h3><p class="char-loc">Gökova Bay, Muğla</p><p class="char-story">He dove for National Geographic, then left it to save one bay. To protect Gökova he talked 22 fishing cooperatives and 60 restaurants into eating the invading lionfish, five tons of it, off the reef and onto the plate. In 2023 the Goldman Prize went to a Turkish conservationist for the first time. He's still in the water.</p></div></div></div>
+      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/balabanaga_large.jpg') center/cover no-repeat,linear-gradient(155deg,#2A1A0A,#4A3418)"></div><div class="char-overlay"><p class="char-ch">03 · Food · Kastamonu</p><h3 class="char-name">Balabanağa<br>Çiftliği</h3><p class="char-loc">Daday, Kastamonu</p><p class="char-story">A farm older than most countries. For roughly 450 years one family has kept ancient siyez wheat in rotation, grinding it by hand at first light. They refuse to let it become a museum. Fix the roof, feed the soil, set the table for the volunteer who returns every spring. That's the work, and the clock is running.</p></div></div></div>
+      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/mus_arici_1.webp') center/cover no-repeat,linear-gradient(155deg,#1A0A28,#2A1A38)"></div><div class="char-overlay"><p class="char-ch">04 · Community · Muş</p><h3 class="char-name">Muş 100 Kadın<br>Arıcı</h3><p class="char-loc">Muş Plain, Eastern Anatolia</p><p class="char-story">100 hives, 100 women, one plain. In some of Anatolia's richest wildflower country, not a single woman had ever been recognised as a beekeeper in her own name. That changed this spring. Watch the first frame rise from a hive and you watch a power balance shift inside the house. Honey as the golden form of women's labour.</p></div></div></div>
+      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/cagan.jpg') center top/cover no-repeat,linear-gradient(155deg,#0A1A1A,#183535)"></div><div class="char-overlay"><p class="char-ch">05 · Systems · Kars</p><h3 class="char-name">Çağan<br>Şekercioğlu</h3><p class="char-loc">Sarıkamış, Kars</p><p class="char-story">He runs Türkiye's only working wildlife corridor on a salary split between two countries. When the state won't buy the land an animal needs to cross, he buys it himself. A wolf collared in 2019 still pings its location to a phone in Salt Lake City at 3 a.m. Snow, tracks, a satellite signal. Science with a fight on its hands.</p></div></div></div>
+      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/kelaynak.jpg') center/cover no-repeat,linear-gradient(155deg,#2A180A,#3A2A08)"></div><div class="char-overlay"><p class="char-ch">06 · Hope · Şanlıurfa</p><h3 class="char-name">Birecik<br>Kelaynak</h3><p class="char-loc">Birecik, Şanlıurfa</p><p class="char-story">Every February the doors open and a bird gone from the wild everywhere else on earth lifts off the Euphrates cliffs. Every June the doors close again. 277 birds in 2026. The keepers won't call it freedom and won't call it captivity. It's the only reason the bald ibis still exists at all. The camera here isn't beauty. It's a record, and a kind of mourning.</p></div></div></div>
     </div>
   </section>
 
@@ -506,7 +531,7 @@
       <div class="partner-item">
         <div class="pi-icon"><svg viewBox="0 0 48 48"><circle cx="18" cy="24" r="11"/><circle cx="30" cy="24" r="11"/></svg></div>
         <div class="pi-body">
-          <span class="pi-num">01 — Production</span>
+          <span class="pi-num">01 · Production</span>
           <h3 class="pi-title">Co-Produce</h3>
           <p class="pi-desc">Join Season One as a co-producer. Grant co-applications, institutional co-funding, and creative development partnerships for six new episodes in production.</p>
         </div>
@@ -515,16 +540,16 @@
       <div class="partner-item">
         <div class="pi-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="6"/><path d="M24 18V6M24 42V30M18 24H6M42 24H30M19.8 19.8 11.3 11.3M36.7 36.7 28.2 28.2M28.2 19.8 36.7 11.3M11.3 36.7 19.8 28.2"/></svg></div>
         <div class="pi-body">
-          <span class="pi-num">02 — Reach</span>
+          <span class="pi-num">02 · Reach</span>
           <h3 class="pi-title">Distribute</h3>
-          <p class="pi-desc">Festival licensing, theatrical and event screenings, educational curriculum integration. Four completed films available now — Season One from 2026.</p>
+          <p class="pi-desc">Festival licensing, theatrical and event screenings, educational curriculum integration. Four completed films available now. Season One from 2026.</p>
         </div>
         <span class="partner-num-ghost">02</span>
       </div>
       <div class="partner-item">
         <div class="pi-icon"><svg viewBox="0 0 48 48"><rect x="6" y="14" width="36" height="26" rx="2"/><path d="M6 21h36M14 14l-3 7M22 14l-3 7M30 14l-3 7M38 14l-3 7"/></svg></div>
         <div class="pi-body">
-          <span class="pi-num">03 — Craft</span>
+          <span class="pi-num">03 · Craft</span>
           <h3 class="pi-title">Commission<br>a Story</h3>
           <p class="pi-desc">Custom documentary production for impact campaigns, institutional communications, or foundation storytelling. We bring the field access, the characters, and the craft.</p>
         </div>
@@ -533,7 +558,7 @@
       <div class="partner-item">
         <div class="pi-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="10" r="5"/><circle cx="10" cy="34" r="5"/><circle cx="38" cy="34" r="5"/><path d="M21 14 12 30M27 14l9 16M14 34h20"/></svg></div>
         <div class="pi-body">
-          <span class="pi-num">04 — Research</span>
+          <span class="pi-num">04 · Research</span>
           <h3 class="pi-title">Access the<br>Network</h3>
           <p class="pi-desc">500+ mapped practitioners across seven regions of Türkiye. Four years of field research, relationships, and data. Open to researchers, NGOs, and policy teams.</p>
         </div>
@@ -542,9 +567,9 @@
       <div class="partner-item">
         <div class="pi-icon"><svg viewBox="0 0 48 48"><circle cx="19" cy="24" r="12"/><circle cx="29" cy="24" r="12"/></svg></div>
         <div class="pi-body">
-          <span class="pi-num">05 — Values</span>
+          <span class="pi-num">05 · Values</span>
           <h3 class="pi-title">Brand<br>Alignment</h3>
-          <p class="pi-desc">Ecological brand partnerships with genuine values fit. Not sponsorship placements — co-authorship of stories that matter to your audience and ours.</p>
+          <p class="pi-desc">Ecological brand partnerships with genuine values fit. Not sponsorship placements. Co-authorship of stories that matter to your audience and ours.</p>
         </div>
         <span class="partner-num-ghost">05</span>
       </div>
@@ -756,16 +781,30 @@ document.querySelectorAll('.si').forEach(function(item){
   });
 })();
 
-/* ── Cinematic scale-in for film backgrounds (touch parallax substitute) ─ */
+/* ── Film background parallax on touch (GPU transform, rAF-throttled) ─── */
 (function(){
-  if(!('IntersectionObserver' in window)){
-    document.querySelectorAll('.film-panel').forEach(function(p){p.classList.add('in-view');});
-    return;
+  if(!window.matchMedia('(hover:none),(pointer:coarse)').matches)return;
+  var items=[].slice.call(document.querySelectorAll('.film-panel')).map(function(p){
+    return {p:p,bg:p.querySelector('.film-bg')};
+  }).filter(function(o){return o.bg;});
+  if(!items.length)return;
+  var ticking=false;
+  function upd(){
+    ticking=false;
+    var vh=window.innerHeight;
+    for(var i=0;i<items.length;i++){
+      var r=items[i].p.getBoundingClientRect();
+      if(r.bottom<-40||r.top>vh+40)continue;
+      var center=r.top+r.height/2;
+      var d=(vh/2-center)/vh;                 // ~ -0.5..0.5 as panel crosses viewport
+      var y=Math.max(-10,Math.min(10,d*20));  // clamp ±10% (within .film-bg inset:-15%)
+      items[i].bg.style.transform='translate3d(0,'+y.toFixed(2)+'%,0) scale(1.16)';
+    }
   }
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in-view');});
-  },{threshold:0.18});
-  document.querySelectorAll('.film-panel').forEach(function(p){io.observe(p);});
+  function onS(){if(!ticking){ticking=true;requestAnimationFrame(upd);}}
+  window.addEventListener('scroll',onS,{passive:true});
+  window.addEventListener('resize',onS,{passive:true});
+  upd();
 })();
 
 /* ── Scroll reveal ────────────────────────────────────── */
