@@ -280,9 +280,38 @@
     #top-nav.scrolled{background:rgba(26,25,20,.92);border-color:var(--border);backdrop-filter:blur(8px);}
     .tn-logo{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;transition:color .2s;}
     .tn-logo:hover{color:var(--text);}
-    .tn-links{display:flex;gap:32px;}
-    .tn-links a{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;transition:color .2s;}
-    .tn-links a:hover{color:var(--text);}
+
+    /* Hamburger button */
+    .tn-menu-btn{display:flex;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;padding:4px;background:none;border:none;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+    .tn-menu-btn span{display:block;height:1.5px;background:var(--muted);transition:background .2s,transform .35s cubic-bezier(.22,1,.36,1),opacity .25s;}
+    .tn-menu-btn:hover span{background:var(--text);}
+    .tn-menu-btn.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+    .tn-menu-btn.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+    .tn-menu-btn.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+
+    /* Full-page menu overlay */
+    #menu-overlay{position:fixed;inset:0;z-index:900;display:flex;flex-direction:column;justify-content:center;padding:0 10vw;background:var(--bg);pointer-events:none;opacity:0;transition:opacity .45s cubic-bezier(.22,1,.36,1);}
+    #menu-overlay.open{opacity:1;pointer-events:all;}
+    .mo-close{position:absolute;top:14px;right:48px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:none;border:none;cursor:pointer;padding:8px;transition:color .2s;-webkit-tap-highlight-color:transparent;}
+    .mo-close:hover{color:var(--text);}
+    .mo-nav{list-style:none;padding:0;margin:0;}
+    .mo-nav li{overflow:hidden;}
+    .mo-nav li a{display:block;font-family:'Fraunces',serif;font-weight:900;font-size:clamp(52px,10vw,120px);line-height:.97;letter-spacing:-.035em;color:rgba(232,223,208,.55);text-decoration:none;padding:6px 0;transform:translateY(110%);transition:transform .55s cubic-bezier(.22,1,.36,1),color .3s;}
+    #menu-overlay.open .mo-nav li a{transform:translateY(0);}
+    .mo-nav li:nth-child(1) a{transition-delay:.04s;}
+    .mo-nav li:nth-child(2) a{transition-delay:.09s;}
+    .mo-nav li:nth-child(3) a{transition-delay:.14s;}
+    .mo-nav li:nth-child(4) a{transition-delay:.19s;}
+    .mo-nav li:nth-child(5) a{transition-delay:.24s;}
+    .mo-nav li:nth-child(6) a{transition-delay:.29s;}
+    .mo-nav li a:hover{color:var(--text);}
+    .mo-nav li a .mo-num{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:400;letter-spacing:.1em;color:var(--accent);vertical-align:super;margin-right:10px;font-size:12px;}
+    .mo-footer{position:absolute;bottom:40px;left:10vw;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;}
+    @media(max-width:600px){
+      #top-nav{left:0;padding:0 20px;}
+      .mo-close{right:20px;}
+      .mo-footer{left:20px;bottom:32px;}
+    }
 
     /* Hero CTAs */
     .h-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:32px;}
@@ -291,7 +320,6 @@
     .cta-secondary{font-family:'IBM Plex Mono',monospace;font-size:14px;letter-spacing:.1em;text-transform:uppercase;padding:12px 24px;border:1px solid var(--border);color:var(--muted);transition:color .2s,border-color .2s;}
     .cta-secondary:hover{color:var(--text);border-color:rgba(255,255,255,.2);}
     @media(max-width:600px){
-      #top-nav{left:0;padding:0 20px;}.tn-links{display:none;}
       .h-ctas{margin-bottom:20px;}.cta-primary,.cta-secondary{padding:10px 18px;font-size:13px;}
     }
   </style>
@@ -320,12 +348,25 @@
 
   <header id="top-nav">
     <a class="tn-logo" href="#">Regenerative Stories</a>
-    <nav class="tn-links">
-      <a href="#films">Films</a>
-      <a href="#next">Season Ahead</a>
-      <a href="#partnership">Partner With Us</a>
-    </nav>
+    <button class="tn-menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </header>
+
+  <div id="menu-overlay" role="dialog" aria-modal="true" aria-label="Site navigation">
+    <button class="mo-close" id="menu-close">✕ Close</button>
+    <nav>
+      <ul class="mo-nav">
+        <li><a href="#hero" class="mo-link"><span class="mo-num">01</span>Intro</a></li>
+        <li><a href="#scroll-scene" class="mo-link"><span class="mo-num">02</span>The Story</a></li>
+        <li><a href="#films" class="mo-link"><span class="mo-num">03</span>Films</a></li>
+        <li><a href="#impact" class="mo-link"><span class="mo-num">04</span>Impact</a></li>
+        <li><a href="#next" class="mo-link"><span class="mo-num">05</span>Season 1</a></li>
+        <li><a href="#contact" class="mo-link"><span class="mo-num">06</span>Contact</a></li>
+      </ul>
+    </nav>
+    <p class="mo-footer">Documentary Series · Türkiye · Since 2021</p>
+  </div>
 
   <section id="hero">
     <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="images/hero_poster.jpg">
@@ -611,6 +652,45 @@
   function tnScroll(){nav.classList.toggle('scrolled',window.scrollY>60);}
   window.addEventListener('scroll',tnScroll,{passive:true});
   tnScroll();
+})();
+
+/* ── Full-page menu ───────────────────────────────── */
+(function(){
+  var btn=document.getElementById('menu-btn');
+  var overlay=document.getElementById('menu-overlay');
+  var closeBtn=document.getElementById('menu-close');
+  var isOpen=false;
+
+  function openMenu(){
+    isOpen=true;
+    overlay.classList.add('open');
+    btn.classList.add('open');
+    btn.setAttribute('aria-expanded','true');
+    document.body.style.overflow='hidden';
+  }
+
+  function closeMenu(){
+    isOpen=false;
+    overlay.classList.remove('open');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  }
+
+  btn.addEventListener('click',function(){isOpen?closeMenu():openMenu();});
+  closeBtn.addEventListener('click',closeMenu);
+
+  overlay.addEventListener('click',function(e){
+    if(e.target===overlay)closeMenu();
+  });
+
+  document.querySelectorAll('.mo-link').forEach(function(a){
+    a.addEventListener('click',function(){closeMenu();});
+  });
+
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&isOpen)closeMenu();
+  });
 })();
 
 /* ── Stats count-up ───────────────────────────────── */
