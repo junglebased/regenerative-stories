@@ -116,7 +116,24 @@
     .film-play-btn::after{content:'';border-style:solid;border-width:12px 0 12px 22px;border-color:transparent transparent transparent rgba(232,223,208,.9);margin-left:5px;}
     .film-play-btn:hover{border-color:rgba(196,102,42,.9);background:rgba(196,102,42,.18);transform:translate(50%,-50%) scale(1.07);}
     @media(max-width:900px){.film-play-btn{right:50%;transform:translate(50%,-50%);top:38%;}}
-    @media(max-width:600px){.film-play-btn{width:68px;height:68px;top:35%;right:50%;}}
+    @media(max-width:600px){.film-play-btn{width:68px;height:68px;top:32%;right:50%;transition:opacity .3s;}}
+    .film-expand{display:none;}
+    /* Touch (phone + tablet): cinematic scale-in instead of fixed parallax — smooth, no scroll-seek jank */
+    @media(hover:none),(pointer:coarse){
+      .film-bg{transform:scale(1.12);transition:transform 1.2s cubic-bezier(.22,1,.36,1);will-change:transform;}
+      .film-panel.in-view .film-bg{transform:scale(1);}
+    }
+    /* Mobile: collapse dense film copy behind a tap toggle; hide play btn while reading */
+    @media(max-width:600px){
+      .film-expand{display:inline-flex;align-items:center;gap:9px;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--sage);background:rgba(10,9,7,.30);border:1px solid var(--border);padding:11px 16px;margin-bottom:18px;cursor:pointer;width:fit-content;-webkit-tap-highlight-color:transparent;}
+      .film-expand::after{content:'+';font-size:17px;line-height:1;margin-top:-1px;}
+      .film-panel.open .film-expand::after{content:'\2212';}
+      .film-body{max-height:0;opacity:0;overflow:hidden;margin-bottom:0;transition:max-height .5s cubic-bezier(.22,1,.36,1),opacity .35s ease,margin-bottom .3s;}
+      .film-panel.open .film-body{max-height:72vh;opacity:1;margin-bottom:22px;}
+      .film-notes{display:none;}
+      .film-panel.open .film-notes{display:block;}
+      .film-panel.open .film-play-btn{opacity:0;pointer-events:none;}
+    }
 
     /* Impact */
     #impact{padding:96px 48px 80px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
@@ -360,6 +377,7 @@
           <span class="badge b-rel">Released · COP 2023</span>
           <h2 class="film-title">Awakening of<br>the Soil</h2>
           <p class="film-sub">Edirne · Konya · Silivri · Eskişehir</p>
+          <button class="film-expand" aria-expanded="false"><span>Read the story</span></button>
           <p class="film-body">A skeptical Thracian grain farmer visits five zero-tillage practitioners across Turkey and discovers that his tractor is the main obstacle to his soil's recovery. Every field stop adds a layer: corn growing without irrigation, earthworms in a border a machine hasn't crossed in three years, soil dark enough to crumble between two fingers.</p>
           <p class="film-notes">China Int'l Documentary Festival · Guardian Foundation</p>
           <button class="film-cta" data-yt="GwbonuGbL9k">Watch Film</button>
@@ -378,6 +396,7 @@
           <span class="badge b-rel">Released · 13,000+ views</span>
           <h2 class="film-title">Tilya</h2>
           <p class="film-sub">Tilya Ekolojik Kooperatif · Istanbul</p>
+          <button class="film-expand" aria-expanded="false"><span>Read the story</span></button>
           <p class="film-body">Three people sign a working contract with the land and with each other on the edge of Istanbul — and Turkey's first ecological social cooperative begins. Solidarity as infrastructure. Food justice at urban scale. A cooperative built not from manifesto but from a working organism still alive.</p>
           <p class="film-notes">Postane Kültür ve Doğa</p>
           <button class="film-cta" data-yt="fP2MbUsGDoY">Watch Film</button>
@@ -396,6 +415,7 @@
           <span class="badge b-lock">Award Winner</span>
           <h2 class="film-title">Burhan</h2>
           <p class="film-sub">Burhan Eltan · Kaz Dağları</p>
+          <button class="film-expand" aria-expanded="false"><span>Read the story</span></button>
           <p class="film-body">A former Istanbul urbanite designs 30-square-meter regenerative micro-gardens in the Ida Mountains — proving exhausted soil can feed a family without a gram of synthetic input. The engine is BioTam Compost, applied to the soil food web like a vaccine. A structure that other people land inside and don't leave.</p>
           <p class="film-notes">Bornova Short Film Days · Dijital Detaylar Award 2026</p>
           <button class="film-cta" data-yt="0cRb0rBAsDI">Watch Film</button>
@@ -413,6 +433,7 @@
           <span class="badge b-edit">Coming Soon</span>
           <h2 class="film-title">Magical<br>Seeds</h2>
           <p class="film-sub">Aylin · Süleyman · Alp · Sinan — Küçük Yoncalı, Tekirdağ</p>
+          <button class="film-expand" aria-expanded="false"><span>Read the story</span></button>
           <p class="film-body">Four people walk out of the city onto one plot of leveled Thracian soil — and start with the mistake the film is built around: they bring in a machine and flatten the ground. "We didn't heal the land," Süleyman says, "we damaged it." The repair is the rest — mulch kept over bare earth, compost instead of the hoe, a salve pulled from wild herbs that settles Sinan's eczema, and one season that hands them five hundred tomato seedlings they give away for free. They name themselves <em>toprak bükücüler</em> — soil benders.</p>
           <p class="film-notes">Coming August 2026 · RS Episode 03</p>
           <span class="film-cta film-cta-muted">In Editing</span>
@@ -718,6 +739,33 @@ document.querySelectorAll('.si').forEach(function(item){
       if(!isOpen)card.classList.add('open');
     });
   });
+})();
+
+/* ── Film copy toggle (mobile) ────────────────────────── */
+(function(){
+  document.querySelectorAll('.film-expand').forEach(function(btn){
+    var label=btn.querySelector('span');
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      var panel=btn.closest('.film-panel');
+      if(!panel)return;
+      var open=panel.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open?'true':'false');
+      if(label)label.textContent=open?'Hide story':'Read the story';
+    });
+  });
+})();
+
+/* ── Cinematic scale-in for film backgrounds (touch parallax substitute) ─ */
+(function(){
+  if(!('IntersectionObserver' in window)){
+    document.querySelectorAll('.film-panel').forEach(function(p){p.classList.add('in-view');});
+    return;
+  }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in-view');});
+  },{threshold:0.18});
+  document.querySelectorAll('.film-panel').forEach(function(p){io.observe(p);});
 })();
 
 /* ── Scroll reveal ────────────────────────────────────── */
