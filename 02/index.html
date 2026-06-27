@@ -8,6 +8,7 @@
   <meta property="og:title" content="Regenerative Stories">
   <meta property="og:description" content="Stories from a healing world.">
   <meta property="og:url" content="https://regenerativestories.earth">
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,900&family=Spectral:wght@300;400&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -223,7 +224,10 @@
     .contact-link{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--sage);letter-spacing:.08em;text-transform:uppercase;transition:color .2s;}
     .contact-link:hover{color:var(--text);}
     .contact-meta{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--muted);letter-spacing:.05em;line-height:1.9;}
-    .footer-bar{display:flex;justify-content:space-between;align-items:center;margin-top:64px;padding-top:24px;border-top:1px solid var(--border);}
+    .footer-logo-section{display:flex;justify-content:center;padding:32px 0 24px;border-top:1px solid var(--border);}
+    .footer-logo{width:40px;height:40px;opacity:.85;transition:opacity .3s;}
+    .footer-logo:hover{opacity:1;}
+    .footer-bar{display:flex;justify-content:space-between;align-items:center;margin-top:0;padding-top:24px;border-top:1px solid var(--border);}
     .footer-copy{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.08em;}
 
     /* Mobile */
@@ -278,8 +282,9 @@
     /* Top nav */
     #top-nav{position:fixed;top:0;left:var(--rail);right:0;display:flex;justify-content:space-between;align-items:center;padding:0 48px;height:52px;background:transparent;border-bottom:1px solid transparent;transition:background .35s ease,border-color .35s ease;z-index:800;}
     #top-nav.scrolled{background:rgba(26,25,20,.92);border-color:var(--border);backdrop-filter:blur(8px);}
-    .tn-logo{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;transition:color .2s;}
+    .tn-logo{display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;transition:color .2s;}
     .tn-logo:hover{color:var(--text);}
+    .tn-logo-icon{width:28px;height:28px;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.2));}
 
     /* Hamburger button */
     .tn-menu-btn{display:flex;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;padding:4px;background:none;border:none;cursor:pointer;-webkit-tap-highlight-color:transparent;}
@@ -352,7 +357,7 @@
 <div class="main">
 
   <header id="top-nav">
-    <a class="tn-logo" href="#">Regenerative Stories</a>
+    <a class="tn-logo" href="#"><svg class="tn-logo-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="32" height="32" aria-hidden="true"><circle cx="100" cy="100" r="95" fill="#D4A574" opacity="0.9"/><circle cx="100" cy="100" r="95" fill="url(#soilGradient)" opacity="0.95"/><defs><radialGradient id="soilGradient" cx="50%" cy="70%"><stop offset="0%" style="stop-color:#E8D4B8;stop-opacity:1" /><stop offset="60%" style="stop-color:#D4A574;stop-opacity:1" /><stop offset="100%" style="stop-color:#8B6F47;stop-opacity:1" /></radialGradient><linearGradient id="leafGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#6BBD6F;stop-opacity:1" /><stop offset="100%" style="stop-color:#5AA45F;stop-opacity:1" /></linearGradient></defs><ellipse cx="100" cy="110" rx="75" ry="50" fill="#9D8B7E" opacity="0.4"/><path d="M 40 100 Q 35 115 40 125 Q 50 140 100 145 Q 150 140 160 125 Q 165 115 160 100" fill="#8B7355" opacity="0.3"/><line x1="100" y1="145" x2="100" y2="60" stroke="#7AA86B" stroke-width="3" stroke-linecap="round"/><ellipse cx="85" cy="85" rx="12" ry="22" fill="url(#leafGradient)" opacity="0.95" transform="rotate(-35 85 85)"/><line x1="100" y1="85" x2="85" y2="85" stroke="#6BBD6F" stroke-width="1.5" opacity="0.6"/><ellipse cx="115" cy="85" rx="12" ry="22" fill="url(#leafGradient)" opacity="0.95" transform="rotate(35 115 85)"/><line x1="100" y1="85" x2="115" y2="85" stroke="#6BBD6F" stroke-width="1.5" opacity="0.6"/><ellipse cx="100" cy="50" rx="10" ry="18" fill="url(#leafGradient)" opacity="0.95"/><ellipse cx="92" cy="55" rx="8" ry="16" fill="#5AA45F" opacity="0.8" transform="rotate(-25 92 55)"/><ellipse cx="108" cy="55" rx="8" ry="16" fill="#5AA45F" opacity="0.8" transform="rotate(25 108 55)"/><circle cx="100" cy="100" r="95" fill="none" stroke="#8B6F47" stroke-width="2" opacity="0.4"/></svg>Regenerative Stories</a>
     <button class="tn-menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -658,6 +663,9 @@
       <div class="contact-col">
         <p class="contact-meta">Produced by Junglebased Production.<br>Based in Turkey.<br>regenerativestories.earth</p>
       </div>
+    </div>
+    <div class="footer-logo-section">
+      <svg class="footer-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="40" height="40" aria-hidden="true"><circle cx="100" cy="100" r="95" fill="#D4A574" opacity="0.9"/><circle cx="100" cy="100" r="95" fill="url(#soilGradient2)" opacity="0.95"/><defs><radialGradient id="soilGradient2" cx="50%" cy="70%"><stop offset="0%" style="stop-color:#E8D4B8;stop-opacity:1" /><stop offset="60%" style="stop-color:#D4A574;stop-opacity:1" /><stop offset="100%" style="stop-color:#8B6F47;stop-opacity:1" /></radialGradient><linearGradient id="leafGradient2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#6BBD6F;stop-opacity:1" /><stop offset="100%" style="stop-color:#5AA45F;stop-opacity:1" /></linearGradient></defs><ellipse cx="100" cy="110" rx="75" ry="50" fill="#9D8B7E" opacity="0.4"/><path d="M 40 100 Q 35 115 40 125 Q 50 140 100 145 Q 150 140 160 125 Q 165 115 160 100" fill="#8B7355" opacity="0.3"/><line x1="100" y1="145" x2="100" y2="60" stroke="#7AA86B" stroke-width="3" stroke-linecap="round"/><ellipse cx="85" cy="85" rx="12" ry="22" fill="url(#leafGradient2)" opacity="0.95" transform="rotate(-35 85 85)"/><line x1="100" y1="85" x2="85" y2="85" stroke="#6BBD6F" stroke-width="1.5" opacity="0.6"/><ellipse cx="115" cy="85" rx="12" ry="22" fill="url(#leafGradient2)" opacity="0.95" transform="rotate(35 115 85)"/><line x1="100" y1="85" x2="115" y2="85" stroke="#6BBD6F" stroke-width="1.5" opacity="0.6"/><ellipse cx="100" cy="50" rx="10" ry="18" fill="url(#leafGradient2)" opacity="0.95"/><ellipse cx="92" cy="55" rx="8" ry="16" fill="#5AA45F" opacity="0.8" transform="rotate(-25 92 55)"/><ellipse cx="108" cy="55" rx="8" ry="16" fill="#5AA45F" opacity="0.8" transform="rotate(25 108 55)"/><circle cx="100" cy="100" r="95" fill="none" stroke="#8B6F47" stroke-width="2" opacity="0.4"/></svg>
     </div>
     <div class="footer-bar">
       <span class="footer-copy">&copy; 2026 Regenerative Stories &middot; Junglebased Production</span>
