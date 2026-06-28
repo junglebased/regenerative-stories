@@ -353,13 +353,16 @@
 
   <header id="top-nav">
     <a class="tn-logo" href="#">Regenerative Stories</a>
-    <div style="display:flex;gap:12px;align-items:center;">
-      <a href="index.html" class="lang-switch" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;">EN</a>
-      <a href="index_tr.html" class="lang-switch active" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);text-decoration:none;">TR</a>
+    <div style="display:flex;gap:16px;align-items:center;">
+      <div style="display:flex;gap:8px;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">
+        <a href="index.html" style="color:var(--text);text-decoration:none;font-weight:700;">EN</a>
+        <span style="color:var(--muted);">·</span>
+        <a href="index_tr.html" style="color:var(--muted);text-decoration:none;">TR</a>
+      </div>
+      <button class="tn-menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <button class="tn-menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
   </header>
 
   <div id="menu-overlay" role="dialog" aria-modal="true" aria-label="Site navigation">

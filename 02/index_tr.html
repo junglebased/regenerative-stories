@@ -347,13 +347,16 @@
 
   <header id="top-nav">
     <a class="tn-logo" href="#">Regenerative Stories</a>
-    <div style="display:flex;gap:12px;align-items:center;">
-      <a href="index.html" class="lang-switch" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;">EN</a>
-      <a href="index_tr.html" class="lang-switch active" style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);text-decoration:none;">TR</a>
+    <div style="display:flex;gap:16px;align-items:center;">
+      <div style="display:flex;gap:8px;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;">
+        <a href="index.html" style="color:var(--muted);text-decoration:none;">EN</a>
+        <span style="color:var(--muted);">·</span>
+        <a href="index_tr.html" style="color:var(--text);text-decoration:none;font-weight:700;">TR</a>
+      </div>
+      <button class="tn-menu-btn" id="menu-btn" aria-label="Menüyü aç" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <button class="tn-menu-btn" id="menu-btn" aria-label="Menüyü aç" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
   </header>
 
   <div id="menu-overlay" role="dialog" aria-modal="true" aria-label="Site navigasyonu">
@@ -393,22 +396,22 @@
       <source src="hero_loop.mp4" type="video/mp4">
     </video>
     <p class="h-eye">Belgesel Serisi · Türkiye · 2021'den Beri</p>
-    <span class="h-title h-solid">YENİLEYİCİ</span>
-    <span class="h-title h-outline">HİKAYELER</span>
+    <span class="h-title h-solid">REGENERATIVE</span>
+    <span class="h-title h-outline">STORIES</span>
     <div class="h-rule"></div>
-    <p class="h-tag">Yenileme Türkiye'de zaten başlamış.<br>Dünyanın çoğu bunu hiç adlandırılmış görmedi.</p>
+    <p class="h-tag">Yenilenme Türkiye'de zaten yaşanıyor.<br>Dünyanın büyük çoğunluğu bunu henüz görmedi.</p>
     <p class="h-arc">Toprak · Su · Gıda · Toplum · Sistemler · Umut</p>
     <div class="h-ctas">
       <a href="#films" class="cta-primary">Filmleri İzle</a>
-      <a href="#partnership" class="cta-secondary">Bizimle Ortaklaş</a>
+      <a href="#partnership" class="cta-secondary">Ortaklık Kur</a>
     </div>
     <div class="h-stats">
-      <div class="stat"><span class="stat-n" data-target="4" data-suffix="">4</span><span class="stat-l">Film tamamlandı</span></div>
-      <div class="stat"><span class="stat-n" data-target="400" data-suffix="K<sup>+</sup>">400K<sup>+</sup></span><span class="stat-l">Toplam görüntülemeler</span></div>
-      <div class="stat"><span class="stat-n" data-target="500" data-suffix="">500</span><span class="stat-l">Uygulayıcılar haritalandı</span></div>
+      <div class="stat"><span class="stat-n" data-target="4" data-suffix="">4</span><span class="stat-l">Tamamlanan film</span></div>
+      <div class="stat"><span class="stat-n" data-target="400" data-suffix="K<sup>+</sup>">400K<sup>+</sup></span><span class="stat-l">Toplam izlenme</span></div>
+      <div class="stat"><span class="stat-n" data-target="500" data-suffix="">500</span><span class="stat-l">Haritalanan uygulayıcı</span></div>
       <div class="stat"><span class="stat-n" data-target="4" data-suffix="<sup>+</sup>">4<sup>+</sup></span><span class="stat-l">Yıl saha araştırması</span></div>
     </div>
-    <div class="scroll-cue" aria-hidden="true">Altı kişiyi tanı</div>
+    <div class="scroll-cue" aria-hidden="true">Altıyla tanış</div>
   </section>
 
   <section id="scroll-scene">
@@ -425,16 +428,16 @@
       <div class="beat" id="b2">
         <p class="beat-tag">02 · Ölçek</p>
         <h2 class="beat-hl">500<br>uygulayıcı.</h2>
-        <p class="beat-sub">2021'den beri 7 bölge harita haline getirildi.</p>
+        <p class="beat-sub">2021'den bu yana 7 bölgede haritalandı.</p>
       </div>
       <div class="beat" id="b3">
         <p class="beat-tag">03 · Etki</p>
         <h2 class="beat-hl">120,000<br>izleyici.</h2>
-        <p class="beat-sub">Dört yıl saha araştırması.</p>
+        <p class="beat-sub">Dört yıllık saha araştırması.</p>
       </div>
       <div class="beat" id="b4">
-        <p class="beat-tag">04 · Sonrası</p>
-        <h2 class="beat-hl">Sezon Bir.<br>Yapım aşamasında.</h2>
+        <p class="beat-tag">04 · Sıradaki</p>
+        <h2 class="beat-hl">Birinci Sezon.<br>Çekimler devam ediyor.</h2>
         <p class="beat-sub">Altı ekosistem. Altı karakter. Bir ülke.</p>
       </div>
     </div>
@@ -442,8 +445,8 @@
 
   <section id="films-intro" class="reveal">
     <p class="fi-eye">Filmler</p>
-    <h2 class="fi-title">Dört film.<br>Bir iyileşen ülke.</h2>
-    <p class="fi-lead">Her biri, ayrılmak yerine kalmayı ve onarımı seçen bir insanla başlar. Sırasıyla izleyin veya sizi çeken hikayeye atlayın.</p>
+    <h2 class="fi-title">Dört film.<br>Onarılan bir ülke.</h2>
+    <p class="fi-lead">Her biri, gitmek yerine kalmayı ve onarmayı seçen bir insanla başlar. Sırayla izleyin ya da sizi çeken hikayeye doğrudan atlayın.</p>
     <div class="fi-meta">
       <span>4 film</span>
       <span>2021-2025</span>
@@ -464,7 +467,7 @@
           <h2 class="film-title">Toprağın<br>Uyanışı</h2>
           <p class="film-sub">Edirne · Konya · Silivri · Eskişehir</p>
           <button class="film-expand" aria-expanded="false"><span>Hikayeyi oku</span></button>
-          <p class="film-body">Şüpheci bir Trakyalı tahıl çiftçi, Türkiye çevresindeki beş sıfır işleme uygulayıcısını ziyaret eder ve traktörünün toprağının iyileşmesine ana engel olduğunu keşfeder. Her tarlada durağı bir tabaka ekler: sulama olmadan yetiştirilen mısır, üç yıldır bir makinenin geçmediği bir sınırdaki solucanlar, iki parmak arasında toz olacak kadar koyu toprak.</p>
+          <p class="film-body">Şüpheci bir Trakyalı tahıl çiftçisi, Türkiye'nin dört bir yanındaki beş sıfır sürüm uygulayıcısını ziyaret eder ve traktörünün toprağının iyileşmesinin önündeki en büyük engel olduğunu keşfeder. Her tarla durağı yeni bir katman ekler: susuz yetişen mısır, üç yıldır makine geçmeyen bir sınır boyunca solucanlar, parmaklar arasında ufalanacak kadar koyu bir toprak.</p>
           <p class="film-notes">Çin Uluslararası Belgesel Festivali · Guardian Vakfı</p>
           <button class="film-cta" data-yt="GwbonuGbL9k">Filmi İzle</button>
         </div>
@@ -483,7 +486,7 @@
           <h2 class="film-title">Tilya</h2>
           <p class="film-sub">Tilya Ekolojik Kooperatif · İstanbul</p>
           <button class="film-expand" aria-expanded="false"><span>Hikayeyi oku</span></button>
-          <p class="film-body">Üç kişi İstanbul kenarında toprağa ve birbirlerine bir iş sözleşmesi imzalar. Türkiye'nin ilk ekolojik sosyal kooperatifi başlar. Dayanışma altyapı olarak. Şehir ölçeğinde gıda adalet. Manifesto değil, yaşayan bir organizmadan inşa edilen kooperatif.</p>
+          <p class="film-body">Üç kişi İstanbul'un kenarında toprağa ve birbirlerine karşı bir iş sözleşmesi imzalar. Türkiye'nin ilk ekolojik sosyal kooperatifi böyle doğar. Dayanışma, altyapı olarak. Kentsel ölçekte gıda adaleti. Manifestodan değil, hâlâ yaşayan bir organizmadan örülmüş bir kooperatif.</p>
           <p class="film-notes">Postane Kültür ve Doğa</p>
           <button class="film-cta" data-yt="fP2MbUsGDoY">Filmi İzle</button>
         </div>
@@ -502,7 +505,7 @@
           <h2 class="film-title">Burhan</h2>
           <p class="film-sub">Burhan Eltan · Kaz Dağları</p>
           <button class="film-expand" aria-expanded="false"><span>Hikayeyi oku</span></button>
-          <p class="film-body">Eski bir İstanbul şehirli, İda Dağları'nda 30 metrekarelik yenilenebilir mikro bahçeler tasarlar ve tükenmiş toprağın sentetik girdi olmadan bir aileyi besleyebileceğini kanıtlar. Motor BioTam Kompost'tur, toprak gıda ağına aşı gibi uygulanır. Diğer insanların içine girdikleri ve gitmeyeceği bir yapı.</p>
+          <p class="film-body">Eski bir İstanbullu, Kaz Dağları'nda 30 metrekarelik yenileyici mikro bahçeler tasarlar ve yorgun toprağın tek bir gram sentetik girdi kullanmadan bir aileyi besleyebileceğini kanıtlar. Motorun adı BioTam Kompost; toprak gıda ağına aşı gibi uygulanır. İnsanların bir kez girip bir daha çıkmak istemediği bir yapı.</p>
           <p class="film-notes">Bornova Kısa Film Günleri · Dijital Detaylar Ödülü 2026</p>
           <button class="film-cta" data-yt="0cRb0rBAsDI">Filmi İzle</button>
         </div>
@@ -520,8 +523,8 @@
           <h2 class="film-title">Büyülü<br>Tohumlar</h2>
           <p class="film-sub">Aylin · Süleyman · Alp · Sinan · Küçük Yoncalı, Tekirdağ</p>
           <button class="film-expand" aria-expanded="false"><span>Hikayeyi oku</span></button>
-          <p class="film-body">Dört kişi şehirden çıkarak düz bir Trakya toprağına adım atarlar ve filmin yapı taşı olan hatasıyla başlarlar: bir makine getirir ve toprağı düzleştirirler. "Toprağı iyileştirmedik," Süleyman der, "zarar verdik." Onarım geri kalanıdır: çıplak toprak üzerinde tutulan mulç, kazma yerine kompost, Sinan'ın ekzemasını hafifletecek yabani otlardan çıkarılmış merhem ve onlara beş yüz domates fidesi yapan bir sezon, bunları bedava dağıtırlar. Kendilerine <em>toprak bükücüler</em> adını verirler.</p>
-          <p class="film-notes">Ağustos 2026 Gelişini · RS Bölüm 03</p>
+          <p class="film-body">Dört kişi şehirden çıkıp Trakya'nın düz bir tarlasına adım atar ve filmin üzerine kurulu hatayla başlarlar: makine getirip toprağı düzeltirler. "Toprağı iyileştirmedik," diyor Süleyman, "zarar verdik." Onarım, geriye kalandır: çıplak toprağın üstünde bırakılan malç, kazma yerine kompost, Sinan'ın egzemasını yatıştıran yabani ot merhemi ve onlara beş yüz domates fidesi kazandıran — hepsini bedavaya dağıttıkları — tek bir sezon. Kendilerini <em>toprak bükücüler</em> olarak adlandırıyorlar.</p>
+          <p class="film-notes">Ağustos 2026 · RS Bölüm 03</p>
           <span class="film-cta film-cta-muted">Yapım Aşamasında</span>
         </div>
         <span class="film-num">04</span>
@@ -531,13 +534,13 @@
   </section>
 
   <section id="impact" class="reveal">
-    <p class="impact-eye">Sahada Kanıt</p>
-    <h2 class="impact-hl">Dört yıl. Yedi bölge. Bir canlı arşiv.</h2>
-    <p class="impact-lead">Bir pitch ile başlamadık. Bir traktörle başladık bir tarlada, bir balıkçı kooperatifi, bir arıcının ilk kovası. Dört yıl ve yedi bölge sonra, görüntüler bu toprağı kimin ve nasıl onarıp bozmadığının bir haritası.</p>
+    <p class="impact-eye">Sahadan Kanıt</p>
+    <h2 class="impact-hl">Dört yıl. Yedi bölge. Canlı bir arşiv.</h2>
+    <p class="impact-lead">Bir pitch ile başlamadık. Bir tarlada traktörle, bir balıkçı kooperatifiyle, bir arıcının ilk kovasıyla başladık. Dört yıl ve yedi bölge sonra, görüntüler bu toprağı kimin ve nasıl onardığının haritasına dönüştü.</p>
 
     <div class="impact-stat-strip">
       <div class="impact-cell"><span class="i-num" data-target="500">500</span><span class="i-lbl">Uygulayıcılar<br>haritalandı</span></div>
-      <div class="impact-cell"><span class="i-num" data-target="120">120</span><span class="i-lbl">Karakterler derinlemesine<br>araştırıldı</span></div>
+      <div class="impact-cell"><span class="i-num" data-target="120">120</span><span class="i-lbl">Derinlemesine araştırılan<br>karakter</span></div>
       <div class="impact-cell"><span class="i-num" data-target="4">4<sup>+</sup></span><span class="i-lbl">Yıl<br>sahada</span></div>
       <div class="impact-cell"><span class="i-num" data-target="7">7</span><span class="i-lbl">Türkiye<br>bölgesi</span></div>
     </div>
@@ -545,7 +548,7 @@
     <div class="impact-reach">
       <div class="reach-item"><span class="r-num" data-target="4">4</span><span class="r-lbl">Film yayınlandı</span></div>
       <div class="reach-item"><span class="r-num">400K<sup>+</sup></span><span class="r-lbl">Platform-arası görüntülemeler</span></div>
-      <div class="reach-item"><span class="r-num">~500</span><span class="r-lbl">İklim karar alıcıları COP 2023</span></div>
+      <div class="reach-item"><span class="r-num">~500</span><span class="r-lbl">COP 2023'te iklim karar alıcısı</span></div>
       <div class="reach-item"><span class="r-num" data-target="4950" data-format="comma">4,950</span><span class="r-lbl">Toplam abone</span></div>
     </div>
 
@@ -555,64 +558,64 @@
         <span class="tag-val">En İyi İklim Filmi, Çin Uluslararası Belgesel Festivali 2023 · Ödül Sahibi, Dijital Detaylar 2025</span>
       </div>
       <div class="tag-row">
-        <span class="tag-key">Desteklenen</span>
+        <span class="tag-key">Destekleyenler</span>
         <span class="tag-val">Impact Hub İstanbul · ABD Büyükelçiliği Türkiye · Postane · News Lab Türkiye · Kültür ve Turizm Bakanlığı</span>
       </div>
       <div class="tag-row">
-        <span class="tag-key">Bursu Programları</span>
-        <span class="tag-val">Guardian Vakfı Medya Liderliği · Kundura Doc Lab (Sundance-bağlı) · Fabrikhas Mentorluğu</span>
+        <span class="tag-key">Burslar</span>
+        <span class="tag-val">Guardian Vakfı Medya Liderliği · Kundura Doc Lab (Sundance bağlantılı) · Fabrikhas Mentörlük Programı</span>
       </div>
     </div>
 
-    <p class="impact-bridge">Arşiv kanıttır. Sonraki altı hikaye orası gidiş yoludur.</p>
+    <p class="impact-bridge">Arşiv kanıttır. Sonraki altı hikaye, bunun nereye gittiğini gösteriyor.</p>
   </section>
 
   <section id="next" class="reveal">
     <div class="next-hd">
       <div>
         <p class="sec-eye">Sezon Bir · Yapım Aşamasında</p>
-        <h2 class="sec-title">Yakında Gelecekler.</h2>
+        <h2 class="sec-title">Sırada Bunlar Var.</h2>
       </div>
-      <p class="next-note">Şu anda NatGeo × İklim Taahhüdü Global Hikaye Anlatıcıları Fonu başvurusu yapılıyor.</p>
+      <p class="next-note">NatGeo × İklim Taahhüdü Küresel Hikaye Anlatıcıları Fonu'na başvuruyoruz.</p>
     </div>
     <div class="char-grid">
-      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/tugba_bantmag.jpg') center top/cover no-repeat,linear-gradient(155deg,#1A2A1A,#3A4A2A)"></div><div class="char-overlay"><p class="char-ch">01 · Toprak · Antalya</p><h3 class="char-name">Tuğba Günal &amp;<br>Birhan Erkutlu</h3><p class="char-loc">Alakır Vadisi, Antalya</p><p class="char-story">İki mimar İstanbul'dan giderek 22 yıl boyunca tek bir Akdeniz akışını 14 hidroelektrik barajdan korumak için çalıştılar. Evleri topraktan yapılı. Ön hatları bir su borusu. Mülkün karşı tarafından bir gözetleme kamerası izler ve yine de devam ederler. Bu kaçış hikayesi değildir. Kalmak neye mal olur onu gösterir.</p></div></div></div>
-      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/zafer_header.jpg') 68% center/cover no-repeat,linear-gradient(155deg,#0A1A2A,#1A3445)"></div><div class="char-overlay"><p class="char-ch">02 · Su · Muğla</p><h3 class="char-name">Zafer<br>Kızılkaya</h3><p class="char-loc">Gökova Körfezi, Muğla</p><p class="char-story">National Geographic için daldı, sonra bir körfezi kurtarmak için bıraktı. Gökova'yı korumak için 22 balıkçı kooperatifi ve 60 restoranı istilacı aslan balığını yemeye ikna etti, beş ton onu resif kurtararak tabağa geçirdi. 2023'te Goldman Ödülü ilk kez bir Türk çevreci için verildi. Hala sudadır.</p></div></div></div>
-      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/balabanaga_large.jpg') center/cover no-repeat,linear-gradient(155deg,#2A1A0A,#4A3418)"></div><div class="char-overlay"><p class="char-ch">03 · Gıda · Kastamonu</p><h3 class="char-name">Balabanağa<br>Çiftliği</h3><p class="char-loc">Daday, Kastamonu</p><p class="char-story">Çoğu ülkeden daha yaşlı bir çiftlik. Kabaca 450 yıldir bir aile eski siyez buğdayını dönüşüm içinde tutmuş, şafakta çelik taş dönerek onu öğütmüş. Müze olmaktan kaçınan çiftlik sahipleri. Çatı onar, toprağı besle, bahar her senesinde dönüp gelen gönüllüyü masaya otur. Bu iştir ve saat işler.</p></div></div></div>
-      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/mus_arici_1.webp') center/cover no-repeat,linear-gradient(155deg,#1A0A28,#2A1A38)"></div><div class="char-overlay"><p class="char-ch">04 · Toplum · Muş</p><h3 class="char-name">Muş 100 Kadın<br>Arıcı</h3><p class="char-loc">Muş Ovası, Doğu Anadolu</p><p class="char-story">100 kovan, 100 kadın, bir ova. Anadolu'nun en zengin yabani çiçek ülkesinde, hiçbir kadın kendi adıyla arıcı olarak tanınmamıştı. Bu bahar değişti. Bir kovandan ilk çerçeveyi kalkımı izleyin ve bir ev içinde güç dengesinin kaymasını izleyin. Balın altın biçimi, kadınların emeğidir.</p></div></div></div>
-      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/cagan.jpg') center top/cover no-repeat,linear-gradient(155deg,#0A1A1A,#183535)"></div><div class="char-overlay"><p class="char-ch">05 · Sistemler · Kars</p><h3 class="char-name">Çağan<br>Şekercioğlu</h3><p class="char-loc">Sarıkamış, Kars</p><p class="char-story">Türkiye'nin tek çalışan yaşam alanı koridorunu iki ülke arasında bölünmüş bir maaşla yönetir. Devlet bir hayvanın geçmesi gereken toprağı almayınca, kendisi alır. 2019'de yakalanan bir kurt, Salt Lake City'deki bir telefona 3 sabah saat yer belirtisini gönderir. Kar, izler, uydu sinyali. Mücadelesi olan bilim.</p></div></div></div>
-      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/kelaynak.jpg') center/cover no-repeat,linear-gradient(155deg,#2A180A,#3A2A08)"></div><div class="char-overlay"><p class="char-ch">06 · Umut · Şanlıurfa</p><h3 class="char-name">Birecik<br>Kelaynak</h3><p class="char-loc">Birecik, Şanlıurfa</p><p class="char-story">Her Şubat kapılar açılır ve dünyanın başka hiç yerinde yabanda kalmayan bir kuş Fırat kayalıklarından kalkar. Her Haziran kapılar yeniden kapanır. 2026'da 277 kuş. Koruyucular bunu özgürlük demezler ve bunu tutsaklık demezler. İt kuşunun hiç varolmasının tek sebebidir. Kamera burada güzellik değildir. Kayıttır, ve bir tür yasıdır.</p></div></div></div>
+      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/tugba_bantmag.jpg') center top/cover no-repeat,linear-gradient(155deg,#1A2A1A,#3A4A2A)"></div><div class="char-overlay"><p class="char-ch">01 · Toprak · Antalya</p><h3 class="char-name">Tuğba Günal &amp;<br>Birhan Erkutlu</h3><p class="char-loc">Alakır Vadisi, Antalya</p><p class="char-story">İki mimar İstanbul'u bırakıp 22 yıl boyunca tek bir Akdeniz deresini 14 hidroelektrik barajdan korumak için savaştı. Evleri topraktan yapılmış. Cephe hattı bir su borusu. Arazinin karşısından bir güvenlik kamerası onları izliyor, yine de devam ediyorlar. Bu bir kaçış hikayesi değil. Kalmak ne demektir, onu gösteriyor.</p></div></div></div>
+      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/zafer_header.jpg') 68% center/cover no-repeat,linear-gradient(155deg,#0A1A2A,#1A3445)"></div><div class="char-overlay"><p class="char-ch">02 · Su · Muğla</p><h3 class="char-name">Zafer<br>Kızılkaya</h3><p class="char-loc">Gökova Körfezi, Muğla</p><p class="char-story">National Geographic için dalış yaptı, sonra bir körfezi kurtarmak için bıraktı. Gökova'yı korumak adına 22 balıkçı kooperatifini ve 60 restoranı istilacı aslan balığını yemeye ikna etti — beş tonu resiften çıkarıp tabağa taşıdı. 2023'te Goldman Ödülü ilk kez bir Türk çevreciye verildi. Hâlâ sudadır.</p></div></div></div>
+      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/balabanaga_large.jpg') center/cover no-repeat,linear-gradient(155deg,#2A1A0A,#4A3418)"></div><div class="char-overlay"><p class="char-ch">03 · Gıda · Kastamonu</p><h3 class="char-name">Balabanağa<br>Çiftliği</h3><p class="char-loc">Daday, Kastamonu</p><p class="char-story">Pek çok ülkeden daha eski bir çiftlik. Yaklaşık 450 yıldır bir aile kadim siyez buğdayını ekim döngüsünde tutmuş, her şafakta elle öğütmüş. Sahipleri onu müzeye dönüştürmeyi reddediyor. Çatıyı onar, toprağı besle, her bahar dönen gönüllüyü sofrana al. İş bu — ve saat işliyor.</p></div></div></div>
+      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/mus_arici_1.webp') center/cover no-repeat,linear-gradient(155deg,#1A0A28,#2A1A38)"></div><div class="char-overlay"><p class="char-ch">04 · Toplum · Muş</p><h3 class="char-name">Muş 100 Kadın<br>Arıcı</h3><p class="char-loc">Muş Ovası, Doğu Anadolu</p><p class="char-story">100 kovan, 100 kadın, bir ova. Anadolu'nun en zengin yabani çiçek coğrafyasında, hiçbir kadın kendi adına arıcı olarak kayıtlı değildi. Bu bahar değişti. Bir kovandan ilk çerçeveyi kaldıranı izleyin, bir evin içinde güç dengesinin nasıl kaydığını görün. Bal, kadın emeğinin altın biçimidir.</p></div></div></div>
+      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/cagan.jpg') center top/cover no-repeat,linear-gradient(155deg,#0A1A1A,#183535)"></div><div class="char-overlay"><p class="char-ch">05 · Sistemler · Kars</p><h3 class="char-name">Çağan<br>Şekercioğlu</h3><p class="char-loc">Sarıkamış, Kars</p><p class="char-story">Türkiye'nin tek işleyen yaban hayatı koridorunu iki ülkeye bölünmüş bir maaşla yönetiyor. Devlet bir hayvanın geçmesi gereken araziyi almayınca kendisi alıyor. 2019'da takılan bir kurt, sabahın üçünde Salt Lake City'deki bir telefona konum bildirmeye devam ediyor. Kar, izler, uydu sinyali. Kavgası olan bir bilim.</p></div></div></div>
+      <div class="char-card"><div class="char-portrait"><div class="char-bg" style="background:url('images/kelaynak.jpg') center/cover no-repeat,linear-gradient(155deg,#2A180A,#3A2A08)"></div><div class="char-overlay"><p class="char-ch">06 · Umut · Şanlıurfa</p><h3 class="char-name">Birecik<br>Kelaynak</h3><p class="char-loc">Birecik, Şanlıurfa</p><p class="char-story">Her Şubat kapılar açılır ve dünyanın başka hiçbir yerinde doğada yaşamayan bir kuş Fırat'ın kayalıklarından havalanır. Her Haziran kapılar yeniden kapanır. 2026'da 277 kuş. Bakıcılar ne özgürlük der ne de tutsaklık. Bu, kelaynak'ın hâlâ var olmasının tek nedenidir. Buradaki kamera güzelliği değil, bir kaydı — ve bir tür yasını tutuyor.</p></div></div></div>
     </div>
   </section>
 
   <section id="partnership" class="reveal">
-    <p class="sec-eye">Bizimle Ortaklaş</p>
-    <h2 class="sec-title">İş birliğine açık.</h2>
+    <p class="sec-eye">Ortaklık</p>
+    <h2 class="sec-title">İş birliğine açığız.</h2>
     <div class="partner-list">
       <div class="partner-item">
         <div class="pi-icon"><svg viewBox="0 0 48 48"><circle cx="18" cy="24" r="11"/><circle cx="30" cy="24" r="11"/></svg></div>
         <div class="pi-body">
           <span class="pi-num">01 · Yapım</span>
-          <h3 class="pi-title">Ortak Yapım</h3>
-          <p class="pi-desc">Sezon Bir'de ortak yapımcı olarak katılın. Hibe ortaklaş başvuruları, kurumsal ortak finansmanı ve yapımda olan altı yeni bölüm için yaratıcı geliştirme ortaklıkları.</p>
+          <h3 class="pi-title">Birlikte Üret</h3>
+          <p class="pi-desc">Sezon Bir'e ortak yapımcı olarak katılın. Ortak hibe başvuruları, kurumsal eş finansman ve çekimleri süren altı yeni bölüm için yaratıcı geliştirme ortaklıkları.</p>
         </div>
         <span class="partner-num-ghost">01</span>
       </div>
       <div class="partner-item">
         <div class="pi-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="6"/><path d="M24 18V6M24 42V30M18 24H6M42 24H30M19.8 19.8 11.3 11.3M36.7 36.7 28.2 28.2M28.2 19.8 36.7 11.3M11.3 36.7 19.8 28.2"/></svg></div>
         <div class="pi-body">
-          <span class="pi-num">02 · Ulaş</span>
+          <span class="pi-num">02 · Dağıtım</span>
           <h3 class="pi-title">Dağıt</h3>
-          <p class="pi-desc">Festival lisanslama, tiyatral ve etkinlik gösterimleri, eğitim müfredatı entegrasyonu. Dört tamamlanmış film şimdi mevcut. Sezon Bir 2026'dan.</p>
+          <p class="pi-desc">Festival lisanslaması, sinema ve etkinlik gösterimleri, eğitim müfredatı entegrasyonu. Dört tamamlanmış film şu an erişilebilir. Sezon Bir 2026'dan itibaren.</p>
         </div>
         <span class="partner-num-ghost">02</span>
       </div>
       <div class="partner-item">
         <div class="pi-icon"><svg viewBox="0 0 48 48"><rect x="6" y="14" width="36" height="26" rx="2"/><path d="M6 21h36M14 14l-3 7M22 14l-3 7M30 14l-3 7M38 14l-3 7"/></svg></div>
         <div class="pi-body">
-          <span class="pi-num">03 · El Sanatı</span>
+          <span class="pi-num">03 · Prodüksiyon</span>
           <h3 class="pi-title">Bir Hikaye<br>Sipariş Et</h3>
-          <p class="pi-desc">Etki kampanyaları, kurumsal iletişim veya vakıf hikaye anlatımı için özel belgesel yapımı. Saha erişimini, karakterleri ve el sanatlarını getiririz.</p>
+          <p class="pi-desc">Etki kampanyaları, kurumsal iletişim ve vakıf hikâye anlatımı için özel belgesel yapımı. Biz saha erişimini, karakterleri ve ustalığı getiriyoruz.</p>
         </div>
         <span class="partner-num-ghost">03</span>
       </div>
@@ -620,8 +623,8 @@
         <div class="pi-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="10" r="5"/><circle cx="10" cy="34" r="5"/><circle cx="38" cy="34" r="5"/><path d="M21 14 12 30M27 14l9 16M14 34h20"/></svg></div>
         <div class="pi-body">
           <span class="pi-num">04 · Araştırma</span>
-          <h3 class="pi-title">Ağa Eriş<br>Sağla</h3>
-          <p class="pi-desc">Türkiye'nin yedi bölgesinde 500+ haritalanmış uygulayıcı. Dört yıl saha araştırması, ilişkiler ve veriler. Araştırmacılar, NGO'lar ve politika ekiplerine açık.</p>
+          <h3 class="pi-title">Ağa<br>Erişin</h3>
+          <p class="pi-desc">Türkiye'nin yedi bölgesinde haritalanan 500'den fazla uygulayıcı. Dört yıllık saha araştırması, ilişkiler ve veri. Araştırmacılara, STK'lara ve politika ekiplerine açık.</p>
         </div>
         <span class="partner-num-ghost">04</span>
       </div>
@@ -629,24 +632,24 @@
         <div class="pi-icon"><svg viewBox="0 0 48 48"><circle cx="19" cy="24" r="12"/><circle cx="29" cy="24" r="12"/></svg></div>
         <div class="pi-body">
           <span class="pi-num">05 · Değerler</span>
-          <h3 class="pi-title">Marka<br>Uyum</h3>
-          <p class="pi-desc">Gerçek değerler uyumu ile ekolojik marka ortaklıkları. Sponsorluk yerleştirilmeleri değildir. Sizin ve bizim izleyicilerinize önemli hikaye ortaya yazarlığı.</p>
+          <h3 class="pi-title">Marka<br>Uyumu</h3>
+          <p class="pi-desc">Gerçek değer uyumuyla ekolojik marka ortaklıkları. Sponsorluk yerleşimi değil. Sizin ve bizim izleyicimiz için birlikte anlam taşıyan hikâyelerin ortak yazarlığı.</p>
         </div>
         <span class="partner-num-ghost">05</span>
       </div>
     </div>
     <div class="partner-email-row">
-      <span class="partner-email-label">Buradan başla →</span>
+      <span class="partner-email-label">Buradan başlayın →</span>
       <a href="mailto:partners@regenerativestories.earth" class="partner-email">partners@regenerativestories.earth</a>
     </div>
   </section>
 
   <section id="contact" class="reveal">
     <p class="sec-eye">İletişim</p>
-    <h2 class="sec-title">Bizimle iletişim kur.</h2>
+    <h2 class="sec-title">Bize ulaşın.</h2>
     <div class="contact-inner">
       <div class="contact-col">
-        <p style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px;">İşin peşini takip et</p>
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px;">Çalışmalarımızı takip edin</p>
         <div class="contact-links">
           <a href="https://www.youtube.com/@regenerative_stories" target="_blank" rel="noopener" class="contact-link">YouTube</a>
           <a href="https://www.instagram.com/junglebased/" target="_blank" rel="noopener" class="contact-link">Instagram</a>
@@ -654,11 +657,11 @@
         </div>
       </div>
       <div class="contact-col">
-        <p class="contact-meta">Junglebased Production tarafından yapıldı.<br>Türkiye'de merkezli.<br>regenerativestories.earth</p>
+        <p class="contact-meta">Junglebased Production yapımı.<br>Türkiye merkezli.<br>regenerativestories.earth</p>
       </div>
     </div>
     <div class="footer-bar">
-      <span class="footer-copy">&copy; 2026 Yenileyici Hikayeler · Junglebased Production</span>
+      <span class="footer-copy">&copy; 2026 Regenerative Stories · Junglebased Production</span>
       <span class="footer-copy">regenerativestories.earth</span>
     </div>
   </section>
