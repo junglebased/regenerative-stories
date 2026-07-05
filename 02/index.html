@@ -374,6 +374,27 @@
     @media(max-width:600px){
       .h-ctas{margin-bottom:20px;}.cta-primary,.cta-secondary{padding:10px 18px;font-size:13px;}
     }
+    /* Credibility — timeline + logo strip */
+    #credibility{padding:80px 48px 72px;border-top:1px solid var(--border);}
+    .cred-hd{margin-bottom:40px;}
+    .tl-list{margin-bottom:64px;}
+    .tl-row{display:grid;grid-template-columns:72px 1fr;gap:0 32px;border-top:1px solid var(--border);padding:18px 0;}
+    .tl-row:last-child{border-bottom:1px solid var(--border);}
+    .tl-yr{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);padding-top:2px;}
+    .tl-row.tl-now .tl-yr{color:var(--sage);}
+    .tl-org{font-family:'Spectral',serif;font-size:16px;color:var(--text);margin-bottom:4px;font-weight:300;line-height:1.4;}
+    .tl-what{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:.04em;line-height:1.7;}
+    .logo-strip-wrap{border-top:1px solid var(--border);padding-top:48px;}
+    .logo-strip-lbl{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:36px;}
+    .logo-strip{display:flex;flex-wrap:wrap;align-items:center;gap:28px 48px;}
+    .logo-item{display:flex;align-items:center;justify-content:center;height:36px;}
+    .logo-item img{max-height:36px;max-width:140px;object-fit:contain;filter:brightness(0) invert(1);opacity:.3;transition:opacity .3s,filter .3s;}
+    .logo-item:hover img{opacity:.85;filter:none;}
+    .logo-txt-item{height:auto;}
+    .logo-txt-name{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,223,208,.28);line-height:1.6;transition:color .3s;}
+    .logo-txt-item:hover .logo-txt-name{color:var(--text);}
+    @media(max-width:900px){#credibility{padding:64px 24px 56px;}.tl-row{grid-template-columns:56px 1fr;gap:0 20px;}}
+    @media(max-width:600px){#credibility{padding:56px 20px;}.logo-strip{gap:24px 32px;}.logo-item img{max-width:100px;max-height:28px;}.tl-org{font-size:15px;}}
   </style>
 </head>
 <body>
@@ -621,6 +642,85 @@
     </div>
 
     <p class="impact-bridge">The archive is the proof. The next six stories are where it goes.</p>
+  </section>
+
+  <section id="credibility" class="reveal">
+    <div class="cred-hd">
+      <p class="sec-eye">2020 — Present</p>
+      <h2 class="sec-title">How We Got Here.</h2>
+    </div>
+
+    <div class="tl-list">
+      <div class="tl-row">
+        <span class="tl-yr">2020</span>
+        <div class="tl-body">
+          <p class="tl-org">Impact Hub Istanbul × U.S. Mission to Türkiye</p>
+          <p class="tl-what">Project Zoom grant · <em>Awakening of the Soil</em> — first production</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-yr">2023</span>
+        <div class="tl-body">
+          <p class="tl-org">News Lab Turkey × The Guardian Foundation</p>
+          <p class="tl-what">Media Incubator · Regenerative Stories enters development · 400K+ views reached</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-yr">2024</span>
+        <div class="tl-body">
+          <p class="tl-org">The Guardian Foundation — Media Leadership, London</p>
+          <p class="tl-what">Selected for News Lab fellowship · one week, international cohort</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-yr">2024</span>
+        <div class="tl-body">
+          <p class="tl-org">Kundura Doc Lab — Sundance-affiliated</p>
+          <p class="tl-what">Selected for development lab · mentored by Bruni Burres &amp; Nino Kirtadze</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <span class="tl-yr">2024</span>
+        <div class="tl-body">
+          <p class="tl-org">T.C. Kültür ve Turizm Bakanlığı + Postane + FabriKHAS</p>
+          <p class="tl-what">Three grants &amp; fellowships · <em>Tilya</em> + <em>Onarım Hikayeleri</em> produced</p>
+        </div>
+      </div>
+      <div class="tl-row tl-now">
+        <span class="tl-yr">Now</span>
+        <div class="tl-body">
+          <p class="tl-org">Season One · In Development</p>
+          <p class="tl-what">Applying to NatGeo × Climate Pledge Global Storytellers Fund</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="logo-strip-wrap">
+      <p class="logo-strip-lbl">Supported &amp; Selected By</p>
+      <div class="logo-strip">
+        <div class="logo-item">
+          <img src="images/logos/kultur_bakanligi.svg" alt="T.C. Kültür ve Turizm Bakanlığı" loading="lazy">
+        </div>
+        <div class="logo-item">
+          <img src="images/logos/gni.svg" alt="Google News Initiative · News Lab Turkey" loading="lazy">
+        </div>
+        <div class="logo-item logo-txt-item">
+          <span class="logo-txt-name">The Guardian<br>Foundation</span>
+        </div>
+        <div class="logo-item">
+          <img src="images/logos/impact_hub.png" alt="Impact Hub Istanbul" loading="lazy">
+        </div>
+        <div class="logo-item logo-txt-item">
+          <span class="logo-txt-name">Kundura<br>Doc Lab</span>
+        </div>
+        <div class="logo-item">
+          <img src="images/logos/postane.svg" alt="Postane" loading="lazy">
+        </div>
+        <div class="logo-item">
+          <img src="images/logos/khas.png" alt="FabriKHAS · Kadir Has Üniversitesi" loading="lazy">
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="next" class="reveal">
