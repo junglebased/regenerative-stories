@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Regenerative Stories — Marka &amp; Sponsorluk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,900&family=Spectral:ital,wght@0,300;0,400;1,400&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#1A1914; --bg2:#231E18; --sand:#EDE8DF; --text:#E8DFD0;
+  --accent:#C4662A; --sage:#7A8C70; --muted:#4E5E47;
+  --border:rgba(255,255,255,0.09); --mono:'IBM Plex Mono',monospace;
+}
+@page{size:1280px 720px;margin:0}
+body{background:#000;font-family:'Spectral',serif;font-weight:300;color:var(--text)}
+.slide{width:1280px;height:720px;position:relative;overflow:hidden;background:var(--bg);page-break-after:always;break-after:page}
+.stripe{position:absolute;top:0;left:0;right:0;height:5px;z-index:9;
+  background:linear-gradient(to right,#4E5E47,#7A8C70,#C4662A,#E8DFD0,#7A8C70,#1A3445)}
+.rail{position:absolute;top:0;left:0;bottom:0;width:44px;border-right:1px solid var(--border);z-index:8}
+.rail span{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-90deg);
+  font-family:var(--mono);font-size:9px;letter-spacing:.32em;color:var(--muted);white-space:nowrap;text-transform:uppercase}
+.pageno{position:absolute;bottom:24px;right:36px;font-family:var(--mono);font-size:10px;color:var(--muted);z-index:9}
+.foot{position:absolute;bottom:24px;left:80px;font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--muted);text-transform:uppercase;z-index:9}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+h1,h2{font-family:'Fraunces',serif;font-weight:900;color:var(--sand);line-height:1.02}
+.body{font-size:17px;line-height:1.6;color:var(--text)}
+em{font-family:'Spectral',serif;font-style:italic;color:var(--sage)}
+.statgrid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border)}
+.stat{padding:22px 18px;border-right:1px solid var(--border)}
+.stat:last-child{border-right:none}
+.stat .n{font-family:'Fraunces',serif;font-weight:900;font-size:44px;color:var(--sand)}
+.stat .n sup{font-size:22px;color:var(--accent)}
+.stat .l{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:6px;line-height:1.5}
+.content{position:absolute;left:80px;right:64px;top:0;bottom:0;z-index:5}
+img.bleed{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,25,20,.96) 8%,rgba(26,25,20,.45) 45%,rgba(26,25,20,.25))}
+</style>
+</head>
+<body>
+
+<!-- 01 · KAPAK -->
+<div class="slide">
+  <img class="bleed" src="assets/cover.jpg" alt="">
+  <div class="scrim"></div>
+  <div class="stripe"></div>
+  <div style="position:absolute;top:34px;left:44px;font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--text);text-transform:uppercase;z-index:6">Marka &amp; Sponsorluk · Türkiye · 2026</div>
+  <div style="position:absolute;top:34px;right:44px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--text);z-index:6">JUNGLEBASED STUDIOS</div>
+  <div style="position:absolute;left:44px;bottom:120px;z-index:6;max-width:940px">
+    <h1 style="font-size:104px;letter-spacing:-.01em">Regenerative<br>Stories</h1>
+    <p style="font-family:'Spectral',serif;font-size:21px;color:var(--sand);margin-top:18px;font-style:italic">Türkiye için marka-güvenli onarım hikâyeleri — karakter odaklı belgesel içerik.</p>
+  </div>
+  <div style="position:absolute;left:44px;bottom:36px;right:44px;z-index:6;border-top:1px solid rgba(255,255,255,.2);padding-top:14px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:rgba(232,223,208,.75);text-transform:uppercase">
+    <span>Berkay Tunalı · Belgesel Yönetmeni · Çanakkale</span>
+    <span>T.C. Kültür ve Turizm Bakanlığı · The Guardian Foundation · Kundura Doc Lab tarafından seçildi &amp; desteklendi</span>
+  </div>
+</div>
+
+<!-- 02 · MARKA PROBLEMİ -->
+<div class="slide">
+  <div class="stripe"></div><div class="rail"><span>Sorun</span></div>
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center">
+    <div class="label">01 · Marka Problemi</div>
+    <h2 style="font-size:54px;max-width:920px">ESG raporunuz var.<br><em style="color:var(--accent);font-style:italic">Hikâyeniz yok.</em></h2>
+    <p class="body" style="max-width:780px;margin-top:26px">İklim iletişimi iki uca sıkıştı: kıyamet anlatısı ya da greenwash şüphesi. İzleyici ikisine de kapalı. Kurumsal sürdürülebilirlik içeriği reklama benzediği anda etkisini yitiriyor — sahada gerçek dönüşüm yaratan insanların hikâyeleri ise çekilmeden kayboluyor.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;margin-top:44px;max-width:1080px">
+      <div style="border-top:2px solid var(--accent);padding-top:18px">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase;margin-bottom:10px">Greenwash Riski</div>
+        <p class="body" style="font-size:15.5px">Doğrulanmamış iddialar marka itibarını tehdit ediyor. Sürdürülebilirlik iletişimi artık hukuki ve itibari bir risk alanı.</p>
+      </div>
+      <div style="border-top:2px solid var(--sage);padding-top:18px">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--sage);text-transform:uppercase;margin-bottom:10px">Reklam Körlüğü</div>
+        <p class="body" style="font-size:15.5px">Marka odaklı CSR videoları izlenmiyor. İzleyici, hikâyenin merkezinde logo değil insan görmek istiyor.</p>
+      </div>
+      <div style="border-top:2px solid var(--sand);padding-top:18px">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--sand);text-transform:uppercase;margin-bottom:10px">Görünmeyen Saha</div>
+        <p class="body" style="font-size:15.5px">Türkiye'nin onarıcı pratisyenleri sahada çalışıyor — ama hikâyeleri uluslararası üretim standardında hiç çekilmedi.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot">Regenerative Stories — Marka &amp; Sponsorluk</div><div class="pageno">02 / 13</div>
+</div>
+
+<!-- 03 · NEDEN ŞİMDİ -->
+<div class="slide">
+  <div class="stripe"></div><div class="rail"><span>Neden Şimdi</span></div>
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center">
+    <div class="label">02 · Neden Şimdi</div>
+    <h2 style="font-size:54px;max-width:960px">Model Türkiye'de kanıtlı.<br>Sahne 2026'da kuruluyor.</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;margin-top:44px;max-width:1080px">
+      <div style="border-top:2px solid var(--accent);padding-top:18px">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase;margin-bottom:10px">Migros · Tarım Bizim Geleceğimiz</div>
+        <p class="body" style="font-size:15.5px">3,5 yılda 100 bin kilometre saha. Tarım hikâyeciliği Türkiye'de büyük marka yatırımına dönüştü — model doğrulandı.</p>
+      </div>
+      <div style="border-top:2px solid var(--sage);padding-top:18px">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--sage);text-transform:uppercase;margin-bottom:10px">Eti × WWF</div>
+        <p class="body" style="font-size:15.5px">2008'den beri süren doğa iş birliği. Uzun vadeli marka × doğa ortaklığının Türkiye'de 16 yıllık emsali var.</p>
+      </div>
+      <div style="border-top:2px solid var(--sand);padding-top:18px">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--sand);text-transform:uppercase;margin-bottom:10px">COP31 · Antalya</div>
+        <p class="body" style="font-size:15.5px">Kasım 2026'da küresel iklim gündemi Türkiye'de toplanıyor. Sürdürülebilirlik iletişiminde görünürlüğün en yüksek olacağı pencere.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot">Regenerative Stories — Marka &amp; Sponsorluk</div><div class="pageno">03 / 13</div>
+</div>
+
+<!-- 04 · ÇÖZÜM / TESLİM PAKETİ -->
+<div class="slide">
+  <div class="stripe"></div><div class="rail"><span>Çözüm</span></div>
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center">
+    <div class="label">03 · Çözüm</div>
+    <h2 style="font-size:50px;max-width:980px">Karakter odaklı belgesel.<br><em style="color:var(--accent)">Marka değil, güvenilirlik ön planda.</em></h2>
+    <div style="display:flex;gap:0;margin-top:40px;border:1px solid var(--border)">
+      <div style="flex:1.2;padding:28px;border-right:1px solid var(--border)">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--sage);text-transform:uppercase;margin-bottom:16px">Her Proje Teslim Eder</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;font-size:14.5px;line-height:1.5">
+          <div><strong style="color:var(--sand);font-family:var(--mono);font-size:11px;letter-spacing:.12em">UZUN FİLM</strong><br>1 × 10–12 dk YouTube belgeseli — kahraman, pratik, ölçülebilir sonuç</div>
+          <div><strong style="color:var(--sand);font-family:var(--mono);font-size:11px;letter-spacing:.12em">SHORTS</strong><br>3–5 × dikey (9:16) kampanya editi — kanca, pratik, sonuç</div>
+          <div><strong style="color:var(--sand);font-family:var(--mono);font-size:11px;letter-spacing:.12em">FOTOĞRAF</strong><br>10–15 sinematik kare + basın kiti</div>
+          <div><strong style="color:var(--sand);font-family:var(--mono);font-size:11px;letter-spacing:.12em">CASE STUDY</strong><br>Yazılı vaka analizi — kurumsal raporlama &amp; iletişime hazır</div>
+        </div>
+      </div>
+      <div style="flex:.8;display:grid;grid-template-rows:1fr 1fr;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border)">
+          <div class="stat" style="border-right:1px solid var(--border)"><div class="n">8–12</div><div class="l">Hafta içinde teslim</div></div>
+          <div class="stat" style="border-right:none"><div class="n">2</div><div class="l">Bağımsız kaynakla iddia doğrulama</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr">
+          <div class="stat" style="border-right:1px solid var(--border)"><div class="n">7</div><div class="l">Bölgede saha erişimi</div></div>
+          <div class="stat" style="border-right:none"><div class="n">EN</div><div class="l">Altyazı — uluslararası kullanıma hazır</div></div>
+        </div>
+      </div>
+    </div>
+    <p class="body" style="margin-top:24px;font-size:15px;color:var(--sage);font-style:italic;max-width:960px">Format: verite + sinematik anlatı. Dış ses yok — toprağın emanetçisi kendi hikâyesini anlatır. Marka, hikâyeyi mümkün kılan ortak olarak konumlanır.</p>
+  </div>
+  <div class="foot">Regenerative Stories — Marka &amp; Sponsorluk</div><div class="pageno">04 / 13</div>
+</div>
+
+<!-- 05 · MARKA GÜVENLİĞİ -->
+<div class="slide">
+  <div class="stripe"></div><div class="rail"><span>Marka Güvenliği</span></div>
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center">
+    <div class="label">04 · Marka Güvenliği</div>
+    <h2 style="font-size:50px;max-width:940px">Greenwash filtresi,<br><em style="color:var(--sage)">tasarımın içinde.</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:40px;border:1px solid var(--border)">
+      <div style="padding:24px;border-right:1px solid var(--border)">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">1 · KARAKTER MERKEZLİ</div>
+        <p style="font-size:14px;line-height:1.6">Hikâyenin kahramanı marka değil, sahadaki insan. İzleyici güveni bu kuraldan doğar.</p>
+      </div>
+      <div style="padding:24px;border-right:1px solid var(--border)">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">2 · DOĞRULANMIŞ İDDİA</div>
+        <p style="font-size:14px;line-height:1.6">Her onarım iddiası en az iki bağımsız kaynakla teyit edilir. Claim-review kontrol listesi her projede uygulanır.</p>
+      </div>
+      <div style="padding:24px;border-right:1px solid var(--border)">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">3 · ÖLÇÜLÜ GÖRÜNÜRLÜK</div>
+        <p style="font-size:14px;line-height:1.6">Marka görünürlüğü giriş/kapanış ve CTA ile sınırlı tutulur. İçerik reklama dönüşmez — bu yüzden izlenir.</p>
+      </div>
+      <div style="padding:24px">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">4 · DİL DİSİPLİNİ</div>
+        <p style="font-size:14px;line-height:1.6">Kanıtlanamayan bilimsel iddia dili kullanılmaz. Gösterilen her sonuç, sahada ölçülen sonuçtur.</p>
+      </div>
+    </div>
+    <p class="body" style="margin-top:28px;max-width:1020px;font-size:15.5px">Sonuç: markanız, üçüncü taraf bir belgesel anlatısının güvenilirliğiyle sahada durur — kendi reklamının şüphesiyle değil.</p>
+  </div>
+  <div class="foot">Regenerative Stories — Marka &amp; Sponsorluk</div><div class="pageno">05 / 13</div>
+</div>
+
+<!-- 06 · TRACK RECORD -->
+<div class="slide">
+  <div class="stripe"></div>
+  <div style="position:absolute;top:44px;left:44px;z-index:6">
+    <div class="label">05 · Referans İşler</div>
+    <h2 style="font-size:40px">Dört film. İzleyici gerçek.</h2>
+  </div>
+  <div style="position:absolute;top:170px;left:44px;right:44px;bottom:64px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;z-index:5">
+    <div style="position:relative;overflow:hidden">
+      <img src="assets/awakening.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,25,20,.95) 20%,rgba(26,25,20,.1) 60%)"></div>
+      <div style="position:absolute;bottom:16px;left:16px;right:12px">
+        <div style="font-family:var(--mono);font-size:9px;color:var(--accent);letter-spacing:.14em;margin-bottom:6px">2021 · 42 DK · YAYINDA</div>
+        <div style="font-family:'Fraunces',serif;font-weight:900;font-size:21px;color:var(--sand)">Toprağın<br>Uyanışı</div>
+        <div style="font-family:var(--mono);font-size:8.5px;color:var(--text);margin-top:8px;line-height:1.6">EN İYİ İKLİM FİLMİ<br>CHINESE INT'L DOC FESTIVAL 2023</div>
+      </div>
+    </div>
+    <div style="position:relative;overflow:hidden">
+      <img src="assets/tilya.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,25,20,.95) 20%,rgba(26,25,20,.1) 60%)"></div>
+      <div style="position:absolute;bottom:16px;left:16px;right:12px">
+        <div style="font-family:var(--mono);font-size:9px;color:var(--accent);letter-spacing:.14em;margin-bottom:6px">2024 · 16 DK · 13.000+ İZLENME</div>
+        <div style="font-family:'Fraunces',serif;font-weight:900;font-size:21px;color:var(--sand)">Tilya</div>
+        <div style="font-family:var(--mono);font-size:8.5px;color:var(--text);margin-top:8px;line-height:1.6">ÖDÜL SAHİBİ<br>DİJİTAL DETAYLAR 2025</div>
+      </div>
+    </div>
+    <div style="position:relative;overflow:hidden">
+      <img src="assets/burhan.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,25,20,.95) 20%,rgba(26,25,20,.1) 60%)"></div>
+      <div style="position:absolute;bottom:16px;left:16px;right:12px">
+        <div style="font-family:var(--mono);font-size:9px;color:var(--accent);letter-spacing:.14em;margin-bottom:6px">2026 · YAYINDA</div>
+        <div style="font-family:'Fraunces',serif;font-weight:900;font-size:21px;color:var(--sand)">Burhan</div>
+        <div style="font-family:var(--mono);font-size:8.5px;color:var(--text);margin-top:8px;line-height:1.6">BORNOVA KISA FİLM GÜNLERİ<br>DİJİTAL DETAYLAR ÖDÜLÜ 2026</div>
+      </div>
+    </div>
+    <div style="position:relative;overflow:hidden">
+      <img src="assets/magical.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(26,25,20,.95) 20%,rgba(26,25,20,.1) 60%)"></div>
+      <div style="position:absolute;bottom:16px;left:16px;right:12px">
+        <div style="font-family:var(--mono);font-size:9px;color:var(--accent);letter-spacing:.14em;margin-bottom:6px">2026 · YAYINDA</div>
+        <div style="font-family:'Fraunces',serif;font-weight:900;font-size:21px;color:var(--sand)">Sihirli<br>Tohumlar</div>
+        <div style="font-family:var(--mono);font-size:8.5px;color:var(--text);margin-top:8px;line-height:1.6">MAGICAL SEEDS<br>BÖLÜM 02</div>
+      </div>
+    </div>
+  </div>
+  <div class="foot" style="left:44px">400K+ toplam izlenme · 4.950 abone · COP 2023'te ~500 iklim karar vericisine ulaşıldı</div><div class="pageno">06 / 13</div>
+</div>
+
+<!-- 07 · KARAKTER HAVUZU / HARİTA -->
+<div class="slide">
+  <div class="stripe"></div><div class="rail"><span>Arşiv</span></div>
+  <div class="content">
+    <div style="padding-top:56px">
+      <div class="label">06 · Karakter Havuzu</div>
+      <h2 style="font-size:44px;max-width:1000px">Dört yıl sahada. 500 pratisyen haritalandı.<br><em style="color:var(--sage)">Bu erişimi hiçbir dış prodüksiyon kopyalayamaz.</em></h2>
+    </div>
+    <svg viewBox="0 0 800 300" style="position:absolute;left:20px;top:250px;width:760px;height:285px">
+      <path d="M24,32 L100,36 L140,52 L220,52 L300,20 L380,16 L440,48 L500,64 L580,44 L716,52 L772,112 L752,184 L700,216 L588,224 L508,232 L444,248 L424,268 L412,248 L364,232 L292,260 L208,252 L144,244 L104,232 L72,220 L60,180 L88,164 L48,144 L68,108 L28,100 L48,72 L24,56 Z"
+        fill="rgba(122,140,112,0.10)" stroke="#4E5E47" stroke-width="1.5"/>
+      <g font-family="IBM Plex Mono" font-size="10" fill="#7A8C70">
+        <circle cx="120" cy="70" r="5" fill="#C4662A"/><text x="112" y="56" fill="#E8DFD0">MARMARA</text>
+        <circle cx="85" cy="160" r="5" fill="#C4662A"/><text x="66" y="185" fill="#E8DFD0">EGE</text>
+        <circle cx="240" cy="230" r="5" fill="#C4662A"/><text x="205" y="252" fill="#E8DFD0">AKDENİZ</text>
+        <circle cx="330" cy="140" r="5" fill="#C4662A"/><text x="285" y="122" fill="#E8DFD0">İÇ ANADOLU</text>
+        <circle cx="420" cy="60" r="5" fill="#C4662A"/><text x="392" y="90" fill="#E8DFD0">KARADENİZ</text>
+        <circle cx="620" cy="120" r="5" fill="#C4662A"/><text x="560" y="104" fill="#E8DFD0">DOĞU ANADOLU</text>
+        <circle cx="540" cy="200" r="5" fill="#C4662A"/><text x="495" y="222" fill="#E8DFD0">GÜNEYDOĞU</text>
+      </g>
+    </svg>
+    <div style="position:absolute;right:0;top:270px;width:330px">
+      <div class="stat" style="border:none;border-left:2px solid var(--accent);padding:14px 20px"><div class="n">500</div><div class="l">Arşivdeki pratisyen</div></div>
+      <div class="stat" style="border:none;border-left:2px solid var(--sage);padding:14px 20px"><div class="n">120</div><div class="l">Derin araştırılmış — çekime hazır karakter</div></div>
+      <div class="stat" style="border:none;border-left:2px solid var(--sand);padding:14px 20px"><div class="n">4<sup>+</sup></div><div class="l">Yıl saha araştırması</div></div>
+      <div class="stat" style="border:none;border-left:2px solid var(--muted);padding:14px 20px"><div class="n">%40</div><div class="l">Daha kısa ön prodüksiyon — casting hazır</div></div>
+    </div>
+  </div>
+  <div class="foot">Regenerative Stories — Marka &amp; Sponsorluk</div><div class="pageno">07 / 13</div>
+</div>
+
+<!-- 08 · ÜRETİM MODELİ + EKİP -->
+<div class="slide">
+  <div class="stripe"></div><div class="rail"><span>Üretim</span></div>
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center">
+    <div class="label">07 · Üretim Modeli</div>
+    <h2 style="font-size:48px;max-width:960px">Yalın üretim.<br>Bütçe ekrana yansır.</h2>
+    <div style="display:flex;gap:0;margin-top:38px;border:1px solid var(--border)">
+      <div style="flex:1;padding:24px;border-right:1px solid var(--border)">
+        <div style="font-family:'Fraunces',serif;font-weight:900;font-size:20px;color:var(--sand)">Berkay Tunalı</div>
+        <div style="font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--accent);margin:6px 0 10px">KURUCU · YÖNETMEN · GÖRÜNTÜ</div>
+        <p style="font-size:13.5px;line-height:1.55">Junglebased Studios. 10+ yıl profesyonel video, 4 yılı Anadolu'nun onarıcı topluluklarında sahada.</p>
+      </div>
+      <div style="flex:1;padding:24px;border-right:1px solid var(--border)">
+        <div style="font-family:'Fraunces',serif;font-weight:900;font-size:20px;color:var(--sand)">Gökhan</div>
+        <div style="font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--accent);margin:6px 0 10px">GÖRÜNTÜ · KURGU</div>
+        <p style="font-size:13.5px;line-height:1.55">B-roll uzmanı ve tüm sezon boyunca saha prodüksiyon ortağı.</p>
+      </div>
+      <div style="flex:1;padding:24px;border-right:1px solid var(--border)">
+        <div style="font-family:'Fraunces',serif;font-weight:900;font-size:20px;color:var(--sand)">İrem Bilir</div>
+        <div style="font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--accent);margin:6px 0 10px">YAPIMCI · PARTNERSHIPS LEAD</div>
+        <p style="font-size:13.5px;line-height:1.55">İklim ekosistemi köprüleri, marka ve NGO ortaklık görüşmeleri, süreç yönetimi.</p>
+      </div>
+      <div style="flex:1;padding:24px">
+        <div style="font-family:'Fraunces',serif;font-weight:900;font-size:20px;color:var(--sand)">Utku Güven</div>
+        <div style="font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--accent);margin:6px 0 10px">ERİŞİM &amp; DAĞITIM · İLETİŞİM</div>
+        <p style="font-size:13.5px;line-height:1.55">COP31 erişim ve akreditasyon hattı, dağıtım iş birlikleri, yan içerik stratejisi.</p>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:26px">
+      <p style="font-size:14px;line-height:1.55"><strong style="color:var(--sage);font-family:var(--mono);font-size:10px;letter-spacing:.16em">EKİPMAN —</strong> Mevcut kamera ve ses kiti hazır. Yol haritasında: campervan tabanlı mobil saha üssü.</p>
+      <p style="font-size:14px;line-height:1.55"><strong style="color:var(--sage);font-family:var(--mono);font-size:10px;letter-spacing:.16em">ERİŞİM RİSKİ —</strong> 120 çekime hazır karakter: erişim aksarsa yedek hazır. Mevsimsel planlama içeride.</p>
+      <p style="font-size:14px;line-height:1.55"><strong style="color:var(--sage);font-family:var(--mono);font-size:10px;letter-spacing:.16em">STK AĞI —</strong> Slow Food Türkiye · Doğa Derneği · TEMA — dağıtım ve karakter topluluğu erişimi.</p>
+    </div>
+  </div>
+  <div class="foot">Regenerative Stories — Marka &amp; Sponsorluk</div><div class="pageno">08 / 13</div>
+</div>
+
+<!-- 09 · ETKİ -->
+<div class="slide">
+  <div class="stripe"></div><div class="rail"><span>Etki</span></div>
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center">
+    <div class="label">08 · Etki &amp; Ölçüm</div>
+    <h2 style="font-size:48px;max-width:980px">Her aşamada ölçülebilir —<br>raporlamaya hazır.</h2>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:40px;border:1px solid var(--border)">
+      <div style="padding:24px;border-right:1px solid var(--border);background:rgba(122,140,112,.06)">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">1 · FARKINDALIK</div>
+        <div style="font-family:'Fraunces',serif;font-weight:900;font-size:30px;color:var(--sand)">50–150K</div>
+        <div class="l" style="font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--muted);margin-top:6px;text-transform:uppercase">Film başına izlenme — kanal geçmişine dayalı</div>
+      </div>
+      <div style="padding:24px;border-right:1px solid var(--border)">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">2 · ETKİLEŞİM</div>
+        <div style="font-family:'Fraunces',serif;font-weight:900;font-size:30px;color:var(--sand)">5 dk<sup style="font-size:15px;color:var(--accent)">+</sup></div>
+        <div class="l" style="font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--muted);margin-top:6px;text-transform:uppercase">Ortalama izlenme süresi · film başına 100+ yorum</div>
+      </div>
+      <div style="padding:24px;border-right:1px solid var(--border)">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">3 · AKSİYON</div>
+        <div style="font-family:'Fraunces',serif;font-weight:900;font-size:30px;color:var(--sand)">500<sup style="font-size:15px;color:var(--accent)">+</sup></div>
+        <div class="l" style="font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--muted);margin-top:6px;text-transform:uppercase">Film başına marka &amp; kampanya sayfasına tık</div>
+      </div>
+      <div style="padding:24px">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--accent);margin-bottom:12px">4 · SADAKAT</div>
+        <div style="font-family:'Fraunces',serif;font-weight:900;font-size:30px;color:var(--sand)">+200</div>
+        <div class="l" style="font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--muted);margin-top:6px;text-transform:uppercase">Film başına yeni abone</div>
+      </div>
+    </div>
+    <p class="body" style="margin-top:28px;max-width:1020px;font-size:15.5px">Her proje, kurumsal iletişim ve sürdürülebilirlik raporlarında doğrudan kullanılabilir bir etki &amp; öğrenme notu ile teslim edilir. Metrikler markanın kampanya hedeflerine göre birlikte kalibre edilir.</p>
+  </div>
+  <div class="foot">Regenerative Stories — Marka &amp; Sponsorluk</div><div class="pageno">09 / 13</div>
+</div>
+
+<!-- 10 · DAĞITIM -->
+<div class="slide">
+  <div class="stripe"></div><div class="rail"><span>Dağıtım</span></div>
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center">
+    <div class="label">09 · Dağıtım</div>
+    <h2 style="font-size:48px">İki katman. Kanıtlanmış kanal.</h2>
+    <div style="display:flex;gap:36px;margin-top:36px">
+      <div style="flex:1.3">
+        <div style="border-left:2px solid var(--accent);padding:4px 0 4px 20px;margin-bottom:24px">
+          <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase;margin-bottom:8px">Katman 1 — Ana yayın</div>
+          <p class="body" style="font-size:15.5px">YouTube <span style="font-family:var(--mono);font-size:13px">@regenerative_stories</span> ve Instagram <span style="font-family:var(--mono);font-size:13px">@junglebased</span> — vaat edilen değil, var olan bir izleyici kitlesi. Tüm filmler İngilizce altyazıyla teslim edilir; her master yayın gününden itibaren markanın kurumsal kanallarında da kullanıma hazırdır.</p>
+        </div>
+        <div style="border-left:2px solid var(--sage);padding:4px 0 4px 20px">
+          <div style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--sage);text-transform:uppercase;margin-bottom:8px">Katman 2 — Genişleme &amp; ortaklar</div>
+          <p class="body" style="font-size:15.5px">Slow Food Türkiye, Doğa Derneği ve TEMA ile STK gösterimleri. Hedef gösterim penceresi: COP31 Antalya. WaterBear ve platform lisanslama hattı; uluslararası erişim için festival ağı.</p>
+        </div>
+      </div>
+      <div style="flex:.7;border:1px solid var(--border)">
+        <div style="padding:16px 22px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase">Kanal metrikleri — bugün</div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 22px;border-bottom:1px solid var(--border)"><span style="font-size:14px">Toplam izlenme</span><span style="font-family:'Fraunces',serif;font-weight:900;font-size:26px;color:var(--sand)">400K+</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 22px;border-bottom:1px solid var(--border)"><span style="font-size:14px">Toplam abone</span><span style="font-family:'Fraunces',serif;font-weight:900;font-size:26px;color:var(--sand)">4.950</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 22px;border-bottom:1px solid var(--border)"><span style="font-size:14px">Tilya (2024)</span><span style="font-family:'Fraunces',serif;font-weight:900;font-size:26px;color:var(--sand)">13.000+</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;padding:16px 22px"><span style="font-size:14px">COP 2023'te karar verici</span><span style="font-family:'Fraunces',serif;font-weight:900;font-size:26px;color:var(--sand)">~500</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot">Regenerative Stories — Marka &amp; Sponsorluk</div><div class="pageno">10 / 13</div>
+</div>
+
+<!-- 11 · GÜVENİLİRLİK -->
+<div class="slide">
+  <div class="stripe"></div><div class="rail"><span>Referanslar</span></div>
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center">
+    <div class="label">10 · Nasıl Buraya Geldik</div>
+    <h2 style="font-size:48px;max-width:900px">Yedi kez seçildik<br>ve desteklendik.</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:36px;border:1px solid var(--border);max-width:1080px">
+      <div style="padding:18px 24px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+        <div style="font-family:'Fraunces',serif;font-weight:900;font-size:17px;color:var(--sand)">T.C. Kültür ve Turizm Bakanlığı</div>
+        <div style="font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--accent);margin-top:4px">BELGESEL FİLM YAPIM DESTEĞİ · 2024</div>
+      </div>
+      <div style="padding:18px 24px;border-bottom:1px solid var(--border)">
+        <div style="font-family:'Fraunces',serif;font-weight:900;font-size:17px;color:var(--sand)">The Guardian Foundation</div>
+        <div style="font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--accent);margin-top:4px">NEWS LAB MEDIA LEADERSHIP · LONDRA · 2024</div>
+      </div>
+      <div style="padding:18px 24px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)">
+        <div style="font-family:'Fraunces',serif;font-weight:900;font-size:17px;color:var(--sand)">Kundura Doc Lab</div>
+        <div style="font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--accent);margin-top:4px">SUNDANCE BAĞLANTILI MENTORLUK · 2024</div>
+      </div>
+      <div style="padding:18px 24px;border-bottom:1px solid var(--border)">
+        <div style="font-family:'Fraunces',serif;font-weight:900;font-size:17px;color:var(--sand)">Impact Hub Istanbul × U.S. Mission to Türkiye</div>
+        <div style="font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--accent);margin-top:4px">PROJECT ZOOM HİBESİ · 2020</div>
+      </div>
+      <div style="padding:18px 24px;border-right:1px solid var(--border)">
+        <div style="font-family:'Fraunces',serif;font-weight:900;font-size:17px;color:var(--sand)">Postane — Kültür &amp; Doğa Hibesi</div>
+        <div style="font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--accent);margin-top:4px">TILYA YAPIM &amp; YAYIN · 2024</div>
+      </div>
+      <div style="padding:18px 24px">
+        <div style="font-family:'Fraunces',serif;font-weight:900;font-size:17px;color:var(--sand)">News Lab Turkey &amp; FabriKHAS</div>
+        <div style="font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--accent);margin-top:4px">MEDYA KULUÇKA 2023 · KADİR HAS ÜNİVERSİTESİ 2024</div>
+      </div>
+    </div>
+    <p class="body" style="margin-top:24px;font-size:15px;color:var(--sage);font-style:italic">Kundura Doc Lab'de Sundance bağlantılı danışmanlar Bruni Burres ve Nino Kirtadze mentorluğunda geliştirildi.</p>
+  </div>
+  <div class="foot">Regenerative Stories — Marka &amp; Sponsorluk</div><div class="pageno">11 / 13</div>
+</div>
+
+<!-- 12 · PAKETLER -->
+<div class="slide">
+  <div class="stripe"></div><div class="rail"><span>Paketler</span></div>
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center">
+    <div class="label">11 · İş Birliği Paketleri</div>
+    <h2 style="font-size:48px;max-width:940px">Üç paket.<br><em style="color:var(--accent)">Her biri yayına hazır içerik teslim eder.</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:38px;border:1px solid var(--border)">
+      <div style="padding:26px;border-right:1px solid var(--border)">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--sage);text-transform:uppercase;margin-bottom:10px">Pilot</div>
+        <div style="font-family:'Fraunces',serif;font-weight:900;font-size:34px;color:var(--sand)">Tanışma</div>
+        <p style="font-size:14px;line-height:1.6;margin-top:12px">1 × 6–8 dk film · 2 shorts · 5 kare · vaka özeti.<br>12 ay kurumsal kanal lisansı.<br><strong style="color:var(--sand)">6 hafta teslim.</strong> Düşük taahhüt — format kanıtlanır.</p>
+      </div>
+      <div style="padding:26px;border-right:1px solid var(--border);background:rgba(196,102,42,.07)">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--accent);text-transform:uppercase;margin-bottom:10px">Growth</div>
+        <div style="font-family:'Fraunces',serif;font-weight:900;font-size:34px;color:var(--sand)">Kampanya</div>
+        <p style="font-size:14px;line-height:1.6;margin-top:12px">1 × 10–12 dk film · 4 shorts · 12 kare · case study.<br>24 ay lisans + sınırlı paid media hakkı.<br><strong style="color:var(--sand)">10 hafta teslim.</strong> Tam kampanya paketi.</p>
+      </div>
+      <div style="padding:26px">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--sand);text-transform:uppercase;margin-bottom:10px">Flagship</div>
+        <div style="font-family:'Fraunces',serif;font-weight:900;font-size:34px;color:var(--sand)">Amiral Gemisi</div>
+        <p style="font-size:14px;line-height:1.6;margin-top:12px">1 × 12–15 dk film + kamera arkası · 6 shorts · 20 kare + basın kiti · case + white paper.<br>36 ay global lisans, sınırsız paid media.<br><strong style="color:var(--sand)">14 hafta teslim.</strong></p>
+      </div>
+    </div>
+    <p class="body" style="margin-top:26px;font-size:15px;max-width:1020px">Bütçeler paket bazında planlanır ve görüşmede paylaşılır. Yalın üretim modeli genel gideri düşük tutar — bütçenin ağırlığı ekrana yansır. Paket seçimi discovery call sonrası birlikte yapılır.</p>
+  </div>
+  <div class="foot">Regenerative Stories — Marka &amp; Sponsorluk</div><div class="pageno">12 / 13</div>
+</div>
+
+<!-- 13 · İLETİŞİM -->
+<div class="slide">
+  <img class="bleed" src="assets/texture.jpg" alt="">
+  <div class="scrim" style="background:linear-gradient(to right,rgba(26,25,20,.97) 40%,rgba(26,25,20,.72))"></div>
+  <div class="stripe"></div>
+  <div class="content" style="display:flex;flex-direction:column;justify-content:center;z-index:6">
+    <div class="label">12 · Sonraki Adım</div>
+    <h2 style="font-size:56px;max-width:860px">Hikâyeler sahada hazır.<br><em style="color:var(--sage)">Pilot'la başlayalım.</em></h2>
+    <p class="body" style="max-width:640px;margin-top:24px;font-size:17px">30 dakikalık bir tanışma görüşmesi, markanızın hedefine uyan paketi ve pilot hikâyeyi birlikte seçmemiz için yeterli.</p>
+    <div style="margin-top:36px;border-top:1px solid var(--border);padding-top:22px;max-width:640px;font-family:var(--mono);font-size:12.5px;line-height:2.1;color:var(--text)">
+      Berkay Tunalı — Belgesel Yönetmeni · Junglebased Studios<br>
+      [PLACEHOLDER: e-posta] · [PLACEHOLDER: telefon]<br>
+      regenerativestories.earth · @junglebased · @regenerative_stories<br>
+      [PLACEHOLDER: Calendly linki]
+    </div>
+  </div>
+  <div class="pageno" style="color:var(--text)">13 / 13</div>
+</div>
+
+</body>
+</html>
