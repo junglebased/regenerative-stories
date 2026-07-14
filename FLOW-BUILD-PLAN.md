@@ -4,7 +4,7 @@
 
 Kullanıcı (solo belgesel yapımcısı, ADHD, Notion = 27 database'lik single source of truth) **tüm second brain'i** için görsel, yönetilebilir, konuşulabilir bir kokpit istiyor: merkezde canlı knowledge graph (Obsidian graph mantığı), üzerinde sesli/yazılı komut, Express'e giden işi öne çıkaran modüller. Mevcut varlık: `rs-miselyum-agi.vercel.app` (Three.js r128 tek-HTML graph viewer). Bu doküman kod içermez; Sonnet'in inşasını yönlendiren teknik plandır.
 
-**Kullanıcı kararları:** backend = tek HTML + Vercel `/api` serverless; Flow = **yeni Vercel projesi** (miselyum vitrin olarak kalır); mevcut brain-graph-v1.json başka yerde duruyor → import adımı planda; mevcut second brain skill seti ile entegrasyon (bkz. §7).
+**Kullanıcı kararları:** backend = tek HTML + Vercel `/api` serverless; Flow = **yeni Vercel projesi** (miselyum vitrin olarak kalır); mevcut brain-graph-v1.json başka yerde duruyor → import adımı planda; mevcut second brain skill seti ile entegrasyon (bkz. §7); **kanonik hedef/öncelik kaynağı = Notion "Q3 2026 — Full Audit & Plan" sayfası** (bkz. §8).
 
 ---
 
@@ -58,7 +58,7 @@ Ortak mimari 4 katman: **veri kaynakları** (takvim, mail, Notion, GitHub — MC
 
 ### Kapsam: tüm second brain
 
-Graph artık sadece hero↔sponsor değil. Node tipleri (Notion DB'lerinden): `project`, `area`, `task`, `sop`, `story_hero`, `sponsor_ngo`, `note`. 27 DB'nin hepsi değil, **omurga 6-7 DB** v1'e girer (Projects, Areas, Tasks, SOPs, Story Heroes, Sponsor Pipeline + varsa Notes); gerisi talep üzerine. 504 karakter + 77 kurum + projeler ≈ 600–700 node — Three.js InstancedMesh bunu rahat taşır.
+Graph artık sadece hero↔sponsor değil. Node tipleri (Notion DB'lerinden): `project`, `area`, `goal`, `task`, `sop`, `story_hero`, `sponsor_ngo`, `note`. 27 DB'nin hepsi değil, **omurga 7 DB** v1'e girer (Projects, Areas, Goals, Tasks, SOPs, Story Heroes, Sponsor Pipeline); gerisi talep üzerine. Gerçek sayılar (Q3 audit, 6 Tem 2026): **9 Area (3 Core / 3 Production Line / 3 Engine Room), 36 proje, 16 goal** + 504 karakter + 77 kurum ≈ 650–700 node — Three.js InstancedMesh bunu rahat taşır. Proje status'u (Aktif/Planned/Paused/Backlog/Inbox) node rengine/parlaklığına yansır; **süresi geçmiş Urgent/High projeler görsel alarm alır** (audit bulgusu: geciken omurga tüm dependency zincirini blokluyor — kokpitin ilk göstereceği şey bu).
 
 ### Katman mimarisi
 
@@ -84,9 +84,9 @@ Graph artık sadece hero↔sponsor değil. Node tipleri (Notion DB'lerinden): `p
 
 ### Modüller (Express odaklı, hepsi gerçek veri)
 
-- **Sabah Raporu:** `/api/brief` → bugünün taskları (Tasks DB, due=today) + 7+ gündür dokunulmamış sıcak sponsor follow-up'ları (Pipeline DB, tier + last-contact). Panel + tek tuşla sesli okuma.
-- **Fırsat Radarı:** mevcut radar paneli korunur; veri statik array yerine graph'taki `gap_match` edge'lerinden türetilir (genelleştirme: sponsor↔hero'ya ek proje↔fon eşleşmeleri).
-- **Goal-Lock oranı:** Tasks DB'de kategori/etiket üzerinden `Express işi / toplam` oranı; HUD'da tek sayı + ince bar. Sayaç süs değil, brief verisinden hesaplanır.
+- **Sabah Raporu:** `/api/brief` → (a) günün ritim şapkası (Q3 planındaki ADHD-uyumlu haftalık ritim: Pzt derin iş, Sal outreach batch, Çar içerik, Per grant/yazı, Cum review — "bugün tek şapka: X"), (b) bugünün taskları (Tasks DB, due=today), (c) süresi geçmiş Urgent/High omurga projeleri, (d) 7+ gündür dokunulmamış sıcak sponsor follow-up'ları (Pipeline DB, tier + last-contact), (e) Q3 plan sayfasının içinde bulunulan ay bölümündeki işaretlenmemiş checkbox'lar. Panel + tek tuşla sesli okuma.
+- **Fırsat Radarı:** mevcut radar paneli korunur; veri statik array yerine graph'taki `gap_match` edge'lerinden türetilir (genelleştirme: sponsor↔hero'ya ek proje↔fon eşleşmeleri). Ağustos outreach hedefleri (Eti, Migros, Sütaş, Efes, Borusan + NGO'lar) radar'da öncelikli katman.
+- **Goal-Lock oranı:** kaynak = **Q3 North Star (3 çıktı: RS yayında · Nakit motoru/VBC retainer · Görünür Berkay)**. Tasks/Projects kayıtları bu üç çıktıdan birine bağlı mı diye sayılır; HUD'da `hedefe hizalı iş / toplam` oranı + ince bar. "Express işi" filtresi bu hizalamanın alt kümesi. Sayaç süs değil, brief verisinden hesaplanır.
 
 ## 3. TEKNİK KARARLAR
 
@@ -153,10 +153,20 @@ Kullanıcının Claude tarafında hazır bir skill seti var; en alakalıları: `
 
 Entegrasyon ilkesi — **iki katman, tek veri:**
 - Skill'ler **Claude istemcisinde** çalışır (üretim/analiz katmanı), Flow **tarayıcıda** çalışır (görüş/komut katmanı). Skill'ler deploy edilmiş sayfadan çağrılamaz; köprü **Notion**'dur: skill çıktıları Notion'a yazılır (zaten öyle), Flow sync'i onları graph/brief olarak gösterir. Ekstra entegrasyon kodu gerekmez.
-- **Goal-Lock hizalaması:** kokpitteki Goal-Lock sayacı, `goal-lock` skill'inin okuduğu aynı Notion hedef kaydından beslenmeli — iki ayrı "hedef tanımı" olmasın. `/api/brief` bu kaydı okur.
+- **Goal-Lock hizalaması:** kokpitteki Goal-Lock sayacı, `goal-lock` skill'inin okuduğu aynı Notion hedef kaydından beslenmeli — iki ayrı "hedef tanımı" olmasın. Kanonik kayıt: Q3 audit sayfasındaki North Star (bkz. §8); `/api/brief` bu sayfayı okur.
 - **`/api/ask` system prompt'u** skill'lerdeki karar mantığının hafif özetini taşıyabilir (ör. goal-lock kriteri: "Express işi mi?"). Ağır işler (karakter araştırması, grant yazımı) kokpitten tetiklenmez; kokpit "bunu Claude'da `/documentary-research-analyst` ile aç" yönlendirmesi verir (v2: cevap `actions` alanına `{type:"suggest_skill", name}` eklenir).
 
 Not: `/caveman` skill'i bu remote oturumda mevcut değil (skill listesinde yok); muhtemelen lokal kurulumda. İnşa oturumu lokalde yapılırsa Sonnet'e "/caveman ile üslup" talimatı orada verilmeli.
+
+## 8. KANONİK HEDEF KAYNAĞI — Q3 2026 Full Audit & Plan
+
+Flow'un "ne önemli?" sorusunun tek cevabı bu Notion sayfası (Second Brain > Q3 2026 — Full Audit & Plan, Temmuz–Eylül):
+- **Sayfa ID:** `3952052419dd81b4aa08e7d3a09b5ffe` (parent: Second Brain `1da2052419dd81188018c1d01b3e399b`) — `/api/brief` bunu Notion REST `blocks` endpoint'iyle okur.
+- **North Star (Goal-Lock kaynağı):** ① RS yayında (pilot + sponsor/fon altyapısı v1) ② Nakit motoru (VBC pilot → min. 1 retainer) ③ Görünür Berkay (personal brand + haftada 3 içerik, 8 hafta).
+- **Ay bölümleri** (Temmuz "Bitir ve Yayınla" / Ağustos "Outreach ve Gelir" / Eylül "Pilot ve Ölçek") checkbox'lı — brief, içinde bulunulan ayın açık checkbox'larını listeler.
+- **Haftalık ritim** (Pzt derin iş / Sal outreach / Çar içerik / Per grant / Cum review, günde tek şapka) — brief'in ilk satırı bugünün şapkası.
+- **Alarm kaynağı:** audit'in "geciken omurga" bulgusu (Sihirli Tohumlar, KB Onarım, RS Materyal Trio → arkasında Outreach/Ayni Sponsor/Burhan/Pilot/VBC bekliyor) — graph'ta dependency zinciri vurgusu ve süresi geçmiş node alarmının gerekçesi.
+- Sonnet notu: sayfa yapısı değişebilir; brief parser'ı başlık metnine (regex `^# \d`) değil blok tipine (heading/to_do) dayansın. Q4'te sayfa değişince tek yapılacak şey env/config'deki sayfa ID'sini güncellemek — modül mantığı sayfaya değil desene bağlı.
 
 ---
 
