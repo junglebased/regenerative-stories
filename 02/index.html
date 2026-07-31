@@ -312,6 +312,12 @@
       .stat{padding:14px 12px;}
       .stat-n{font-size:22px;}
       
+      /* partners@regenerativestories.earth is 34 chars of Clash Display 900 — the base
+         clamp bottoms out at 20px, ~60px wider than a 375px viewport's text column.
+         Scale it with the viewport instead; `min()` meets the base clamp at 600px. */
+      .partner-email{font-size:min(4.6vw,20px);letter-spacing:-.02em;overflow-wrap:anywhere;}
+      .partner-email-row{gap:10px;margin-top:48px;}
+
       .beat{padding:28px 20px;}
       #b4{width:90%;padding:0;}
       .beat-hl{font-size:clamp(28px,7vw,48px);}
@@ -375,7 +381,7 @@
     .mo-nav li:nth-child(5) a{transition-delay:.24s;}
     .mo-nav li:nth-child(6) a{transition-delay:.29s;}
     .mo-nav li a:hover{color:var(--text);}
-    .mo-nav li a .mo-num{font-family:'Expose',sans-serif;font-size:13px;font-weight:400;letter-spacing:.1em;color:var(--accent);vertical-align:super;margin-right:10px;font-size:12px;}
+    .mo-nav li a .mo-num{font-family:'Expose',sans-serif;font-size:13px;font-weight:400;letter-spacing:.1em;color:var(--accent);vertical-align:super;margin-left:10px;font-size:12px;}
     .mo-footer{margin-top:32px;font-family:'Expose',sans-serif;font-size:12px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;}
     .mo-socials{display:flex;gap:4px;margin-top:40px;}
     .mo-social{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1px solid rgba(243,241,235,.12);color:var(--muted);transition:border-color .25s,color .25s,background .25s;-webkit-tap-highlight-color:transparent;}
@@ -689,12 +695,12 @@
     <button class="mo-close" id="menu-close">✕ Close</button>
     <nav>
       <ul class="mo-nav">
-        <li><a href="#hero" class="mo-link"><span class="mo-num">01</span>Intro</a></li>
-        <li><a href="#scroll-scene" class="mo-link"><span class="mo-num">02</span>The Story</a></li>
-        <li><a href="#films" class="mo-link"><span class="mo-num">03</span>Films</a></li>
-        <li><a href="#impact" class="mo-link"><span class="mo-num">04</span>Impact</a></li>
-        <li><a href="#next" class="mo-link"><span class="mo-num">05</span>Season 1</a></li>
-        <li><a href="#contact" class="mo-link"><span class="mo-num">06</span>Contact</a></li>
+        <li><a href="#hero" class="mo-link">Intro<span class="mo-num">01</span></a></li>
+        <li><a href="#scroll-scene" class="mo-link">The Story<span class="mo-num">02</span></a></li>
+        <li><a href="#films" class="mo-link">Films<span class="mo-num">03</span></a></li>
+        <li><a href="#impact" class="mo-link">Impact<span class="mo-num">04</span></a></li>
+        <li><a href="#next" class="mo-link">Season 1<span class="mo-num">05</span></a></li>
+        <li><a href="#contact" class="mo-link">Contact<span class="mo-num">06</span></a></li>
       </ul>
     </nav>
     <div class="mo-socials">
@@ -1031,7 +1037,6 @@
     </div>
     <div class="footer-bar">
       <span class="footer-copy">&copy; 2026 Regenerative Stories &middot; Junglebased Production</span>
-      <span class="footer-copy">regenerativestories.earth</span>
     </div>
   </section>
 
