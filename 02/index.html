@@ -187,9 +187,12 @@
     @media(max-width:900px){.film-play-btn{top:42%;}}
     @media(max-width:600px){.film-play-btn{width:68px;height:68px;top:40%;transition:opacity .3s;}}
     .film-expand{display:none;}
-    /* Touch (phone + tablet): JS transform parallax (GPU-composited) + portrait-focused framing */
+    /* Touch (phone + tablet): background-attachment:fixed is broken on iOS Safari, so
+       the same viewport-pinned look is rebuilt with a GPU transform in JS. The layer is
+       sized to exactly one viewport (not the desktop inset:-15%) so translating it by
+       -stackTop lands it back on the viewport, pixel for pixel. */
     @media(hover:none),(pointer:coarse){
-      .film-bg{will-change:transform;}
+      .film-bg{inset:0;will-change:transform;}
     }
     @media(max-width:900px){
       .film-panel:nth-child(1) .film-bg{background-position:72% center;}
@@ -1328,24 +1331,26 @@ document.querySelectorAll('.si').forEach(function(item){
   });
 })();
 
-/* ── Film background parallax on touch (GPU transform, rAF-throttled) ─── */
+/* ── Film background parallax on touch (GPU transform, rAF-throttled) ───
+   Emulates the desktop `background-attachment:fixed` look rather than a
+   shallow drift: the image is held still in the viewport while the panel
+   scrolls over it, so each film reveals like a curtain pulling back — the
+   same effect the fine-pointer build gets from CSS. Countering the stack's
+   own offset (-top) is what pins it; iOS ignores `fixed` here. */
 (function(){
   if(!window.matchMedia('(hover:none),(pointer:coarse)').matches)return;
   var items=[].slice.call(document.querySelectorAll('.film-panel')).map(function(p){
-    return {p:p,bg:p.querySelector('.film-bg')};
-  }).filter(function(o){return o.bg;});
+    return {p:p,stack:p.querySelector('.film-stack'),bg:p.querySelector('.film-bg')};
+  }).filter(function(o){return o.bg&&o.stack;});
   if(!items.length)return;
   var ticking=false;
   function upd(){
     ticking=false;
     var vh=window.innerHeight;
     for(var i=0;i<items.length;i++){
-      var r=items[i].p.getBoundingClientRect();
+      var r=items[i].stack.getBoundingClientRect();
       if(r.bottom<-40||r.top>vh+40)continue;
-      var center=r.top+r.height/2;
-      var d=(vh/2-center)/vh;                 // ~ -0.5..0.5 as panel crosses viewport
-      var y=Math.max(-10,Math.min(10,d*20));  // clamp ±10% (within .film-bg inset:-15%)
-      items[i].bg.style.transform='translate3d(0,'+y.toFixed(2)+'%,0) scale(1.16)';
+      items[i].bg.style.transform='translate3d(0,'+(-r.top).toFixed(1)+'px,0)';
     }
   }
   function onS(){if(!ticking){ticking=true;requestAnimationFrame(upd);}}
