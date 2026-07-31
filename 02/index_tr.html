@@ -594,7 +594,11 @@
       :root[data-theme="light"] .h-arc{padding:3px 8px;letter-spacing:.10em;}
     }
     /* Copy set over photography carries full contrast in both registers */
-    .film-body,.film-sub,.film-notes,.film-title{color:var(--text);}
+    .film-body,.film-notes,.film-title{color:var(--text);}
+    /* Film credit line steps out of Stone onto Teal — reads as attribution
+       rather than more body copy. Token resolves per register (#57A69D dark,
+       #2C6660 light), so it stays legible on the scrimmed still either way. */
+    .film-sub{color:var(--teal);}
     .char-overlay{
       background:linear-gradient(to top,rgba(var(--scrim-rgb),.98) 0%,rgba(var(--scrim-rgb),.30) 48%,transparent 100%);}
     .char-card:hover .char-overlay,.char-card.open .char-overlay{background:rgba(var(--scrim-rgb),.92);}
@@ -833,9 +837,9 @@
           <p class="film-idx">04 · Bölüm 03 · Yapım Post Aşamasında · Ağustos 2026</p>
           <span class="badge b-edit">Yakında</span>
           <h2 class="film-title">Sihirli<br>Tohumlar</h2>
-          <p class="film-sub">Aylin · Süleyman · Alp · Sinan · Küçük Yoncalı, Tekirdağ</p>
+          <p class="film-sub">Ertem Ailesi · Tekirdağ</p>
           <button class="film-expand" aria-expanded="false"><span>Hikayeyi oku</span></button>
-          <p class="film-body">Dört kişi şehirden çıkıp Trakya'nın düz bir tarlasına adım atar ve filmin üzerine kurulu hatayla başlarlar: makine getirip toprağı düzeltirler. "Toprağı iyileştirmedik," diyor Süleyman, "zarar verdik." Onarım, geriye kalandır: çıplak toprağın üstünde bırakılan malç, kazma yerine kompost, Sinan'ın egzemasını yatıştıran yabani ot merhemi ve onlara beş yüz domates fidesi kazandıran — hepsini bedavaya dağıttıkları — tek bir sezon. Kendilerini <em>toprak bükücüler</em> olarak adlandırıyorlar.</p>
+          <p class="film-body">Aylin yirmi yıl ağır sanayide çalıştı, bir yerde kendiyle temasını kaybettiğini fark etti. Ertem ailesinin aldığı arazi yirmi beş yıldır ekilmiyordu ve ortada bir plan yoktu; bir danışman ceviz dikmelerini önermişti, hafta sonları karavanda mangal yakıyorlardı. İlk yaptıkları iş araziyi bozmak oldu: futbol sahası gibi düzlediler, üst toprağı alta gömdüler. "Araziyi iyileştirmedik, kötüleştirdik," diyor Süleyman. Sonra yıllara yayılan bir onarım başladı: mısır, yeşil gübre, tavuk, kaz, koyun; beş dönümlük arazi kırk dönüme çıktı, Sinan'ın çocukluğundan beri süren egzeması geriledi. Aylin bu arada bir kez daha üniversiteye gitti, bu sefer gençliğinde okuyamadığı bölümü seçti.</p>
           <p class="film-notes">Ağustos 2026 · RS Bölüm 03</p>
           <span class="film-cta film-cta-muted">Yapım Aşamasında</span>
         </div>

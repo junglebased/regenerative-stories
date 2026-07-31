@@ -607,7 +607,11 @@
       :root[data-theme="light"] .h-arc{padding:3px 8px;letter-spacing:.10em;}
     }
     /* Copy set over photography carries full contrast in both registers */
-    .film-body,.film-sub,.film-notes,.film-title{color:var(--text);}
+    .film-body,.film-notes,.film-title{color:var(--text);}
+    /* Film credit line steps out of Stone onto Teal — reads as attribution
+       rather than more body copy. Token resolves per register (#57A69D dark,
+       #2C6660 light), so it stays legible on the scrimmed still either way. */
+    .film-sub{color:var(--teal);}
     .char-overlay{
       background:linear-gradient(to top,rgba(var(--scrim-rgb),.98) 0%,rgba(var(--scrim-rgb),.30) 48%,transparent 100%);}
     .char-card:hover .char-overlay,.char-card.open .char-overlay{background:rgba(var(--scrim-rgb),.92);}
@@ -847,9 +851,9 @@
           <p class="film-idx">04 · Episode 03 · In Post Production · Aug 2026</p>
           <span class="badge b-edit">Coming Soon</span>
           <h2 class="film-title">Magical<br>Seeds</h2>
-          <p class="film-sub">Aylin · Süleyman · Alp · Sinan · Küçük Yoncalı, Tekirdağ</p>
+          <p class="film-sub">Ertem Family · Tekirdağ</p>
           <button class="film-expand" aria-expanded="false"><span>Read the story</span></button>
-          <p class="film-body">Four people walk out of the city onto one plot of leveled Thracian soil, and start with the mistake the film is built around: they bring in a machine and flatten the ground. "We didn't heal the land," Süleyman says, "we damaged it." The repair is the rest: mulch kept over bare earth, compost instead of the hoe, a salve pulled from wild herbs that settles Sinan's eczema, and one season that hands them five hundred tomato seedlings they give away for free. They name themselves <em>toprak bükücüler</em>, soil benders.</p>
+          <p class="film-body">Aylin spent twenty years in heavy industry before she noticed she had lost touch with herself. The land the Ertem family bought had gone unfarmed for twenty-five years and they had no plan for it; a consultant had told them to plant walnuts, and they spent their weekends grilling outside a caravan. The first thing they did was ruin it: they levelled the field like a football pitch and buried the topsoil underneath. "We didn't improve the land," Süleyman says. "We made it worse." The repair took years: corn, green manure, chickens, geese, sheep; five dönüm became forty, and the eczema Sinan had carried since childhood eased off. Somewhere in those years Aylin went back to university, this time to study the subject she had been kept from in her youth.</p>
           <p class="film-notes">Coming August 2026 · RS Episode 03</p>
           <span class="film-cta film-cta-muted">In Post Production</span>
         </div>
