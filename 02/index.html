@@ -137,7 +137,7 @@
     .scroll-cue::before{content:'';width:1px;height:36px;background:var(--muted);}
 
     /* Scrollytelling */
-    #scroll-scene{height:300vh;position:relative;}
+    #scroll-scene{height:200vh;position:relative;}
     #scroll-sticky{position:sticky;top:0;height:100vh;height:100dvh;clip-path:inset(0);}
     #anim-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;background:#181715;}
     .scroll-vignette{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(24,23,21,.55) 0%,rgba(24,23,21,0) 25%,rgba(24,23,21,0) 65%,rgba(24,23,21,.72) 100%);pointer-events:none;z-index:1;}
@@ -330,7 +330,7 @@
     }
     /* Touch devices: fixed bg = janky/broken on iOS Safari (all orientations) */
     @media(hover:none),(pointer:coarse){.film-bg{background-attachment:scroll!important;}}
-    @media(max-width:900px){#scroll-scene{height:240vh;}}
+    @media(max-width:900px){#scroll-scene{height:180vh;}}
     /* Tablet (iPad portrait / large phone landscape): shrink hero title so REGENERATIVE never clips */
     @media(min-width:601px) and (max-width:900px){.h-title{font-size:clamp(44px,8vw,72px);}}
 
@@ -662,8 +662,8 @@
 
 <nav id="strat" aria-label="Page sections">
   <div class="si active" data-t="hero"><div class="si-dot"></div><span class="si-lbl">Intro</span></div>
-  <div class="si" data-t="scroll-scene"><div class="si-dot"></div><span class="si-lbl">Story</span></div>
   <div class="si" data-t="films"><div class="si-dot"></div><span class="si-lbl">Films</span></div>
+  <div class="si" data-t="scroll-scene"><div class="si-dot"></div><span class="si-lbl">Story</span></div>
   <div class="si" data-t="impact"><div class="si-dot"></div><span class="si-lbl">Impact</span></div>
   <div class="si" data-t="next"><div class="si-dot"></div><span class="si-lbl">Season 1</span></div>
   <div class="si" data-t="contact"><div class="si-dot"></div><span class="si-lbl">Contact</span></div>
@@ -700,8 +700,8 @@
     <nav>
       <ul class="mo-nav">
         <li><a href="#hero" class="mo-link">Intro<span class="mo-num">01</span></a></li>
-        <li><a href="#scroll-scene" class="mo-link">The Story<span class="mo-num">02</span></a></li>
-        <li><a href="#films" class="mo-link">Films<span class="mo-num">03</span></a></li>
+        <li><a href="#films" class="mo-link">Films<span class="mo-num">02</span></a></li>
+        <li><a href="#scroll-scene" class="mo-link">The Story<span class="mo-num">03</span></a></li>
         <li><a href="#impact" class="mo-link">Impact<span class="mo-num">04</span></a></li>
         <li><a href="#next" class="mo-link">Season 1<span class="mo-num">05</span></a></li>
         <li><a href="#contact" class="mo-link">Contact<span class="mo-num">06</span></a></li>
@@ -740,36 +740,6 @@
     <div class="h-ctas">
       <a href="#films" class="cta-primary">Watch the Films</a>
       <a href="#partnership" class="cta-secondary">Partner With Us</a>
-    </div>
-  </section>
-
-  <section id="scroll-scene">
-    <div id="scroll-sticky">
-      <div id="scroll-prog"></div>
-      <canvas id="anim-canvas" aria-hidden="true"></canvas>
-      <link rel="preload" as="image" href="seed-frames/d/f001.webp" media="(min-width:901px)">
-      <link rel="preload" as="image" href="seed-frames/m/f001.webp" media="(max-width:900px)">
-      <div class="scroll-vignette" aria-hidden="true"></div>
-      <div class="beat" id="b1">
-        <p class="beat-tag">01 · Land</p>
-        <h2 class="beat-hl">The soil<br>remembers.</h2>
-        <p class="beat-sub">58.1 years. The average age of a Turkish farmer.</p>
-      </div>
-      <div class="beat" id="b2">
-        <p class="beat-tag">02 · Scale</p>
-        <h2 class="beat-hl">500<br>practitioners.</h2>
-        <p class="beat-sub">Mapped over 7 regions since 2021.</p>
-      </div>
-      <div class="beat" id="b3">
-        <p class="beat-tag">03 · Impact</p>
-        <h2 class="beat-hl">400K+<br>viewers.</h2>
-        <p class="beat-sub">Four years of field research.</p>
-      </div>
-      <div class="beat" id="b4">
-        <p class="beat-tag">04 · Next</p>
-        <h2 class="beat-hl">Season One.<br>In development.</h2>
-        <p class="beat-sub">Six ecosystems. Six characters. One country.</p>
-      </div>
     </div>
   </section>
 
@@ -863,33 +833,32 @@
 
   </section>
 
-  <section id="impact" class="reveal">
-    <p class="impact-eye">Proof on the Ground</p>
-    <h2 class="impact-hl">Four years. Seven regions. One living archive.</h2>
-    <p class="impact-lead">We didn't start with a pitch. We started with a tractor in a field, a fisher cooperative, a beekeeper's first hive. Four years and seven regions later, the footage is a map of who is repairing this land, and how.</p>
-
-    <div class="impact-stat-strip">
-      <div class="impact-cell"><span class="i-num" data-target="500">500</span><span class="i-lbl">Practitioners<br>mapped</span></div>
-      <div class="impact-cell"><span class="i-num" data-target="120">120</span><span class="i-lbl">Characters researched<br>in depth</span></div>
-      <div class="impact-cell"><span class="i-num" data-target="4">4<sup>+</sup></span><span class="i-lbl">Years in<br>the field</span></div>
-      <div class="impact-cell"><span class="i-num" data-target="7">7</span><span class="i-lbl">Regions of<br>Türkiye</span></div>
-    </div>
-
-    <div class="impact-reach">
-      <div class="reach-item"><span class="r-num" data-target="4">4</span><span class="r-lbl">Films completed</span></div>
-      <div class="reach-item"><span class="r-num">400K<sup>+</sup></span><span class="r-lbl">Cross-platform views</span></div>
-      <div class="reach-item"><span class="r-num">~500</span><span class="r-lbl">Climate decision-makers at COP 2023</span></div>
-      <div class="reach-item"><span class="r-num" data-target="4950" data-format="comma">4,950</span><span class="r-lbl">Total subscribers</span></div>
-    </div>
-
-    <div class="impact-tags">
-      <div class="tag-row">
-        <span class="tag-key">Recognition</span>
-        <span class="tag-val">Best Climate Film, Chinese International Documentary Festival 2023 · Award Winner, Dijital Detaylar 2025</span>
+  <section id="scroll-scene">
+    <div id="scroll-sticky">
+      <div id="scroll-prog"></div>
+      <canvas id="anim-canvas" aria-hidden="true"></canvas>
+      <div class="scroll-vignette" aria-hidden="true"></div>
+      <div class="beat" id="b1">
+        <p class="beat-tag">01 · Surface</p>
+        <h2 class="beat-hl">We didn't start<br>with a pitch.</h2>
+        <p class="beat-sub">Four years ago: one field, one camera.</p>
+      </div>
+      <div class="beat" id="b2">
+        <p class="beat-tag">02 · Beneath</p>
+        <h2 class="beat-hl">A tractor.<br>A hive. A net.</h2>
+        <p class="beat-sub">The people came first. The films came after.</p>
+      </div>
+      <div class="beat" id="b3">
+        <p class="beat-tag">03 · Roots</p>
+        <h2 class="beat-hl">Nobody<br>commissioned this.</h2>
+        <p class="beat-sub">Each one began with someone choosing to stay.</p>
+      </div>
+      <div class="beat" id="b4">
+        <p class="beat-tag">04 · Seed</p>
+        <h2 class="beat-hl">It all came<br>from here.</h2>
+        <p class="beat-sub">2020. One grant, one field, one film.</p>
       </div>
     </div>
-
-    <p class="impact-bridge">The archive is the proof. The next six stories are where it goes.</p>
   </section>
 
   <section id="credibility" class="reveal">
@@ -947,6 +916,35 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <section id="impact" class="reveal">
+    <p class="impact-eye">Proof on the Ground</p>
+    <h2 class="impact-hl">Four years. Seven regions. One living archive.</h2>
+    <p class="impact-lead">Four years and seven regions later, the footage is a map of who is repairing this land, and how.</p>
+
+    <div class="impact-stat-strip">
+      <div class="impact-cell"><span class="i-num" data-target="500">500</span><span class="i-lbl">Practitioners<br>mapped</span></div>
+      <div class="impact-cell"><span class="i-num" data-target="120">120</span><span class="i-lbl">Characters researched<br>in depth</span></div>
+      <div class="impact-cell"><span class="i-num" data-target="4">4<sup>+</sup></span><span class="i-lbl">Years in<br>the field</span></div>
+      <div class="impact-cell"><span class="i-num" data-target="7">7</span><span class="i-lbl">Regions of<br>Türkiye</span></div>
+    </div>
+
+    <div class="impact-reach">
+      <div class="reach-item"><span class="r-num" data-target="4">4</span><span class="r-lbl">Films completed</span></div>
+      <div class="reach-item"><span class="r-num">400K<sup>+</sup></span><span class="r-lbl">Cross-platform views</span></div>
+      <div class="reach-item"><span class="r-num">~500</span><span class="r-lbl">Climate decision-makers at COP 2023</span></div>
+      <div class="reach-item"><span class="r-num" data-target="4950" data-format="comma">4,950</span><span class="r-lbl">Total subscribers</span></div>
+    </div>
+
+    <div class="impact-tags">
+      <div class="tag-row">
+        <span class="tag-key">Recognition</span>
+        <span class="tag-val">Best Climate Film, Chinese International Documentary Festival 2023 · Award Winner, Dijital Detaylar 2025</span>
+      </div>
+    </div>
+
+    <p class="impact-bridge">The archive is the proof. The next six stories are where it goes.</p>
   </section>
 
   <section id="next" class="reveal">
@@ -1194,7 +1192,9 @@ var ctx=cvs.getContext('2d',{alpha:false});
 var reduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 var seqDir=window.matchMedia('(min-width:901px)').matches?'d':'m';
 var imgs=new Array(FRAMES);
-var curIdx=0,lastDrawn=-1;
+/* Played in reverse — the sprout is what the reader meets first, the seed is
+   where the descent lands — so the sequence starts at the far end. */
+var curIdx=FRAMES-1,lastDrawn=-1;
 
 function frameSrc(i){var n=String(i+1);while(n.length<3)n='0'+n;return 'seed-frames/'+seqDir+'/f'+n+'.webp';}
 
@@ -1228,13 +1228,15 @@ function setFrame(i){
 }
 
 /* Load coarse-to-fine (every 16th, then 8th, 4th…) so the whole
-   arc is scrubbable early and sharpens as the rest arrives. */
+   arc is scrubbable early and sharpens as the rest arrives. Walks
+   downward: playback is reversed, so the last frame is the one on
+   screen when the scene opens. */
 var order=[],queued={};
 [16,8,4,2,1].forEach(function(step){
-  for(var i=0;i<FRAMES;i+=step){if(!queued[i]){queued[i]=1;order.push(i);}}
+  for(var i=FRAMES-1;i>=0;i-=step){if(!queued[i]){queued[i]=1;order.push(i);}}
 });
-if(!queued[FRAMES-1])order.push(FRAMES-1);
-if(reduced)order=[0];
+if(!queued[0])order.push(0);
+if(reduced)order=[FRAMES-1];
 
 var qi=0,inFlight=0,MAXC=6;
 function pump(){
@@ -1250,7 +1252,18 @@ function pump(){
     })(order[qi++]);
   }
 }
-pump();
+/* The scene now sits below four full-viewport film panels, so 6.6MB of stills
+   must not compete with the hero video and film backdrops at first paint.
+   Start fetching a viewport and a half before the scene arrives. */
+(function(){
+  var target=document.getElementById('scroll-scene');
+  if(!target||!('IntersectionObserver' in window)){pump();return;}
+  var io=new IntersectionObserver(function(entries){
+    if(!entries.some(function(e){return e.isIntersecting;}))return;
+    io.disconnect();pump();
+  },{rootMargin:'150% 0px'});
+  io.observe(target);
+})();
 window.addEventListener('resize',function(){lastDrawn=-1;render();},{passive:true});
 
 /* ── Scroll (rAF-throttled) ───────────────────────────── */
@@ -1262,8 +1275,9 @@ var beats=[
   {el:document.getElementById('b3'),s:0.50,e:0.76},
   {el:document.getElementById('b4'),s:0.74,e:1.00}
 ];
-var sections=['hero','scroll-scene','films','impact','next','contact'];
+var sections=['hero','films','scroll-scene','impact','next','contact'];
 var railItems=document.querySelectorAll('.si');
+var darkSections=['hero','films','scroll-scene'].map(function(id){return document.getElementById(id);}).filter(Boolean);
 var strat=document.getElementById('strat');
 var ticking=false;
 
@@ -1273,7 +1287,7 @@ function update(){
     var r=scene.getBoundingClientRect();
     var p=Math.min(Math.max(-r.top/(r.height-window.innerHeight),0),1);
     if(prog)prog.style.width=(p*100)+'%';
-    if(!reduced)setFrame(Math.round(p*(FRAMES-1)));
+    if(!reduced)setFrame(Math.round((1-p)*(FRAMES-1)));   /* reversed: sprout → soil → seed */
     beats.forEach(function(b){b.el.style.opacity=(p>=b.s&&p<b.e)?'1':'0';});
   }
   var active=0;
@@ -1282,17 +1296,18 @@ function update(){
     if(el&&el.getBoundingClientRect().top<=window.innerHeight*0.5)active=i;
   });
   railItems.forEach(function(item,i){item.classList.toggle('active',i===active);});
-  /* scroll-scene is a dark video in BOTH themes — the light-theme rail would be
-     black-on-black there, so restore the dark-register rail while a given dot/label
-     is actually over it. Per item, not once for the whole rail: as the video's sticky
-     frame slides away, the boundary between video and the (light) films-intro copy
-     sweeps down through the middle of the fixed rail — items above the boundary are
-     still on dark video, items below it are already on light copy, in the same frame. */
-  var sceneR=scene.getBoundingClientRect();
-  var darkBoundary=sceneR.bottom;
+  /* hero, films and scroll-scene stay dark in BOTH themes (photography and the seed
+     sequence), so the light-theme rail would be black-on-black over them — restore the
+     dark-register rail while a given dot/label is actually over one. Tested per item,
+     not once for the whole rail: those boundaries sweep down through the middle of the
+     fixed rail, so items above and below one can need opposite registers in the same
+     frame. Membership, not a single boundary — films-intro sits light BETWEEN two dark
+     sections, so "above the scene" would wrongly cover it. */
   railItems.forEach(function(item){
-    var r=item.getBoundingClientRect();
-    item.classList.toggle('on-dark',(r.top+r.height/2)<darkBoundary);
+    var r=item.getBoundingClientRect(),mid=r.top+r.height/2;
+    item.classList.toggle('on-dark',darkSections.some(function(el){
+      var s=el.getBoundingClientRect();return mid>=s.top&&mid<s.bottom;
+    }));
   });
   if(active>=1)strat.classList.add('revealed');
 }

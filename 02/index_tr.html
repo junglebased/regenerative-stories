@@ -134,7 +134,7 @@
     .scroll-cue::before{content:'';width:1px;height:36px;background:var(--muted);}
 
     /* Scrollytelling */
-    #scroll-scene{height:300vh;position:relative;}
+    #scroll-scene{height:200vh;position:relative;}
     #scroll-sticky{position:sticky;top:0;height:100vh;height:100dvh;clip-path:inset(0);}
     #anim-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;background:#181715;}
     .scroll-vignette{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(24,23,21,.55) 0%,rgba(24,23,21,0) 25%,rgba(24,23,21,0) 65%,rgba(24,23,21,.72) 100%);pointer-events:none;z-index:1;}
@@ -320,7 +320,7 @@
       .h-title{font-size:7.5vw;}
     }
     @media(hover:none),(pointer:coarse){.film-bg{background-attachment:scroll!important;}}
-    @media(max-width:900px){#scroll-scene{height:240vh;}}
+    @media(max-width:900px){#scroll-scene{height:180vh;}}
     @media(min-width:601px) and (max-width:900px){.h-title{font-size:clamp(44px,8vw,72px);}}
 
     /* Lightbox */
@@ -649,8 +649,8 @@
 
 <nav id="strat" aria-label="Sayfa bölümleri">
   <div class="si active" data-t="hero"><div class="si-dot"></div><span class="si-lbl">Giriş</span></div>
-  <div class="si" data-t="scroll-scene"><div class="si-dot"></div><span class="si-lbl">Hikaye</span></div>
   <div class="si" data-t="films"><div class="si-dot"></div><span class="si-lbl">Filmler</span></div>
+  <div class="si" data-t="scroll-scene"><div class="si-dot"></div><span class="si-lbl">Hikaye</span></div>
   <div class="si" data-t="impact"><div class="si-dot"></div><span class="si-lbl">Etki</span></div>
   <div class="si" data-t="next"><div class="si-dot"></div><span class="si-lbl">Sezon 1</span></div>
   <div class="si" data-t="contact"><div class="si-dot"></div><span class="si-lbl">İletişim</span></div>
@@ -686,8 +686,8 @@
     <nav>
       <ul class="mo-nav">
         <li><a href="#hero" class="mo-link">Giriş<span class="mo-num">01</span></a></li>
-        <li><a href="#scroll-scene" class="mo-link">Hikaye<span class="mo-num">02</span></a></li>
-        <li><a href="#films" class="mo-link">Filmler<span class="mo-num">03</span></a></li>
+        <li><a href="#films" class="mo-link">Filmler<span class="mo-num">02</span></a></li>
+        <li><a href="#scroll-scene" class="mo-link">Hikaye<span class="mo-num">03</span></a></li>
         <li><a href="#impact" class="mo-link">Etki<span class="mo-num">04</span></a></li>
         <li><a href="#next" class="mo-link">Sezon 1<span class="mo-num">05</span></a></li>
         <li><a href="#contact" class="mo-link">İletişim<span class="mo-num">06</span></a></li>
@@ -726,36 +726,6 @@
     <div class="h-ctas">
       <a href="#films" class="cta-primary">Filmleri İzle</a>
       <a href="#partnership" class="cta-secondary">Ortaklık Kur</a>
-    </div>
-  </section>
-
-  <section id="scroll-scene">
-    <div id="scroll-sticky">
-      <div id="scroll-prog"></div>
-      <canvas id="anim-canvas" aria-hidden="true"></canvas>
-      <link rel="preload" as="image" href="seed-frames/d/f001.webp" media="(min-width:901px)">
-      <link rel="preload" as="image" href="seed-frames/m/f001.webp" media="(max-width:900px)">
-      <div class="scroll-vignette" aria-hidden="true"></div>
-      <div class="beat" id="b1">
-        <p class="beat-tag">01 · Toprak</p>
-        <h2 class="beat-hl">Toprak<br>hatırlıyor.</h2>
-        <p class="beat-sub">58.1 yıl. Türk çiftçisinin ortalama yaşı.</p>
-      </div>
-      <div class="beat" id="b2">
-        <p class="beat-tag">02 · Ölçek</p>
-        <h2 class="beat-hl">500<br>uygulayıcı.</h2>
-        <p class="beat-sub">2021'den bu yana 7 bölgede haritalandı.</p>
-      </div>
-      <div class="beat" id="b3">
-        <p class="beat-tag">03 · Etki</p>
-        <h2 class="beat-hl">400K+<br>izleyici.</h2>
-        <p class="beat-sub">Dört yıllık saha araştırması.</p>
-      </div>
-      <div class="beat" id="b4">
-        <p class="beat-tag">04 · Sıradaki</p>
-        <h2 class="beat-hl">Birinci Sezon.<br>Geliştirme aşamasında.</h2>
-        <p class="beat-sub">Altı ekosistem. Altı karakter. Bir ülke.</p>
-      </div>
     </div>
   </section>
 
@@ -849,33 +819,32 @@
 
   </section>
 
-  <section id="impact" class="reveal">
-    <p class="impact-eye">Sahadan Kanıt</p>
-    <h2 class="impact-hl">Dört yıl. Yedi bölge. Canlı bir arşiv.</h2>
-    <p class="impact-lead">Bir pitch ile başlamadık. Bir tarlada traktörle, bir balıkçı kooperatifiyle, bir arıcının ilk kovasıyla başladık. Dört yıl ve yedi bölge sonra, görüntüler bu toprağı kimin ve nasıl onardığının haritasına dönüştü.</p>
-
-    <div class="impact-stat-strip">
-      <div class="impact-cell"><span class="i-num" data-target="500">500</span><span class="i-lbl">Uygulayıcılar<br>haritalandı</span></div>
-      <div class="impact-cell"><span class="i-num" data-target="120">120</span><span class="i-lbl">Derinlemesine araştırılan<br>karakter</span></div>
-      <div class="impact-cell"><span class="i-num" data-target="4">4<sup>+</sup></span><span class="i-lbl">Yıl<br>sahada</span></div>
-      <div class="impact-cell"><span class="i-num" data-target="7">7</span><span class="i-lbl">Türkiye<br>bölgesi</span></div>
-    </div>
-
-    <div class="impact-reach">
-      <div class="reach-item"><span class="r-num" data-target="4">4</span><span class="r-lbl">Tamamlanan film</span></div>
-      <div class="reach-item"><span class="r-num">400K<sup>+</sup></span><span class="r-lbl">Platform-arası görüntülemeler</span></div>
-      <div class="reach-item"><span class="r-num">~500</span><span class="r-lbl">COP 2023'te iklim karar alıcısı</span></div>
-      <div class="reach-item"><span class="r-num" data-target="4950" data-format="comma">4,950</span><span class="r-lbl">Toplam abone</span></div>
-    </div>
-
-    <div class="impact-tags">
-      <div class="tag-row">
-        <span class="tag-key">Tanınma</span>
-        <span class="tag-val">En İyi İklim Filmi, Çin Uluslararası Belgesel Festivali 2023 · Ödül Sahibi, Dijital Detaylar 2025</span>
+  <section id="scroll-scene">
+    <div id="scroll-sticky">
+      <div id="scroll-prog"></div>
+      <canvas id="anim-canvas" aria-hidden="true"></canvas>
+      <div class="scroll-vignette" aria-hidden="true"></div>
+      <div class="beat" id="b1">
+        <p class="beat-tag">01 · Yüzey</p>
+        <h2 class="beat-hl">Bir pitch'le<br>başlamadık.</h2>
+        <p class="beat-sub">Dört yıl önce, bir tarla ve bir kamera.</p>
+      </div>
+      <div class="beat" id="b2">
+        <p class="beat-tag">02 · Altında</p>
+        <h2 class="beat-hl">Traktör.<br>Kovan. Ağ.</h2>
+        <p class="beat-sub">Önce insanlar vardı, sonra film fikri.</p>
+      </div>
+      <div class="beat" id="b3">
+        <p class="beat-tag">03 · Kök</p>
+        <h2 class="beat-hl">Hiçbiri<br>sipariş değildi.</h2>
+        <p class="beat-sub">Her biri birinin kalmayı seçmesiyle başladı.</p>
+      </div>
+      <div class="beat" id="b4">
+        <p class="beat-tag">04 · Tohum</p>
+        <h2 class="beat-hl">Hepsi<br>buradan çıktı.</h2>
+        <p class="beat-sub">2020. Bir hibe, bir tarla, bir film.</p>
       </div>
     </div>
-
-    <p class="impact-bridge">Arşiv kanıttır. Sonraki altı hikaye, bunun nereye gittiğini gösteriyor.</p>
   </section>
 
   <section id="credibility" class="reveal">
@@ -933,6 +902,35 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <section id="impact" class="reveal">
+    <p class="impact-eye">Sahadan Kanıt</p>
+    <h2 class="impact-hl">Dört yıl. Yedi bölge. Canlı bir arşiv.</h2>
+    <p class="impact-lead">Dört yıl ve yedi bölge sonra, görüntüler bu toprağı kimin ve nasıl onardığının haritasına dönüştü.</p>
+
+    <div class="impact-stat-strip">
+      <div class="impact-cell"><span class="i-num" data-target="500">500</span><span class="i-lbl">Uygulayıcılar<br>haritalandı</span></div>
+      <div class="impact-cell"><span class="i-num" data-target="120">120</span><span class="i-lbl">Derinlemesine araştırılan<br>karakter</span></div>
+      <div class="impact-cell"><span class="i-num" data-target="4">4<sup>+</sup></span><span class="i-lbl">Yıl<br>sahada</span></div>
+      <div class="impact-cell"><span class="i-num" data-target="7">7</span><span class="i-lbl">Türkiye<br>bölgesi</span></div>
+    </div>
+
+    <div class="impact-reach">
+      <div class="reach-item"><span class="r-num" data-target="4">4</span><span class="r-lbl">Tamamlanan film</span></div>
+      <div class="reach-item"><span class="r-num">400K<sup>+</sup></span><span class="r-lbl">Platform-arası görüntülemeler</span></div>
+      <div class="reach-item"><span class="r-num">~500</span><span class="r-lbl">COP 2023'te iklim karar alıcısı</span></div>
+      <div class="reach-item"><span class="r-num" data-target="4950" data-format="comma">4,950</span><span class="r-lbl">Toplam abone</span></div>
+    </div>
+
+    <div class="impact-tags">
+      <div class="tag-row">
+        <span class="tag-key">Tanınma</span>
+        <span class="tag-val">En İyi İklim Filmi, Çin Uluslararası Belgesel Festivali 2023 · Ödül Sahibi, Dijital Detaylar 2025</span>
+      </div>
+    </div>
+
+    <p class="impact-bridge">Arşiv kanıttır. Sonraki altı hikaye, bunun nereye gittiğini gösteriyor.</p>
   </section>
 
   <section id="next" class="reveal">
@@ -1180,7 +1178,7 @@ var ctx=cvs.getContext('2d',{alpha:false});
 var reduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 var seqDir=window.matchMedia('(min-width:901px)').matches?'d':'m';
 var imgs=new Array(FRAMES);
-var curIdx=0,lastDrawn=-1;
+var curIdx=FRAMES-1,lastDrawn=-1;
 
 function frameSrc(i){var n=String(i+1);while(n.length<3)n='0'+n;return 'seed-frames/'+seqDir+'/f'+n+'.webp';}
 
@@ -1217,10 +1215,10 @@ function setFrame(i){
    arc is scrubbable early and sharpens as the rest arrives. */
 var order=[],queued={};
 [16,8,4,2,1].forEach(function(step){
-  for(var i=0;i<FRAMES;i+=step){if(!queued[i]){queued[i]=1;order.push(i);}}
+  for(var i=FRAMES-1;i>=0;i-=step){if(!queued[i]){queued[i]=1;order.push(i);}}
 });
-if(!queued[FRAMES-1])order.push(FRAMES-1);
-if(reduced)order=[0];
+if(!queued[0])order.push(0);
+if(reduced)order=[FRAMES-1];
 
 var qi=0,inFlight=0,MAXC=6;
 function pump(){
@@ -1236,7 +1234,15 @@ function pump(){
     })(order[qi++]);
   }
 }
-pump();
+(function(){
+  var target=document.getElementById('scroll-scene');
+  if(!target||!('IntersectionObserver' in window)){pump();return;}
+  var io=new IntersectionObserver(function(entries){
+    if(!entries.some(function(e){return e.isIntersecting;}))return;
+    io.disconnect();pump();
+  },{rootMargin:'150% 0px'});
+  io.observe(target);
+})();
 window.addEventListener('resize',function(){lastDrawn=-1;render();},{passive:true});
 
 var scene=document.getElementById('scroll-scene');
@@ -1247,8 +1253,9 @@ var beats=[
   {el:document.getElementById('b3'),s:0.50,e:0.76},
   {el:document.getElementById('b4'),s:0.74,e:1.00}
 ];
-var sections=['hero','scroll-scene','films','impact','next','contact'];
+var sections=['hero','films','scroll-scene','impact','next','contact'];
 var railItems=document.querySelectorAll('.si');
+var darkSections=['hero','films','scroll-scene'].map(function(id){return document.getElementById(id);}).filter(Boolean);
 var strat=document.getElementById('strat');
 var ticking=false;
 
@@ -1258,7 +1265,7 @@ function update(){
     var r=scene.getBoundingClientRect();
     var p=Math.min(Math.max(-r.top/(r.height-window.innerHeight),0),1);
     if(prog)prog.style.width=(p*100)+'%';
-    if(!reduced)setFrame(Math.round(p*(FRAMES-1)));
+    if(!reduced)setFrame(Math.round((1-p)*(FRAMES-1)));
     beats.forEach(function(b){b.el.style.opacity=(p>=b.s&&p<b.e)?'1':'0';});
   }
   var active=0;
@@ -1273,11 +1280,11 @@ function update(){
      frame slides away, the boundary between video and the (light) films-intro copy
      sweeps down through the middle of the fixed rail — items above the boundary are
      still on dark video, items below it are already on light copy, in the same frame. */
-  var sceneR=scene.getBoundingClientRect();
-  var darkBoundary=sceneR.bottom;
   railItems.forEach(function(item){
-    var r=item.getBoundingClientRect();
-    item.classList.toggle('on-dark',(r.top+r.height/2)<darkBoundary);
+    var r=item.getBoundingClientRect(),mid=r.top+r.height/2;
+    item.classList.toggle('on-dark',darkSections.some(function(el){
+      var s=el.getBoundingClientRect();return mid>=s.top&&mid<s.bottom;
+    }));
   });
   if(active>=1)strat.classList.add('revealed');
 }
