@@ -1196,7 +1196,7 @@ var imgs=new Array(FRAMES);
    where the descent lands — so the sequence starts at the far end. */
 var curIdx=FRAMES-1,lastDrawn=-1;
 
-function frameSrc(i){var n=String(i+1);while(n.length<3)n='0'+n;return 'seed-frames/'+seqDir+'/f'+n+'.webp';}
+function frameSrc(i){var n=String(i+1);while(n.length<3)n='0'+n;return 'seed-frames/'+seqDir+'/f'+n+'.webp?v=2';}
 
 function drawFrame(i){
   var im=imgs[i];
