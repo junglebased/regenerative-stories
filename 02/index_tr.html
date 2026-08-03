@@ -178,6 +178,12 @@
     .film-cta::after{content:'→';}
     .film-cta-muted{opacity:.35;cursor:default;}
     .film-cta-muted::after{display:none;}
+    /* Fragman (birincil) + tam film linki (ikincil). İkincisi siteden YouTube'a
+       çıkardığı için daha sessiz, altı çizili ve ↗ işaretli. */
+    .film-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;}
+    .film-cta-alt{font-family:'Expose',sans-serif;font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:rgba(var(--text-rgb),.68);display:inline-flex;align-items:center;gap:7px;text-decoration:none;border-bottom:1px solid rgba(var(--text-rgb),.26);padding-bottom:2px;transition:color .2s,border-color .2s;}
+    .film-cta-alt::after{content:'↗';font-size:12px;}
+    .film-cta-alt:hover{color:var(--text);border-color:rgba(var(--text-rgb),.6);}
     .film-num{position:absolute;right:48px;bottom:36px;font-family:'Clash Display',sans-serif;font-weight:900;font-size:clamp(88px,13vw,180px);color:rgba(255,255,255,.045);line-height:1;z-index:2;letter-spacing:-.04em;pointer-events:none;}
     .film-play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:88px;height:88px;border-radius:50%;border:2px solid rgba(243,241,235,.55);display:flex;align-items:center;justify-content:center;z-index:3;cursor:pointer;background:rgba(10,9,7,.18);backdrop-filter:blur(4px);transition:border-color .25s,background .25s,transform .25s;}
     .film-play-btn::after{content:'';border-style:solid;border-width:12px 0 12px 22px;border-color:transparent transparent transparent rgba(243,241,235,.9);margin-left:5px;}
@@ -329,6 +335,9 @@
     #lb.open{display:flex;}
     #lb-bg{position:absolute;inset:0;background:rgba(10,9,7,.92);backdrop-filter:blur(6px);cursor:pointer;}
     #lb-box{position:relative;z-index:1;width:min(90vw,1100px);aspect-ratio:16/9;transform:translateY(24px) scale(.97);opacity:0;transition:transform .4s cubic-bezier(.22,1,.36,1),opacity .35s ease;}
+    /* Dikey kurgu (YouTube Shorts): 9:16, kapat butonu ekranda kalsın diye
+       yükseklikten sınırlı. */
+    #lb-box.vert{aspect-ratio:9/16;width:min(88vw,min(420px,48vh));}
     #lb.open #lb-box{transform:none;opacity:1;}
     #lb-box iframe{width:100%;height:100%;border:none;display:block;}
     #lb-close{position:absolute;top:-44px;right:0;background:none;border:none;color:var(--text);font-family:'Expose',sans-serif;font-size:13px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;opacity:.6;transition:opacity .2s;}
@@ -747,7 +756,7 @@
       <div class="film-stack">
         <div class="film-bg" style="background-image:url('stills/awakeningofthesoil.jpg')"></div>
         <div class="film-grad"></div>
-        <button class="film-play-btn" data-yt="GwbonuGbL9k" aria-label="Toprağın Uyanışı'nı izle"></button>
+        <button class="film-play-btn" data-yt="6DLNwO7XG1g" aria-label="Toprağın Uyanışı fragmanını oynat"></button>
         <div class="film-content">
           <p class="film-idx">01 · Uzun Film · 42 dk · 2021</p>
           <span class="badge b-rel">Yayınlandı · COP 2023</span>
@@ -756,7 +765,10 @@
           <button class="film-expand" aria-expanded="false"><span>Hikayeyi oku</span></button>
           <p class="film-body">Şüpheci bir Trakyalı tahıl çiftçisi, Türkiye'nin dört bir yanındaki beş sıfır sürüm uygulayıcısını ziyaret eder ve traktörünün toprağının iyileşmesinin önündeki en büyük engel olduğunu keşfeder. Her tarla durağı yeni bir katman ekler: susuz yetişen mısır, üç yıldır makine geçmeyen bir sınır boyunca solucanlar, parmaklar arasında ufalanacak kadar koyu bir toprak.</p>
           <p class="film-notes">Çin Uluslararası Belgesel Festivali · Guardian Vakfı</p>
-          <button class="film-cta" data-yt="GwbonuGbL9k">Filmi İzle</button>
+          <div class="film-ctas">
+            <button class="film-cta" data-yt="6DLNwO7XG1g">Fragmanı İzle</button>
+            <a class="film-cta-alt" href="https://youtu.be/GwbonuGbL9k" target="_blank" rel="noopener">Filmin tamamını YouTube'da izle</a>
+          </div>
         </div>
         <span class="film-num">01</span>
       </div>
@@ -766,7 +778,7 @@
       <div class="film-stack">
         <div class="film-bg" style="background-image:url('stills/tilya.jpg')"></div>
         <div class="film-grad"></div>
-        <button class="film-play-btn" data-yt="fP2MbUsGDoY" aria-label="Tilya'yı izle"></button>
+        <button class="film-play-btn" data-yt="4T2K5BLmXvY" data-yt-mobile="xFN1DfckLBg" aria-label="Değişimin Tohumları fragmanını oynat"></button>
         <div class="film-content">
           <p class="film-idx">02 · Bölüm 01 · 16 dk · 2024</p>
           <span class="badge b-rel">Yayınlandı · 13,000+ görüntüleme</span>
@@ -775,7 +787,9 @@
           <button class="film-expand" aria-expanded="false"><span>Hikayeyi oku</span></button>
           <p class="film-body">Üç kişi İstanbul'un kenarında toprağa ve birbirlerine karşı bir iş sözleşmesi imzalar. Türkiye'nin ilk ekolojik sosyal kooperatifi böyle doğar. Dayanışma, altyapı olarak. Kentsel ölçekte gıda adaleti. Manifestodan değil, hâlâ yaşayan bir organizmadan örülmüş bir kooperatif.</p>
           <p class="film-notes">Postane Kültür ve Doğa</p>
-          <button class="film-cta" data-yt="fP2MbUsGDoY">Filmi İzle</button>
+          <div class="film-ctas">
+            <button class="film-cta" data-yt="4T2K5BLmXvY" data-yt-mobile="xFN1DfckLBg">Fragmanı İzle</button>
+          </div>
         </div>
         <span class="film-num">02</span>
       </div>
@@ -785,7 +799,7 @@
       <div class="film-stack">
         <div class="film-bg" style="background-image:url('stills/burhan.jpg')"></div>
         <div class="film-grad"></div>
-        <button class="film-play-btn" data-yt="0cRb0rBAsDI" aria-label="Burhan'ı izle"></button>
+        <button class="film-play-btn" data-yt="4ZWIyvVcaLU" aria-label="Burhan fragmanını oynat"></button>
         <div class="film-content">
           <p class="film-idx">03 · Bölüm 02 · 11 dk · 2025</p>
           <span class="badge b-lock">Ödül Sahibi</span>
@@ -794,7 +808,9 @@
           <button class="film-expand" aria-expanded="false"><span>Hikayeyi oku</span></button>
           <p class="film-body">Eski bir İstanbullu, Kaz Dağları'nda 30 metrekarelik yenileyici mikro bahçeler tasarlar ve yorgun toprağın tek bir gram sentetik girdi kullanmadan bir aileyi besleyebileceğini kanıtlar. Motorun adı BioTam Kompost; toprak gıda ağına aşı gibi uygulanır. İnsanların bir kez girip bir daha çıkmak istemediği bir yapı.</p>
           <p class="film-notes">Bornova Kısa Film Günleri · Dijital Detaylar Ödülü 2026</p>
-          <button class="film-cta" data-yt="0cRb0rBAsDI">Filmi İzle</button>
+          <div class="film-ctas">
+            <button class="film-cta" data-yt="4ZWIyvVcaLU">Fragmanı İzle</button>
+          </div>
         </div>
         <span class="film-num">03</span>
       </div>
@@ -1362,11 +1378,13 @@ document.querySelectorAll('.si').forEach(function(item){
 
 (function(){
   var lb=document.getElementById('lb');
+  var box=document.getElementById('lb-box');
   var iframe=document.getElementById('lb-iframe');
   var bg=document.getElementById('lb-bg');
   var closeBtn=document.getElementById('lb-close');
 
-  function open(id){
+  function open(id,vertical){
+    box.classList.toggle('vert',!!vertical);
     iframe.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';
     lb.classList.add('open');
     document.body.style.overflow='hidden';
@@ -1374,12 +1392,19 @@ document.querySelectorAll('.si').forEach(function(item){
   function close(){
     lb.classList.remove('open');
     iframe.src='';
+    box.classList.remove('vert');
     document.body.style.overflow='';
   }
 
   document.addEventListener('click',function(e){
     var t=e.target.closest('[data-yt]');
-    if(t){e.preventDefault();open(t.dataset.yt);}
+    if(!t)return;
+    e.preventDefault();
+    /* Telefonda dikey Shorts kurgusu varsa o açılır — 16:9 fragman portre
+       ekranda ince bir şerit hâline geliyor. */
+    var alt=t.dataset.ytMobile;
+    var portrait=window.matchMedia('(max-width:600px)').matches;
+    if(alt&&portrait)open(alt,true); else open(t.dataset.yt,false);
   });
   bg.addEventListener('click',close);
   closeBtn.addEventListener('click',close);

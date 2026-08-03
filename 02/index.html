@@ -184,6 +184,12 @@
     .film-cta::after{content:'→';}
     .film-cta-muted{opacity:.35;cursor:default;}
     .film-cta-muted::after{display:none;}
+    /* Trailer (primary) + full-film handoff (secondary). The secondary leaves the
+       site for YouTube, so it is styled as a quieter, underlined link with ↗. */
+    .film-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;}
+    .film-cta-alt{font-family:'Expose',sans-serif;font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:rgba(var(--text-rgb),.68);display:inline-flex;align-items:center;gap:7px;text-decoration:none;border-bottom:1px solid rgba(var(--text-rgb),.26);padding-bottom:2px;transition:color .2s,border-color .2s;}
+    .film-cta-alt::after{content:'↗';font-size:12px;}
+    .film-cta-alt:hover{color:var(--text);border-color:rgba(var(--text-rgb),.6);}
     .film-num{position:absolute;right:48px;bottom:36px;font-family:'Clash Display',sans-serif;font-weight:900;font-size:clamp(88px,13vw,180px);color:rgba(255,255,255,.045);line-height:1;z-index:2;letter-spacing:-.04em;pointer-events:none;}
     .film-play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:88px;height:88px;border-radius:50%;border:2px solid rgba(243,241,235,.55);display:flex;align-items:center;justify-content:center;z-index:3;cursor:pointer;background:rgba(10,9,7,.18);backdrop-filter:blur(4px);transition:border-color .25s,background .25s,transform .25s;}
     .film-play-btn::after{content:'';border-style:solid;border-width:12px 0 12px 22px;border-color:transparent transparent transparent rgba(243,241,235,.9);margin-left:5px;}
@@ -346,6 +352,9 @@
     #lb.open{display:flex;}
     #lb-bg{position:absolute;inset:0;background:rgba(10,9,7,.92);backdrop-filter:blur(6px);cursor:pointer;}
     #lb-box{position:relative;z-index:1;width:min(90vw,1100px);aspect-ratio:16/9;transform:translateY(24px) scale(.97);opacity:0;transition:transform .4s cubic-bezier(.22,1,.36,1),opacity .35s ease;}
+    /* Vertical cut (YouTube Shorts): 9:16, height-capped so the close button
+       stays on screen on short viewports. */
+    #lb-box.vert{aspect-ratio:9/16;width:min(88vw,min(420px,48vh));}
     #lb.open #lb-box{transform:none;opacity:1;}
     #lb-box iframe{width:100%;height:100%;border:none;display:block;}
     #lb-close{position:absolute;top:-44px;right:0;background:none;border:none;color:var(--text);font-family:'Expose',sans-serif;font-size:13px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;opacity:.6;transition:opacity .2s;}
@@ -767,7 +776,7 @@
       <div class="film-stack">
         <div class="film-bg" style="background-image:url('stills/awakeningofthesoil.jpg')"></div>
         <div class="film-grad"></div>
-        <button class="film-play-btn" data-yt="GwbonuGbL9k" aria-label="Watch Awakening of the Soil"></button>
+        <button class="film-play-btn" data-yt="6DLNwO7XG1g" aria-label="Play Awakening of the Soil trailer"></button>
         <div class="film-content">
           <p class="film-idx">01 · Feature · 42 min · 2021</p>
           <span class="badge b-rel">Released · COP 2023</span>
@@ -776,7 +785,10 @@
           <button class="film-expand" aria-expanded="false"><span>Read the story</span></button>
           <p class="film-body">A skeptical Thracian grain farmer visits five zero-tillage practitioners around Turkey and discovers that his tractor is the main obstacle to his soil's recovery. Every field stop adds a layer: corn growing without irrigation, earthworms in a border a machine hasn't crossed in three years, soil dark enough to crumble between two fingers.</p>
           <p class="film-notes">China Int'l Documentary Festival · Guardian Foundation</p>
-          <button class="film-cta" data-yt="GwbonuGbL9k">Watch Film</button>
+          <div class="film-ctas">
+            <button class="film-cta" data-yt="6DLNwO7XG1g">Watch Trailer</button>
+            <a class="film-cta-alt" href="https://youtu.be/GwbonuGbL9k" target="_blank" rel="noopener">Watch full film on YouTube</a>
+          </div>
         </div>
         <span class="film-num">01</span>
       </div>
@@ -786,7 +798,7 @@
       <div class="film-stack">
         <div class="film-bg" style="background-image:url('stills/tilya.jpg')"></div>
         <div class="film-grad"></div>
-        <button class="film-play-btn" data-yt="fP2MbUsGDoY" aria-label="Watch Tilya"></button>
+        <button class="film-play-btn" data-yt="4T2K5BLmXvY" data-yt-mobile="xFN1DfckLBg" aria-label="Play Seeds of Change trailer"></button>
         <div class="film-content">
           <p class="film-idx">02 · Episode 01 · 16 min · 2024</p>
           <span class="badge b-rel">Released · 13,000+ views</span>
@@ -795,7 +807,9 @@
           <button class="film-expand" aria-expanded="false"><span>Read the story</span></button>
           <p class="film-body">Three people sign a working contract with the land and with each other on the edge of Istanbul. Turkey's first ecological social cooperative begins. Solidarity as infrastructure. Food justice at urban scale. A cooperative built not from manifesto but from a working organism still alive.</p>
           <p class="film-notes">Postane Kültür ve Doğa</p>
-          <button class="film-cta" data-yt="fP2MbUsGDoY">Watch Film</button>
+          <div class="film-ctas">
+            <button class="film-cta" data-yt="4T2K5BLmXvY" data-yt-mobile="xFN1DfckLBg">Watch Trailer</button>
+          </div>
         </div>
         <span class="film-num">02</span>
       </div>
@@ -805,7 +819,7 @@
       <div class="film-stack">
         <div class="film-bg" style="background-image:url('stills/burhan.jpg')"></div>
         <div class="film-grad"></div>
-        <button class="film-play-btn" data-yt="0cRb0rBAsDI" aria-label="Watch Burhan"></button>
+        <button class="film-play-btn" data-yt="4ZWIyvVcaLU" aria-label="Play Rebuilt from the Ground Up trailer"></button>
         <div class="film-content">
           <p class="film-idx">03 · Episode 02 · 11 min · 2025</p>
           <span class="badge b-lock">Award Winner</span>
@@ -814,7 +828,9 @@
           <button class="film-expand" aria-expanded="false"><span>Read the story</span></button>
           <p class="film-body">A former Istanbul urbanite designs 30-square-meter regenerative micro-gardens in the Ida Mountains, proving exhausted soil can feed a family without a gram of synthetic input. The engine is BioTam Compost, applied to the soil food web like a vaccine. A structure that other people land inside and don't leave.</p>
           <p class="film-notes">Bornova Short Film Days · Dijital Detaylar Award 2026</p>
-          <button class="film-cta" data-yt="0cRb0rBAsDI">Watch Film</button>
+          <div class="film-ctas">
+            <button class="film-cta" data-yt="4ZWIyvVcaLU">Watch Trailer</button>
+          </div>
         </div>
         <span class="film-num">03</span>
       </div>
@@ -1396,11 +1412,13 @@ document.querySelectorAll('.si').forEach(function(item){
 /* ── Lightbox ─────────────────────────────────────────── */
 (function(){
   var lb=document.getElementById('lb');
+  var box=document.getElementById('lb-box');
   var iframe=document.getElementById('lb-iframe');
   var bg=document.getElementById('lb-bg');
   var closeBtn=document.getElementById('lb-close');
 
-  function open(id){
+  function open(id,vertical){
+    box.classList.toggle('vert',!!vertical);
     iframe.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';
     lb.classList.add('open');
     document.body.style.overflow='hidden';
@@ -1408,12 +1426,19 @@ document.querySelectorAll('.si').forEach(function(item){
   function close(){
     lb.classList.remove('open');
     iframe.src='';
+    box.classList.remove('vert');
     document.body.style.overflow='';
   }
 
   document.addEventListener('click',function(e){
     var t=e.target.closest('[data-yt]');
-    if(t){e.preventDefault();open(t.dataset.yt);}
+    if(!t)return;
+    e.preventDefault();
+    /* Phones get the vertical Shorts cut where one exists — a 16:9 trailer
+       letterboxes to a sliver on a portrait screen. */
+    var alt=t.dataset.ytMobile;
+    var portrait=window.matchMedia('(max-width:600px)').matches;
+    if(alt&&portrait)open(alt,true); else open(t.dataset.yt,false);
   });
   bg.addEventListener('click',close);
   closeBtn.addEventListener('click',close);
